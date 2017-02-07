@@ -3,6 +3,7 @@ description: Web Dev site of adesmier.com
 author: Anthony Desmier
 author_email: anthony@adesmier.com
 url: https://web.adesmier.com
+permalink: /blog/:categories/:title/
 # baseurl
 
 markdown: kramdown

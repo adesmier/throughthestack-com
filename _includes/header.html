@@ -17,28 +17,28 @@
 				{% endif %}"><a href="/">Home</a></li>
 
 			<li class="header-main-nav-item
-				{% if page.url == '/about.html' %} header-main-nav-item--current
-				{% endif %}"><a href="/about.html">About</a></li>
+				{% if page.url contains '/about' %} header-main-nav-item--current
+				{% endif %}"><a href="/about">About</a></li>
 
 
 			<li class="header-main-nav-item
 				{% if page.url contains '/blog' %} header-main-nav-item--current
-				{% endif %}"><a href="/blog.html">Blog</a></li>
+				{% endif %}"><a href="/blog">Blog</a></li>
 
 
 			<li class="header-main-nav-item
-				{% if page.url == '/portfolio.html' %} header-main-nav-item--current
-				{% endif %}"><a href="/portfolio.html">Portfolio</a></li>
+				{% if page.url contains '/portfolio' %} header-main-nav-item--current
+				{% endif %}"><a href="/portfolio">Portfolio</a></li>
 
 
 			<li class="header-main-nav-item
-				{% if page.url == '/projects.html' %} header-main-nav-item--current
-				{% endif %}"><a href="/projects.html">Projects</a></li>
+				{% if page.url contains '/projects' %} header-main-nav-item--current
+				{% endif %}"><a href="/projects">Projects</a></li>
 
 
 			<li class="header-main-nav-item
-				{% if page.url == '/contact.html' %} header-main-nav-item--current
-				{% endif %}"><a href="/contact.html">Contact</a></li>
+				{% if page.url contains '/contact' %} header-main-nav-item--current
+				{% endif %}"><a href="/contact">Contact</a></li>
 
 		</ul>
 	</nav>

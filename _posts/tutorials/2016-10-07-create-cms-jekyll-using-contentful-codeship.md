@@ -1,6 +1,5 @@
 ---
 layout: tutorials
-permalink: /blog/:categories/:title/
 title: Create a CMS for Jekyll using Contentful and Codeship
 category: tutorials
 image: assets/images/tutorials/cms-jekyll-contentful/header.jpg
