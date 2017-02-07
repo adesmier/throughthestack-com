@@ -1,0 +1,13 @@
+<section class="section-latest-posts row section">
+    <div id="latest-posts-wrapper" class="grid-card hover full-width-card">
+        <h2><i class="fa fa-pencil" aria-hidden="true"></i>Latest Posts</h2><hr>
+
+        {% for post in site.posts limit:3 %}
+
+            {% include article-summary.html articleType='latest-post-preview' wrapperType='article-inner-wrapper'
+            thumbnailLinkType='article-thumbnail-link' thumbnailType='article-thumbnail' displayIntro=true %}
+
+        {% endfor %}
+
+    </div>
+</section>

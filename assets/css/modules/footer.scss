@@ -1,0 +1,29 @@
+#page-footer{
+    margin: 20px auto;
+    text-align: center;
+    p{
+        font-size: 75%;
+        margin-bottom: 10px;
+        q{
+            font-style: italic;
+        }
+        a:hover{
+            color: #929292;
+            transition: color 0.3s;
+        }
+    }
+}
+
+#footer-social-links{
+    ul{
+        list-style: none;
+        margin-bottom: 10px;
+    }
+    li{
+        display: inline;
+        font-size: 120%;
+        &:not(:last-of-type){
+            margin-right: 20px;
+        }
+    }
+}

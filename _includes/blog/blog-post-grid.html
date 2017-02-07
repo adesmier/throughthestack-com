@@ -1,0 +1,16 @@
+<section class="section-blog-post-grid row section">
+    <div class="multi-card-flex-container">
+
+        {% for post in site.posts %}
+
+            <div class="blog-post-grid-wrapper grid-card hover multi-width-card">
+
+                {% include article-summary.html articleType='' wrapperType='blog-post-inner-wrapper' thumbnailLinkType=''
+                thumbnailType='blog-post-thumbnail' displayIntro=true %}
+
+            </div>
+
+        {% endfor %}
+
+    </div>
+</section>

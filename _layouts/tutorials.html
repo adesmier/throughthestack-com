@@ -1,0 +1,178 @@
+---
+layout: default
+---
+
+<section class="section-tutorial row section">
+
+    <!-- POST HEADER IMAGE SECTION AND HEADING TEXT -->
+    <div id="post-header-wrapper" class="grid-card full-width-card">
+        <div id="post-image">
+            <img src="{{base}}/{{ page.image }}" alt="post header image" />
+        </div>
+
+        <div id="post-meta">
+            <h1 id="post-title">{{ page.title }}</h1>
+            <div class="article-tags">
+                <i class="fa fa-tags" aria-hidden="true"></i>
+
+                {% for tag in page.tags %}
+                    <a class="tag-name" href="#">{{ tag }}</a>
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+        <div id="post-heading">
+            <ul>
+                <li>{{ page.date | date: '%d %b %Y' }} &middot;</li>
+                <li> {{ page.time }} read &middot;</li>
+                <li id="list-post-category"> {{ page.category }}</li>
+            </ul>
+            <p>{{ page.heading | markdownify }}</p>
+        </div>
+    </div>
+
+    <hr />
+
+    <!-- POST INTRO TEXT SECTION WITH SECTION MENU AT END -->
+    <div id="post-intro-wrapper" class="grid-card full-width-card">
+        <div class="post-intro-links">
+            <a href="#Sections">
+                <button class="fa fa-arrow-down"><span>Skip Intro</span></button>
+            </a>
+        </div>
+
+        <a class="link-anchor" name="Intro"></a>
+        <h2 class="post-section-heading" name="Intro">Intro</h2>
+        <div id="post-intro-text">{{ page.sections['Intro'] | markdownify }}</div>
+
+        <hr />
+
+        <div id="post-intro-dropdown-container" class="sticky-element">
+            {% if page.previous %}
+            <div id="post-intro-section-left-content">
+                <a href="{{ page.previous.url }}">
+                    <img src="{{base}}/{{ page.thumbnail }}" alt="post header image" />
+                    <h3>Previous</h3>
+                    {{ page.previous.title }}<br />
+                </a>
+            </div>
+            {% endif %}
+
+            {% if page.codepen %}
+                <div class="post-intro-links">
+                    <button class="fa fa-arrow-right"><span><i class="fa fa-codepen"></i></span></button>
+                </div>
+            {% endif %}
+
+            <div id="post-intro-section-dropdown">
+                <button class="dropdown-button">Jump to Section</button>
+                <div class="dropdown-content">
+
+                    {% for section in page.sections %}
+                        <a href="#{{ section[0] | replace: ' ', '' }}">{{ section[0] }}</a>
+                    {% endfor %}
+
+                </div>
+            </div>
+
+            {% if page.github %}
+                <div class="post-intro-links">
+                    <button class="fa fa-arrow-right"><span><i class="fa fa-github"></i></span></button>
+                </div>
+            {% endif %}
+
+            {% if page.next%}
+            <div id="post-intro-section-right-content">
+                <a href="{{ page.next.url }}">
+                    <img src="{{base}}/{{ page.thumbnail }}" alt="post header image" />
+                    <h3>Up Next</h3>
+                    {{ page.next.title }}<br />
+                </a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT OF THE POST -->
+    <a class="link-anchor" name="Sections"></a>
+    {% for section in page.sections offset:1 %}
+
+        <div class="post-content-wrapper grid-card full-width-card">
+            <a class="link-anchor" name="{{ section[0] | replace: ' ', '' }}"></a>
+            <h2 class="post-section-heading">{{ section[0] }}</h2>
+            <div class="post-content-text">{{ section[1] | markdownify }}</div>
+        </div>
+
+    {% endfor %}
+
+    <hr />
+
+    <!-- RELATED AND RECENT POSTS SECTION -->
+    <div id="related-posts-wrapper" class="multi-card-flex-container">
+        <div class="multi-width-card-justify grid-card multi-width-card">
+            <h2><i class="fa fa-pencil" aria-hidden="true"></i>Related Posts</h2><hr>
+
+            {% assign RELATED_POSTS_THRESHOLD = 3 %}
+            {% assign related_post_count = 0 %}
+
+            {% for post in site.related_posts %}
+
+                {% if related_post_count == RELATED_POSTS_THRESHOLD %}
+                    {% break %}
+                {% endif %}
+
+                {% for tag in post.tags %}
+
+                    {% if page.tags contains tag %}
+                        {% include article-summary.html articleType='latest-post-preview' wrapperType='article-inner-wrapper' thumbnailLinkType='article-thumbnail-link' thumbnailType='article-thumbnail' %}
+                        {% assign related_post_count = related_post_count | plus: 1 %}
+                        {% break %}
+                    {% endif %}
+
+                {% endfor %}
+
+            {% endfor %}
+
+        </div>
+        <div class="multi-width-card-justify grid-card multi-width-card">
+            <h2>Recent Posts<i class="fa fa-pencil" aria-hidden="true"></i></h2><hr>
+
+            {% assign RELATED_POSTS_THRESHOLD = 3 %}
+            {% assign related_post_count = 0 %}
+
+            {% for post in site.related_posts %}
+
+                {% if related_post_count == RELATED_POSTS_THRESHOLD %}
+                    {% break %}
+                {% endif %}
+
+                {% for tag in post.tags %}
+
+                    {% if page.tags contains tag %}
+                        {% include article-summary.html articleType='latest-post-preview' wrapperType='article-inner-wrapper' thumbnailLinkType='article-thumbnail-link' thumbnailType='article-thumbnail' %}
+                        {% assign related_post_count = related_post_count | plus: 1 %}
+                        {% break %}
+                    {% endif %}
+
+                {% endfor %}
+
+            {% endfor %}
+
+        </div>
+    </div>
+
+    <!-- DISQUS COMMENTC SECTION -->
+    <div class="post-content-wrapper grid-card full-width-card">
+
+        {% if page.comments %}
+            {% include disqus.html %}
+        {% endif %}
+
+    </div>
+
+
+
+
+</section>

@@ -1,0 +1,128 @@
+/**********************************************/
+/* ARTICLE SUMMARY STYLINGS FOR MULTIPLE PAGES */
+/**********************************************/
+
+/* STYLINGS FOR USAGE ON HOME PAGE - LATEST POSTS SECTION */
+
+.latest-post-preview{
+    display: block;
+    margin-top: 10px;
+    color: #333;
+    transition: transform 0.3s;
+    &:not(:last-of-type){
+        margin-bottom: 10px;
+    }
+    &:hover{
+        transform: translateX(3px);
+        transition: transform 0.3s;
+    }
+}
+
+.article-inner-wrapper{
+    display: flex;
+}
+
+.article-thumbnail-link{
+    display: flex;
+    flex: 1;
+}
+
+.article-thumbnail{
+    display: flex;
+    flex: 1;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50%;
+    border-radius: 3px;
+}
+
+/**********************************************************/
+
+/* STYLINGS FOR USAGE ON BLOG PAGE - BLOG POST GRID SECTION */
+
+.blog-post-inner-wrapper{
+    margin-top: 5px;
+    margin-bottom: 3px;
+}
+
+.blog-post-thumbnail{
+    height: 140px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50%;
+    border-radius: 3px;
+}
+
+/**********************************************************/
+
+/* COMMON ARTICLE SECTION STYLINGS */
+
+.article-summary{
+    flex: 4;
+    padding: 0 5px 10px 10px;
+}
+
+
+/* article-title article-meta article-tags
+are present on both latest-posts on home page
+and blog page */
+
+
+.article-title{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.article-meta{
+    i:last-of-type{
+        margin-left: 5px;
+    }
+    margin: 2px 0 5px 0;
+    font-size: 70%;
+    color: #929292;
+}
+
+.article-tags{
+    margin-top: 5px;
+
+    i{
+        font-size: 70%;
+        color: #929292;
+    }
+
+    .tag-name{
+        font-size: 65%;
+        border: 1px solid #929292;
+        border-radius: 3px;
+        padding: 1px 5px;
+        transition: background-color 0.3s;
+        color: #929292;
+        transition: color 0.3s;
+
+        &:hover{
+            background-color: #929292;
+            transition: background-color 0.3s;
+            color: #fff;
+            transition: color 0.3s;
+        }
+    }
+}
+
+/************************************/
+
+//////////////////////////////////////////////////////////
+/* MEDIA QUERIES FOR LATEST-POSTS */ //TODO: Remove below code
+//////////////////////////////////////////////////////////
+
+
+@media only screen and (max-width: 920px){
+
+    .article-summary{
+        flex: 3
+    }
+
+    .article-thumbnail{
+        flex: 0;
+    }
+
+}

@@ -1,0 +1,355 @@
+.section-tutorial{
+    hr{
+        border-top: 1px solid #d6d6d6;
+        border-bottom: 1px solid #fff;
+        border-left: 1px solid #fff;
+        border-right: 1px solid #fff;
+        width: 70%;
+        margin: 5px auto 8px auto;
+    }
+    .link-anchor{
+        display: block;
+        position: relative;
+        top: -100px;
+        visibility: hidden;
+    }
+}
+
+#post-header-wrapper{
+    #post-image{
+        img{
+            display: block;
+            margin: 0 auto;
+            padding-top: 10px;
+            padding-bottom: 15px;
+            width: 80%;
+        }
+
+    }
+
+    #post-meta{
+        text-align: center;
+
+        #post-title{
+            font-size: 200%;
+        }
+
+    }
+
+    #post-heading{
+        margin: 10px auto 15px auto;
+        width: 85%;
+        color: #585353;
+        padding-left: 10px;
+        border-left: 4px solid #333;
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+
+        ul{
+            list-style: none;
+            color: #929292;
+            padding: 3px 0;
+            li{
+                display: inline-block;
+                font-size: 85%;
+            }
+            #list-post-category:first-letter{
+                text-transform: uppercase;
+            }
+        }
+
+        p{
+            font-size: 90%;
+            a{
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+#post-intro-wrapper{
+    margin-top: 14px;
+    hr{
+        margin: 10px auto 8px auto;
+        width: 70%;
+    }
+}
+
+.post-section-heading{
+    margin-top: 10px;
+    margin-bottom: 5px;
+    text-align: center;
+    font-size: 120% !important;
+}
+
+.post-intro-links{
+    text-align: center;
+
+    button{
+        position: relative;
+        border: 2px solid #929292;
+        color: #706b6b;
+        min-width: 140px;
+        overflow: hidden;
+        backface-visibility: hidden;
+        cursor: pointer;
+        padding: 10px 15px;
+        margin: 10px 15px 0 15px;
+        transition: all 0.3s;
+        &:before{
+            left: 0;
+            top: 100%;
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            line-height: 2.5;
+            transition: all 0.3s;
+        }
+    }
+
+    span{
+        display: inline-block;
+        font-family: $mainFontStyle;
+        font-size: 90%;
+        transition: all 0.3s;
+        backface-visibility: hidden;
+    }
+
+    button:hover:before{
+        top: -10%;
+    }
+    button:hover > span{
+        transform: translateY(-300%);
+    }
+}
+
+#post-intro-text,
+.post-content-text{
+    p, ul, ol{
+        width: 90%;
+        line-height: 25px;
+        margin: 0 auto;
+        font-size: 95%;
+        strong{
+            font-weight: bold;
+        }
+    }
+    ul, ol{
+        padding: 5px 0 5px 40px;
+    }
+    a{
+        border-bottom: 1px solid rgb(185, 220, 235);
+        box-shadow: 0 -4px 0 rgb(185, 220, 235) inset;
+        transition: background 0.3s;
+        &:hover{
+            background-color: rgb(185, 220, 235);
+            transition: background 0.3s;
+        }
+    }
+    .notice-update p,
+    .notice-warn p,
+    //.notice-warn p,
+    blockquote p{
+        width: 80%;
+        padding: 5px 5px 5px 15px;
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+        color: rgb(64, 77, 82);
+        line-height: 30px;
+        em{
+            color: #333;
+            font-weight: bold;
+        }
+    }
+    blockquote p{
+        background-color: $noticeTip;
+        border-left: 5px solid $noticeTipBorder;
+        a{
+            border-bottom: 1px solid $noticeTipBorderAlpha;
+            box-shadow: 0 -4px 0 $noticeTipBorderAlpha inset;
+            &:hover{
+                background-color: $noticeTipBorderAlpha;
+            }
+        }
+    }
+    .notice-update p{
+        background-color: $noticeUpdate;
+        border-left: 5px solid $noticeUpdateBorder;
+        a{
+            border-bottom: 1px solid $noticeUpdateBorderAlpha;
+            box-shadow: 0 -4px 0 $noticeUpdateBorderAlpha inset;
+            &:hover{
+                background-color: $noticeUpdateBorderAlpha;
+            }
+        }
+    }
+    .notice-warn p{
+        background-color: $noticeWarn;
+        border-left: 5px solid $noticeWarnBorder;
+        a{
+            border-bottom: 1px solid $noticeWarnBorderAlpha;
+            box-shadow: 0 -4px 0 $noticeWarnBorderAlpha inset;
+            &:hover{
+                background-color: $noticeWarnBorderAlpha;
+            }
+        }
+    }
+    // .notice-warn p{
+    //     background-color: $noticeWarn;
+    //     border-left: 5px solid $noticeWarnBorder;
+    //     a{
+    //         border-bottom: 1px solid $noticeWarnBorderAlpha;
+    //         box-shadow: 0 -4px 0 $noticeWarnBorderAlpha inset;
+    //         &:hover{
+    //             background-color: $noticeWarnBorderAlpha;
+    //         }
+    //     }
+    // }
+}
+
+#post-intro-dropdown-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#post-intro-section-dropdown{
+    margin-left: 30px;
+    margin-right: 30px;
+    max-height: 42px;
+
+    &:hover .dropdown-content a{
+        visibility: visible;
+        opacity: 1;
+    }
+
+    &:hover .dropdown-button{
+        background-color: #929292;
+        color: #fff;
+    }
+
+    .dropdown-button{
+        color: #706b6b;
+        font-size: 85%;
+        padding: 8px 12px;
+        border: 2px solid #929292;
+        min-width: 200px;
+        max-width: 300px;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .dropdown-content{
+        visibility: hidden;
+        position: absolute;
+        left: 50%;
+        right: 50%;
+        transform: translate(-50%, 0);
+        background-color: #f9f9f9f;
+        min-width: 200px;
+        box-shadow: 0 2px 1px 0 #d6d6d6;
+        a{
+            display: block;
+            opacity: 0;
+            color: #706b6b;
+            font-size: 85%;
+            padding: 12px 16px;
+            background-color: #fff;
+            text-align: center;
+            &:hover{
+                background-color: #f1f1f1;
+            }
+        }
+    }
+}
+
+#post-intro-dropdown-container .post-intro-links{
+    button{
+        min-width: 50px;
+        margin-top: 0px;
+        padding: 8px 15px;
+        margin: 0px;
+    }
+    button:hover:before{
+        top: -18%;
+    }
+}
+
+
+#post-intro-section-left-content,
+#post-intro-section-right-content{
+    min-width: 300px;
+    font-size: 75%;
+    opacity: 0;
+    h3{
+        font-size: 110%;
+        margin-top: 5px;
+    }
+    img{
+        border-radius: 3px;
+    }
+}
+
+#post-intro-section-left-content{
+    margin-right: 70px;
+    text-align: right;
+    img{
+        float: right;
+        margin-left: 8px;
+    }
+
+}
+
+#post-intro-section-right-content{
+    margin-left: 70px;
+    img{
+        float: left;
+        margin-right: 8px;
+    }
+}
+
+/*
+Class added/removed via jQuery textLimit.js file
+*/
+.post-intro-content-hover{
+    opacity: 0.7 !important;
+    cursor: pointer;
+    transition: opacity 0.3s;
+    &:hover{
+        opacity: 1 !important;
+        transition: opacity 0.3s;
+    }
+}
+/*
+Class added/removed via jQuery textLimit.js file
+*/
+.sticky-class{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 1;
+}
+
+.post-content-wrapper{
+    padding-bottom: 15px;
+}
+
+.post-content-text{
+    img{
+        display: block;
+        width: 80%;
+        margin: 30px auto;
+        border: 2px solid #929292;
+    }
+}
+
+#related-posts-wrapper{
+    hr{
+        width: 90%;
+    }
+}
+
+

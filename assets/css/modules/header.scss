@@ -1,0 +1,177 @@
+#page-header{
+	margin: 0 auto;
+    letter-spacing: 1px;
+}
+
+#logo{
+	font-family: $logoFontStyle;
+	color: #333;
+	margin-left: 20px;
+	padding: 0px 0px 5px 10px;
+	border-left: 4px solid #333;
+	border-top-left-radius: 8px;
+	border-bottom-left-radius: 8px;
+	p{
+		letter-spacing: 2px;
+		font-size: 180%;
+		margin-bottom: 5px;
+	}
+	a{
+		transition: color 0.3s;
+		&:hover{
+			color: #929292;
+			transition: color 0.3s;
+		}
+	}
+	#subdomain-links{
+        width: 280px;
+        h4{
+            display: inline;
+            padding-right: 8px;
+            font-weight: 300;
+			border-right: 2px solid #333;
+            border-top-right-radius: 3px;
+            border-bottom-right-radius: 3px;
+
+        }
+        //h4{
+            //transition: border-right 0.1s ease-in-out 1s;
+        //}
+        // h4:nth-of-type(3){
+        //     border-right: 0px solid #333;
+        //     transition: border-right 0.1s ease-in-out;
+        // }
+        // h4:nth-of-type(n+2){
+        //     opacity: 0;
+        //     transition: all 0.3s ease-in-out 1s;
+        //     a{
+		//
+        //         transition: color 0.3s;
+        //         &:before{
+        //             content: "\00b7\00a0\00a0";
+        //         }
+        //         &:hover{
+        //             color: #929292;
+        //             transition: color 0.3s;
+        //         }
+        //     }
+        // }
+
+        /* HOVER STATES */
+        // &:hover > h4:first-of-type{
+        //     border-right: 0px solid #333;
+        //     transition: border-right 0.1s ease-in-out;
+        // }
+        // &:hover > h4:nth-of-type(2){
+        //     opacity: 1;
+        //     transition: all 0.3s ease-in-out;
+        // }
+        // &:hover > h4:nth-of-type(3){
+        //     opacity: 1;
+        //     transition: opacity 0.6s ease-in-out;
+        //     //transition: border-right 0.1s ease-in-out;
+        //     border-right: 2px solid #333;
+        //     border-top-right-radius: 3px;
+        //     border-bottom-right-radius: 3px;
+        //     padding-right: 5px;
+        // }
+        /****************/
+
+	}
+
+}
+
+
+
+#header-main-nav{
+	list-style: none;
+	text-align: center;
+	margin-top: 20px;
+	a{
+		color: #b5b5b5;
+        padding-bottom: 5px;
+        transition: color 0.3s;
+		&:hover{
+			color: #929292;
+            transition: color 0.3s;
+		}
+	}
+
+    .header-main-nav-item.header-main-nav-item--current a{
+        color: #333;
+        border-bottom: 2px solid #333;
+        border-bottom-right-radius: 7px;
+        border-bottom-left-radius: 7px;
+    }
+
+	.header-main-nav-item{
+		display: inline;
+		font-weight: 700;
+		&:not(:last-of-type){
+			margin-right: 20px;
+		}
+	}
+
+
+
+}
+
+//////////////////////////////////////////////////////////
+/* MEDIA QUERIES FOR SUBDOM-HEADER */ //TODO: Remove code below
+//////////////////////////////////////////////////////////
+
+@media only screen and (max-width: 920px){
+
+    #header-main-nav{
+        position: absolute;
+        top: 2%;
+        right: 5%;
+
+        .header-main-nav-item.header-main-nav-item--current a{
+            border-bottom: none;
+        }
+
+
+        .header-main-nav-item{
+            display: block;
+            position: absolute;
+            right: 5%;
+            top: 0px;
+            transition: all 0.3s;
+            &:not(:first-of-type){
+                opacity: 0;
+            }
+            &:not(:last-of-type){
+                margin-bottom: 8px;
+                margin-right: 0px;
+            }
+        }
+
+
+        &:hover > .header-main-nav-item:nth-of-type(2){
+            top: 25px;
+            opacity: 1;
+        }
+        &:hover > .header-main-nav-item:nth-of-type(3){
+            top: 50px;
+            opacity: 1;
+        }
+        &:hover > .header-main-nav-item:nth-of-type(4){
+            top: 75px;
+            opacity: 1;
+        }
+        &:hover > .header-main-nav-item:nth-of-type(5){
+            top: 100px;
+            opacity: 1;
+        }
+        &:hover > .header-main-nav-item:nth-of-type(6){
+            top: 125px;
+            opacity: 1;
+        }
+
+    }
+
+
+
+
+}

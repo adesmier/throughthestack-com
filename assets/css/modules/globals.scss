@@ -1,0 +1,154 @@
+/* COLOUR VARIABLES */
+
+//colours for blockquote and notice tips
+$noticeTip: rgba(52, 152, 219, 0.3);
+$noticeTipBorder: rgb(41, 128, 185);
+$noticeTipBorderAlpha: rgba(41, 128, 185, 0.4);
+$noticeUpdate: rgba(26, 188, 156, 0.3);
+$noticeUpdateBorder: rgb(22, 160, 133);
+$noticeUpdateBorderAlpha: rgba(22, 160, 133, 0.4);
+$noticeWarn: rgba(241, 196, 15, 0.3);
+$noticeWarnBorder: rgb(243, 156, 18);
+$noticeWarnBorderAlpha: rgba(243, 156, 18, 0.4);
+//$noticeWarn: rgba(231, 76, 60, 0.3);
+//$noticeWarnBorder: rgb(192, 57, 43);
+//$noticeWarnBorderAlpha: rgba(192, 57, 43, 0.4);
+
+/********************/
+
+/* FONT VARIABLES */
+
+$mainFontStyle: 'Karla', sans-serif;
+$logoFontStyle: 'Patua One', cursive;
+$mainFontSize: 20px;
+
+/******************/
+
+
+/* FULL ELEMENT SELECTORS */
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+	font-family: $mainFontStyle;
+	font-size: $mainFontSize;
+	background-color: #f9f9f9;
+    color: #333;
+}
+
+h1{
+    margin: 0;
+    padding: 0;
+}
+
+h2,h3{
+    letter-spacing: 0.5px;
+}
+
+a{
+	text-decoration: none;
+    &:link{
+        color: currentColor;
+    }
+    &:visited{
+        color: currentColor;
+    }
+}
+
+p{
+    letter-spacing: 0.5px;
+}
+
+article,
+figure{
+    margin: 0;
+    padding: 0;
+}
+
+button{
+    border: none;
+    background-color: transparent;
+    &:focus{
+        outline: 0;
+    }
+}
+
+.row{
+	max-width: 1140px;
+}
+
+/*  SECTIONS  ============================================================================= */
+
+.section {
+	clear: both;
+	padding: 0px;
+	margin: 20px auto 0 auto;
+}
+
+/* CLEAR FLOATS CLASS */
+.clear-float{
+    clear: both;
+}
+
+/**************************/
+
+::selection {
+  background: rgb(185, 220, 235); /* WebKit/Blink Browsers */
+}
+
+/* STYLING FOR CODE BLOCKS IN MARKDOWN FILES */
+.highlighter-rouge{
+    background-color: #d1d7db;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 85%;
+    letter-spacing: 0;
+    word-spacing: -5px;
+    overflow-x: auto;
+}
+
+blockquote .highlighter-rouge{
+    background-color: $noticeTipBorderAlpha;
+}
+.notice-update .highlighter-rouge{
+    background-color: $noticeUpdateBorderAlpha;
+}
+.notice-warn .highlighter-rouge{
+    background-color: $noticeWarnBorderAlpha;
+}
+//.notice-warn .highlighter-rouge{
+//    background-color: $noticeWarnBorderAlpha;
+//}
+
+.post-content-text div[class^="language"]{
+    width: 80%;
+    margin: 30px auto;
+    font-size: 80%;
+    padding: 0 0 0 2px;
+    background-color: #403d3d;
+    border: 2px solid #929292;
+    border-radius: 0px;
+}
+
+.codeblock-highlight{
+    background-color: #403d3d;
+
+    .gutter{
+        padding: 3px 5px;
+        color: #f9f9f9;
+        border-right: 2px solid #929292;
+        user-select: none;
+    }
+
+    .code{
+        padding-left: 5px;
+        pre{
+            color: #d1d7db;
+        }
+    }
+
+}
+
+/**************************/

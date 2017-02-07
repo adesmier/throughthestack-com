@@ -1,0 +1,39 @@
+name: aDesmier Web Dev Site
+description: Web Dev site of adesmier.com
+author: Anthony Desmier
+author_email: anthony@adesmier.com
+url: https://web.adesmier.com
+# baseurl
+
+markdown: kramdown
+# highlighter: rouge
+
+# More › http://kramdown.gettalong.org/quickref.html
+# Options › http://kramdown.gettalong.org/options.html
+kramdown:
+  input: GFM
+  # https://github.com/jekyll/jekyll/pull/4090
+  syntax_highlighter: rouge
+
+  # Rouge Highlighter in Kramdown › http://kramdown.gettalong.org/syntax_highlighter/rouge.html
+  # span, block element options fall back to global
+  syntax_highlighter_opts:
+    # Rouge Options › https://github.com/jneen/rouge#full-options
+    css_class: 'codeblock-highlight'
+    #line_numbers: true # bad idea, spans don't need linenos and would inherit this option
+    # span:
+      # line_numbers: false
+    block:
+      line_numbers: true
+      start_line: 1
+
+exclude:
+  - node_modules
+  - gulpfile.js
+  - package.json
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - webpack.config.js
+  - assets/css/modules
+  - assets/css/main.scss
