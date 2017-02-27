@@ -274,39 +274,4 @@ sections:
         You can continue developing the site in your dev environment - your clients will see the changes you make as soon as you push them and they can edit and add content such as blog posts, photos and other media.<br /><br />
 
         Whats more, you can host this all for free and make use of CDN servers to deploy the site.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ---
-
-
-Hello there. curtisy of their wild
