@@ -3,7 +3,7 @@ layout: tutorials
 title: Create a CMS for Jekyll using Contentful and Codeship
 category: tutorials
 image: assets/images/tutorials/cms-jekyll-contentful/header.jpg
-thumbnail: assets/images/tutorials/cms-jekyll-contentful/thumbnail.jpg
+thumbnail: assets/images/50x50.jpg
 time: 30 min
 comments: true
 heading: Jekyll is a powerful tool that will allow you to build a static site. But when it comes to end users adding and managing content it can become tricky due to the lack of a CMS. Contentful serves as an API driven CMS solution and when integrated with Codeship and Bitbucket you can create yourself a full website deployment pipeline.

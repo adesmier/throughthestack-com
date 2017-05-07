@@ -6,9 +6,6 @@ layout: default
 
     <!-- POST HEADER IMAGE SECTION AND HEADING TEXT -->
     <div id="post-header-wrapper" class="grid-card full-width-card">
-        <div id="post-image">
-            <img src="{{base}}/{{ page.image }}" alt="post header image" />
-        </div>
 
         <div id="post-meta">
             <h1 id="post-title">{{ page.title }}</h1>
@@ -53,19 +50,9 @@ layout: default
             {% if page.previous %}
             <div id="post-intro-section-left-content">
                 <a href="{{ page.previous.url }}">
-                    <img src="{{base}}/{{ page.previous.thumbnail }}" alt="post header image" />
-                    <p>Previous</p>
-                    <h3>{{ page.previous.title }}</h3>
-                </a>
-            </div>
-            <!-- If there is no previous post then display the next post and hide it. This is so the Jump to section
-            menu remains centered. The same goes for the post-intro-section-right-content div  -->
-            {% else %}
-            <div id="post-intro-section-left-content" class="post-intro-section-dummy">
-                <a href="{{ page.next.url }}">
-                    <img src="{{base}}/{{ page.next.thumbnail }}" alt="post header image" />
-                    <p>Previous</p>
-                    <h3>{{ page.next.title }}</h3>
+                    <img src="{{base}}/{{ page.thumbnail }}" alt="post header image" />
+                    <h3>Previous</h3>
+                    {{ page.previous.title }}<br />
                 </a>
             </div>
             {% endif %}
@@ -96,17 +83,9 @@ layout: default
             {% if page.next%}
             <div id="post-intro-section-right-content">
                 <a href="{{ page.next.url }}">
-                    <img src="{{base}}/{{ page.next.thumbnail }}" alt="post header image" />
-                    <p>Up Next</p>
-                    <h3>{{ page.next.title }}</h3>
-                </a>
-            </div>
-            {% else %}
-            <div id="post-intro-section-right-content" class="post-intro-section-dummy">
-                <a href="{{ page.previous.url }}">
-                    <img src="{{base}}/{{ page.previous.thumbnail }}" alt="post header image" />
-                    <p>Previous</p>
-                    <h3>{{ page.previous.title }}</h3>
+                    <img src="{{base}}/{{ page.thumbnail }}" alt="post header image" />
+                    <h3>Up Next</h3>
+                    {{ page.next.title }}<br />
                 </a>
             </div>
             {% endif %}

@@ -15,15 +15,16 @@ $(function(){
     var stickyOffset = $('.sticky-element').offset().top;
 
     $(window).scroll(function(){
-        var sticky = $('.sticky-element'),
-            scroll = $(window).scrollTop();
+        var $sticky = $('.sticky-element');
+        var scroll = $(window).scrollTop();
 
         if (scroll >= stickyOffset){
-            sticky.addClass('sticky-class grid-card full-width-card');
-            sticky.find('#post-intro-section-left-content, #post-intro-section-right-content').addClass('post-intro-content-hover');
+            $sticky.addClass('sticky-class grid-card full-width-card');
+            var $postPreviews = $sticky.find('#post-intro-section-left-content, #post-intro-section-right-content');
+            $sticky.find('#post-intro-section-left-content, #post-intro-section-right-content').addClass('post-intro-content-hover');
         } else {
-            sticky.removeClass('sticky-class grid-card full-width-card');
-            sticky.find('#post-intro-section-left-content, #post-intro-section-right-content').removeClass('post-intro-content-hover');
+            $sticky.removeClass('sticky-class grid-card full-width-card');
+            $sticky.find('#post-intro-section-left-content, #post-intro-section-right-content').removeClass('post-intro-content-hover');
         }
     });
 

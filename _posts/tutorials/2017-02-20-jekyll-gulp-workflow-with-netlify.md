@@ -1,9 +1,9 @@
 ---
 layout: tutorials
-title: Deplying to Netlify using Jekyll and Gulp
+title: Deploying to Netlify using Jekyll and Gulp
 category: tutorials
 image: assets/images/tutorials/cms-jekyll-contentful/header.jpg
-thumbnail: assets/images/tutorials/cms-jekyll-contentful/thumbnail.jpg
+thumbnail: assets/images/50x50.jpg
 time: 20 min
 comments: true
 heading: Netlify is a great solution that will allow you to host a static website, for free! Here were going to look at how to deploy your Jekyll based website to Netlify using the Gulp task runner.
@@ -21,5 +21,35 @@ sections:
         Today we're going to be looking at how we can use some of the feature of Netlify to host our Jekyll site. We'll be using [Gulp](http://gulpjs.com/) to package our assets, such as our CSS files, building the site with Jekyll and then deploying the site to Netlify.<br /><br />
 
     Prerequisites: |
+        We'll need a base Jekyll project to get up and running. You can clone the jeykll-base-template repo which includes the gulp file we'll be going through. We'll also assuming a working knowledge of Gulp, how to install it and it's main principles. I learned all of these for various articles, one being ... which is great at stepping through the gulp tooling process for beginners.
+
+    Jekyll Config Files: |
+        We'll be creating 2 Jekyll config.yml files - one for dev builds for our development environment and one for our live builds onto Netlify. Within these two files you can put anything that will be specific to either your dev or live build - the main thing in my config file is the URL variable
+
+        ```yaml
+        ---
+        url: https://www.adesmier.com
+
+        ---
+        ```
+
+        URL is used throughout the site to build up the canoclial URL for each page. This will obviously be something like 'localhost' on my dev build. We can then pass these files into different gulp tasks so that to correct Jekyll site for our environment is built.<br /><br />
+
+    The Gulp Task: |
+        Let's take  look at our first gulp task - this will be to build out jekyll site
+
+        ```javascript
+        var cp = require('child_process');
+
+        gulp.task('jekyll-build', function (done){
+            return cp.spawn( jekyll , ['build'], {stdio: 'inherit'})
+                .on('close', done);
+        });
+        ```
+
+    Chaining Gulp Tasks: |
+    The Default Gulp Tasks: |
+    Netlify Gulp Task: |
+    Deploying To Netlify: |
 
 ---
