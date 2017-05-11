@@ -12,19 +12,28 @@ $(function(){
     //    return currentText.substr(0, 50) + '...';
     //});
 
-    var stickyOffset = $('.sticky-element').offset().top;
+    var $sticky = $('.sticky-element');
+    var $leftContent = $sticky.find('#post-intro-section-left-content');
+    var $rightContent = $sticky.find('#post-intro-section-right-content');
+    var stickyOffset = $sticky.offset().top;
 
     $(window).scroll(function(){
-        var $sticky = $('.sticky-element');
         var scroll = $(window).scrollTop();
 
         if (scroll >= stickyOffset){
             $sticky.addClass('sticky-class grid-card full-width-card');
-            var $postPreviews = $sticky.find('#post-intro-section-left-content, #post-intro-section-right-content');
-            $sticky.find('#post-intro-section-left-content, #post-intro-section-right-content').addClass('post-intro-content-hover');
+
+            if(!$leftContent.hasClass('post-intro-section-dummy')){
+                $leftContent.addClass('post-intro-content-hover');
+            }
+            if(!$rightContent.hasClass('post-intro-section-dummy')){
+                $rightContent.addClass('post-intro-content-hover');
+            }
+
         } else {
             $sticky.removeClass('sticky-class grid-card full-width-card');
-            $sticky.find('#post-intro-section-left-content, #post-intro-section-right-content').removeClass('post-intro-content-hover');
+            $leftContent.removeClass('post-intro-content-hover');
+            $rightContent.removeClass('post-intro-content-hover');
         }
     });
 
