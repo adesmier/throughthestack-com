@@ -44,8 +44,10 @@ layout: default
         </div>
 
         <a class="link-anchor" name="Intro"></a>
-        <h2 class="post-section-heading" name="Intro">Intro</h2>
-        <div id="post-intro-text">{{ page.sections['Intro'] | markdownify }}</div>
+        {% for section in page.sections limit:1 %}
+            <h2 class="post-section-heading" name="Intro">{{ section[0] }}</h2>
+            <div id="post-intro-text">{{ section[1] | markdownify }}</div>
+        {% endfor %}
 
         <hr />
 
