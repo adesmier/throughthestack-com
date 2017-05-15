@@ -26,7 +26,7 @@ sections:
         This will output all your post in date order based on the date in filename of the markdown file. However, by adding an additional yaml front matter variable like *post_weight* you can assign a number to this and tell your liquid template to order by weight first and then date<br /><br />
 
     Modified Post Loop: |
-        Here I've added an additional for loop and some logic to first assign all posts with a *credits_weight* value to an array and then all remaining posts to another array in date order. The contents of these will then be outputted to the HTML document:
+        Here I've added an additional for loop and some logic to first assign all posts with a *post_weight* value to an array and then all remaining posts to another array in date order. The contents of these will then be outputted to the HTML document:
 
         ```html
         <section class="grid-wrap">
@@ -82,37 +82,7 @@ sections:
         The basics of this is that there are two loops: one for the posts with a weight value (line _) and one for ones without (line _). Both will loop through ```site.category.credits``` but there's a conditional statement at the beginning of each loop to check if the weight variable exists (line _) or if it does not exists (line _). If the check is true, then the post is added to it's respected array: *creditsArray*, or *creditsArrayNoWeight*
 
     Array Assignment: |
-        Array types aren't native to liquid templating so you have to use the [split filter](https://help.shopify.com/themes/liquid/filters/string-filters#split) to break a single string into an array of substrings. Take the first array for example:
+        Array types aren't native to liquid templating so you have to use the [split filter](https://help.shopify.com/themes/liquid/filters/string-filters#split) to break a single string into an array of substrings
 
-        ```html
-        {% assign creditsArray = "" | split: "|"  %}
-            <!-- for loop goes here -->
-        {% assign creditsArray = creditsArray | sort: 'credits_weight' | reverse %}
-        ```
-
-        The *creditsArray* variable is initialised to an empty string. Then, using the '\|' symbol to donate the next liquid command you're asking for the values added to this variable to be seperated with an '\|'. *You could have used any symbol for the split command. Change it to a \# and see what happens*<br /><br />
-
-        On the last line, the sort command will sort all the post by credits_weight order. The reverse switch is used so that the highest weighted post is placed first. Just for clarification, here's an extract from on of the posts front matter:
-
-        ```yaml
-        ---
-        layout: credit-info
-        category: credits
-        title: My Name is Lenny
-        credit_type: Feature Film
-        imdb: http://www.imdb.com/title/tt2024521
-        credits_weight: 16
-        ---
-        ```
-
-        Compared to the other credit posts, a 16 weight is the highest so this appears first on the websites [credits page](https://www.ianarber.com/credits/)
-
-    Outputting the Array: |
-        Now that all posts are stored and sorted in the variables, you have to tell liquid to ourput them to the HTML document. We now just use a standard for loop to iterate through each of the arrays (line 2-2). In this case I'm outputting them as list elements in an unordered-list.
-
-    Taking this Further: |
-        This method only works if someone is updating the credit_weight value within the posts markdown files. A great way to improve this would be to pull in a read count value so that when the site is re-built the order of weighted posts reflects the popularity of them.<br /><br />
-
-        >*Goole Analytics:* You could use the Google Analytics API for this. Once it's setup for your site you could retrieve the values as part of your sites pre-build process and then insert them into the markdown files. It's an interesting concept that requires a bit more investigating, but hopefully I'll have a blog post up about this soon.
 
 ---
