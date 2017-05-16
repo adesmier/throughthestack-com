@@ -6,9 +6,12 @@ layout: default
 
     <!-- POST HEADER IMAGE SECTION AND HEADING TEXT -->
     <div id="post-header-wrapper" class="grid-card full-width-card">
-        <div id="post-image">
-            <img src="{{base}}/{{ page.image }}" alt="post header image" />
-        </div>
+
+        {% if page.category == 'tutorials' %}
+            <div id="post-image">
+                <img src="{{base}}/{{ page.image }}" alt="post header image" />
+            </div>
+        {% endif %}
 
         <div id="post-meta">
             <h1 id="post-title">{{ page.title }}</h1>
@@ -37,11 +40,14 @@ layout: default
 
     <!-- POST INTRO TEXT SECTION WITH SECTION MENU AT END -->
     <div id="post-intro-wrapper" class="grid-card full-width-card">
-        <div class="post-intro-links">
-            <a href="#Sections">
-                <button class="fa fa-arrow-down"><span>Skip Intro</span></button>
-            </a>
-        </div>
+
+        {% if page.category == 'tutorials' %}
+            <div class="post-intro-links">
+                <a href="#Sections">
+                    <button class="fa fa-arrow-down"><span>Skip Intro</span></button>
+                </a>
+            </div>
+        {% endif %}
 
         <a class="link-anchor" name="Intro"></a>
         {% for section in page.sections limit:1 %}
