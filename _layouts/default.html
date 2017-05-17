@@ -37,7 +37,9 @@
         <!-- JSON-LD -END- -->
 
         <!-- Google Analyitics Code -START- -->
-        <script></script>
+        {% if site.build == 'production' %}
+            {% include analytics.html %}
+        {% endif %}
         <!-- Google Analyitics Code -END- -->
     </head>
     <body>
