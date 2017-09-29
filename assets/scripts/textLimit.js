@@ -1,4 +1,4 @@
-$(function(){
+;(function($){
 
     $('.article-summary p').text(function(index, currentText){
         return currentText.substr(0, 150) + '...';
@@ -38,4 +38,4 @@ $(function(){
     });
 
 
-});
+})(jQuery);
