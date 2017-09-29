@@ -1,6 +1,6 @@
 {
-  "name": "web.adesmier.com",
-  "version": "0.0.0",
+  "name": "devbytes.co.uk",
+  "version": "0.0.1",
   "description": "Project for my Web Dev site",
   "main": "gulpfile.js",
   "scripts": {
@@ -17,6 +17,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/adesmier/adesmier.com.git"
+    "url": "https://github.com/adesmier/web-adesmier-com.git"
   }
 }

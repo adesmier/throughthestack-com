@@ -37,7 +37,7 @@
         <!-- JSON-LD -END- -->
 
         <!-- Google Analyitics Code -START- -->
-        {% if site.build == 'production' %}
+        {% if jekyll.environment == 'production' %}
             {% include analytics.html %}
         {% endif %}
         <!-- Google Analyitics Code -END- -->

@@ -1,21 +1,24 @@
+//VENDOR IMPORTS
 @import "vendor/_normalize";
 @import "vendor/_grid";
+@import "vendor/_rouge-styles";
+@import "../fonts/font-awesome/css/font-awesome";
 //@import "vendor/_highlight-monokai";
 
-@import "../fonts/font-awesome/css/font-awesome";
+//CUSTOM IMPORTS
 @import "modules/globals";
 @import "modules/grid-card";
 @import "modules/article-summary";
 @import "modules/header";
 @import "modules/footer";
 @import "modules/home/latest-posts";
-@import "modules/home/twitter-nuggets";
-@import "modules/home/projects-about";
+//@import "modules/home/twitter-nuggets";
+//@import "modules/home/projects-about";
 @import "modules/blog/blog-post-grid";
 @import "modules/posts/tutorials";
-
-@import "modules/mediaQueries/tutorials";
-
 @import "modules/holding-page";
 
-@import "vendor/_rouge-styles";
+//MEDIA QUERIES
+@import "modules/mediaQueries/tutorials";
+
+
