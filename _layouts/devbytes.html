@@ -123,7 +123,7 @@ layout: default
                 {% for tag in post.tags %}
 
                     {% if page.tags contains tag %}
-                        {% include article-summary.html articleType='latest-post-preview' wrapperType='article-inner-wrapper' thumbnailLinkType='article-thumbnail-link' thumbnailType='article-thumbnail' %}
+                        {% include _common/article-summary.html articleType='latest-post-preview' wrapperType='article-inner-wrapper' thumbnailLinkType='article-thumbnail-link' thumbnailType='article-thumbnail' %}
                         {% assign related_post_count = related_post_count | plus: 1 %}
                         {% break %}
                     {% endif %}
@@ -148,7 +148,7 @@ layout: default
                 {% for tag in post.tags %}
 
                     {% if page.tags contains tag %}
-                        {% include article-summary.html articleType='latest-post-preview' wrapperType='article-inner-wrapper' thumbnailLinkType='article-thumbnail-link' thumbnailType='article-thumbnail' %}
+                        {% include _common/article-summary.html articleType='latest-post-preview' wrapperType='article-inner-wrapper' thumbnailLinkType='article-thumbnail-link' thumbnailType='article-thumbnail' %}
                         {% assign related_post_count = related_post_count | plus: 1 %}
                         {% break %}
                     {% endif %}
@@ -164,7 +164,7 @@ layout: default
     <div class="post-content-wrapper grid-card full-width-card">
 
         {% if page.comments %}
-            {% include disqus.html %}
+            {% include _common/disqus.html %}
         {% endif %}
 
     </div>

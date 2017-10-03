@@ -2,7 +2,7 @@
 layout: tutorials
 title: Deploying to Netlify using Jekyll and Gulp
 category: tutorials
-image: assets/images/tutorials/cms-jekyll-contentful/header.jpg
+image: assets/images/posts/tutorials/cms-jekyll-contentful/header.jpg
 thumbnail: assets/images/50x50.jpg
 time: 20 min
 comments: true

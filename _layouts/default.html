@@ -28,7 +28,12 @@
         <meta name="twitter:image" content="{{ site.myurl }}{{ page.image_social }}">
 
         <!-- Custom CSS -->
-        <link rel="stylesheet" href="/assets/css/main.css">
+        {% if jekyll.environment == 'production' %}
+            <link rel="stylesheet" href="/assets/css/main.min.css">
+        {% elsif jekyll.environment == 'development' %}
+            <link rel="stylesheet" href="/assets/css/main.css">
+        {% endif %}
+
         <!-- Online Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Karla:400,700|Patua+One|Roboto:300,500" rel="stylesheet">
 
@@ -38,7 +43,7 @@
 
         <!-- Google Analyitics Code -START- -->
         {% if jekyll.environment == 'production' %}
-            {% include analytics.html %}
+            {% include _common/analytics.html %}
         {% endif %}
         <!-- Google Analyitics Code -END- -->
     </head>
@@ -46,11 +51,11 @@
 
         <div id="page-container">
 
-            {% include header.html %}
+            {% include _common/header.html %}
 
             {{ content }}
 
-            {% include footer.html %}
+            {% include _common/footer.html %}
 
         </div>
 

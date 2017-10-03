@@ -1,4 +1,5 @@
 //VENDOR IMPORTS
+
 @import "vendor/_normalize";
 @import "vendor/_grid";
 @import "vendor/_rouge-styles";
@@ -6,19 +7,25 @@
 //@import "vendor/_highlight-monokai";
 
 //CUSTOM IMPORTS
-@import "modules/globals";
-@import "modules/grid-card";
-@import "modules/article-summary";
-@import "modules/header";
-@import "modules/footer";
+
+/*******GLOBALS*******/
+@import "modules/_common/globals";
+@import "modules/_common/grid-card";
+@import "modules/_common/article-summary";
+@import "modules/_common/header";
+@import "modules/_common/footer";
+@import "modules/_common/holding-page";
+
+/*******HOME PAGE*******/
 @import "modules/home/latest-posts";
 //@import "modules/home/twitter-nuggets";
 //@import "modules/home/projects-about";
-@import "modules/blog/blog-post-grid";
+
+/*******POSTS*******/
 @import "modules/posts/tutorials";
-@import "modules/holding-page";
 
 //MEDIA QUERIES
-@import "modules/mediaQueries/tutorials";
+
+@import "modules/_media-queries/tutorials";
 
 
