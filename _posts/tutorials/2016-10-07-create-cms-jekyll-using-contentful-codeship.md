@@ -73,17 +73,17 @@ sections:
         **Step 2 - Setup your Content Type<br />**
         Within a Space you then have content types. Content Types relate to different kinds of posts the user might add. In this case there are two: news posts and credit posts. All of your content types make up what’s known as your Content Model in Contentful. Below you can see the two content types I've created for News and Credit posts.
 
-        ![contentful content model example](/assets/images/tutorials/cms-jekyll-contentful/contentful-content-model.jpg "Logo Title Text 1")
+        ![contentful content model example](/assets/images/posts/tutorials/cms-jekyll-contentful/contentful-content-model.jpg "Logo Title Text 1")
 
         **Step 3 - Create your Fields<br />**
         Now that you have your first Content Type you can start adding fields that will be used to indicate how a user will add data and what type of data they can add. These can be anything from a single line field to media upload field.
 
-        ![contentful content type fields example](/assets/images/tutorials/cms-jekyll-contentful/contentful-field-types.jpg "Logo Title Text 1")
+        ![contentful content type fields example](/assets/images/posts/tutorials/cms-jekyll-contentful/contentful-field-types.jpg "Logo Title Text 1")
 
         **Step 4 - Add Entries and Assets<br />**
         For my Content Type - Credit Post - I've added 19 fields. Now you can start creating entires and uploading images and media. All you images and media will reside in the Media section which you can then link to an entry. Below you can see all the media files that I've uploaded to Contentful
 
-        ![contentful media uploads example](/assets/images/tutorials/cms-jekyll-contentful/contentful-media-uploads.jpg "Logo Title Text 1")
+        ![contentful media uploads example](/assets/images/posts/tutorials/cms-jekyll-contentful/contentful-media-uploads.jpg "Logo Title Text 1")
 
         Once you have uploaded some content into Contentful we can use their API to pull that information into our Jekyll build. This is where the fun starts...!
 
@@ -92,7 +92,7 @@ sections:
 
         Once you have this data file it can be used in Jekyll by accessing it via the ```site.data``` variable or, in this case, we are going to convert each entry in the file to a posts *.md* file and place it in the Jekyll *_posts* folder. The below diagram gives you an overview of the dataflow of our deployment pipeline:<br />
 
-        ![contentful jekyll dataflow overview](/assets/images/tutorials/cms-jekyll-contentful/dataflow.png "Logo Title Text 1")
+        ![contentful jekyll dataflow overview](/assets/images/posts/tutorials/cms-jekyll-contentful/dataflow.png "Logo Title Text 1")
 
         The site build will be run on Codeship which will then push the result back to BitBucket to the *aerobatic* branch so that it can be deployed to Aerobatics CDN servers. An update on Contentful or code push to BitBucket will trigger the build which will then run through a *Rakefile* that steps through the build process (which we'll come onto later).<br /><br />
 
@@ -112,7 +112,7 @@ sections:
         **Step 2 - Obtain Contentful API Key<br />**
         Return to the Contentful interface and go to APIs and click Website Key - this is a pre-configured access key that will allow access to your Space:
 
-        ![contentful space api key](/assets/images/tutorials/cms-jekyll-contentful/contentful-api-key.jpg "Logo Title Text 1")
+        ![contentful space api key](/assets/images/posts/tutorials/cms-jekyll-contentful/contentful-api-key.jpg "Logo Title Text 1")
 
         We're after the *Content Delivery API* and the *Spaces ID* values. Once you've copied those, we can enter them into our *_config.yml* file like so:
 
@@ -160,17 +160,17 @@ sections:
     Building the Site with Codeship: |
         Ok we're almost there! We have our Jekyll post files courtesy of the Contentful gem and the Ruby script. Now we can setup a [Codeship](https://codeship.com) account using our BitBucket details and link our repo to a new project.
 
-        ![codeship link bitbucket repository](/assets/images/tutorials/cms-jekyll-contentful/codeship-link-bitbucket.jpg "Logo Title Text 1")
+        ![codeship link bitbucket repository](/assets/images/posts/tutorials/cms-jekyll-contentful/codeship-link-bitbucket.jpg "Logo Title Text 1")
 
         **Step 1 - Create Codeship Project<br />**
         Enter your repo clone URL and click Connect. On the next screen, select Basic Infrastructure. Next chose Ruby from the 'Select your technology' drop down:
 
-        ![codeship select your technology](/assets/images/tutorials/cms-jekyll-contentful/codeship-select-ruby.jpg "Logo Title Text 1")
+        ![codeship select your technology](/assets/images/posts/tutorials/cms-jekyll-contentful/codeship-select-ruby.jpg "Logo Title Text 1")
 
         **Step 2 - Configure Deployment<br />**
         Scroll down the page and delete the test commands and click 'Save and go to dashboard'. Now we need to add our own custom Rakefile that will contain all of our build steps. Go to Project Settings in the top right and select Deployment. We're going to chose our master branch to trigger the deployment, so enter 'master' and click save.
 
-        ![codeship deployment settings](/assets/images/tutorials/cms-jekyll-contentful/codeship-deployment-settings.jpg "Logo Title Text 1")
+        ![codeship deployment settings](/assets/images/posts/tutorials/cms-jekyll-contentful/codeship-deployment-settings.jpg "Logo Title Text 1")
 
         Choose 'custom script' and enter the following as your deployment commands:
 
@@ -205,16 +205,16 @@ sections:
         **Step 4 - Configure SSH Keys<br />**
         Upon linking your BitBucket account to Codeship, a deployment SSH key is added to your repo in BitBucket. As we need to push code back to BitBucket, we need to add an account-level SSH key that will provide write access rather than the read-only repo level key. First we need to delete the deployment key in our BitBucket repo:
 
-        ![bitbucket delete deployment key](/assets/images/tutorials/cms-jekyll-contentful/bitbucket-deployment-key.jpg "Logo Title Text 1")
+        ![bitbucket delete deployment key](/assets/images/posts/tutorials/cms-jekyll-contentful/bitbucket-deployment-key.jpg "Logo Title Text 1")
 
         Next copy the public SSH key from your Codeship General Project Settings and paste this into a new account-level SSH key in BitBucket:
 
-        ![bitbucket create new ssh key](/assets/images/tutorials/cms-jekyll-contentful/bitbucket-new-ssh-key.jpg "Logo Title Text 1")
+        ![bitbucket create new ssh key](/assets/images/posts/tutorials/cms-jekyll-contentful/bitbucket-new-ssh-key.jpg "Logo Title Text 1")
 
         **Step 5 - Test your Build<br />**
         Now everything is in place to run our first build. Check in a new file to your master branch, you can use the Rakefile for this, and watch the build kick-off within Codeship. If all goes well then you'll see a lot of green ticks and your build will be a success!
 
-        ![codeship build results](/assets/images/tutorials/cms-jekyll-contentful/codeship-build-results.jpg "Logo Title Text 1")
+        ![codeship build results](/assets/images/posts/tutorials/cms-jekyll-contentful/codeship-build-results.jpg "Logo Title Text 1")
 
         Awesome! If you've made it this far then we only have two components of our deployment pipeline left to Configure:
         * Setting up the Aerobatic BitBucket add-on and configuring deployment
@@ -223,15 +223,15 @@ sections:
     Configuring Aerobatic: |
         Now that we have our site built it's ready to be deployed. We'll be using the [Aerobatic hosting](https://www.aerobatic.com/) solution for this. They have a handy integration into BitBucket that you can add from the integration settings of your BitBucket account:
 
-        ![aerobatic addon for bitbucket](/assets/images/tutorials/cms-jekyll-contentful/aerobatic-bitbucket-addon.jpg "Logo Title Text 1")
+        ![aerobatic addon for bitbucket](/assets/images/posts/tutorials/cms-jekyll-contentful/aerobatic-bitbucket-addon.jpg "Logo Title Text 1")
 
         With a free Aerobatic account you can deploy up to two sites. Back on your repo page you'll have a new option on the left menu to configure Aerobatic:
 
-        ![aerobatic configuration](/assets/images/tutorials/cms-jekyll-contentful/aerobatic-configure-site.jpg "Logo Title Text 1")
+        ![aerobatic configuration](/assets/images/posts/tutorials/cms-jekyll-contentful/aerobatic-configure-site.jpg "Logo Title Text 1")
 
         Enter the name of your site and choose the *aerobatic* branch for deploy. Leave the deploy directory as the root. You can also chose whether you want to add your own domain or just use a subdomain of aerobatic.io. Hit Create Website and watch the magic work!
 
-        ![aerobatic site deploy procedure](/assets/images/tutorials/cms-jekyll-contentful/aerobatic-deploy-site.gif "Logo Title Text 1")
+        ![aerobatic site deploy procedure](/assets/images/posts/tutorials/cms-jekyll-contentful/aerobatic-deploy-site.gif "Logo Title Text 1")
 
         If all went as expected your site will be pushed to production and you can click the link next to the production indicator to view your site. Aerobatic uses a network of content delivery servers to deploy your site so you can guarantee the best performance no matter where in the world you access your site.<br /><br />
 
@@ -243,7 +243,7 @@ sections:
         **Step 1 - Locate Build ID and API Key**<br />
         All builds in Codeship are given a build ID number. You can locate this number from the URL of the build on the project page in Codeship. It should look something like *https://app.codeship.com/projects/{project_id}/builds/{build_id}* Also make a note of your project ID.
 
-        ![codeship build id and api key](/assets/images/tutorials/cms-jekyll-contentful/codeship-build-id-api-key.jpg "Logo Title Text 1")
+        ![codeship build id and api key](/assets/images/posts/tutorials/cms-jekyll-contentful/codeship-build-id-api-key.jpg "Logo Title Text 1")
 
         Next you'll need to locate your personal API key for your Codeship account. You can find this in your Account Settings. You should now have three bits of infornmation.<br /><br />
 
@@ -259,7 +259,7 @@ sections:
         **Step 3: Create Contentful Webhook**<br />
         With this URL we can add this to a new webhook in Contentful. In Contentful go to Settings -> Webhooks. Click Add Webhook and enter a name and your URL:
 
-        ![contentful webhook configuration](/assets/images/tutorials/cms-jekyll-contentful/contentful-webhook-config.jpg "Logo Title Text 1")
+        ![contentful webhook configuration](/assets/images/posts/tutorials/cms-jekyll-contentful/contentful-webhook-config.jpg "Logo Title Text 1")
 
         The settings at the bottom specify when the webhook is called. Make sure you only select certain events otherwise the webhook will be triggered for every event like asset uploads and auto-saving which you don't want. I'd suggest to only tick *Publish* and *Unpublish* for entires, that way only finished-public/unpublishing articles will trigger a re-build.<br /><br />
 

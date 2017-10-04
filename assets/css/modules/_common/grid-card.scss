@@ -71,7 +71,7 @@ Make the grid card hover on mouse over
     height: auto;
     &:last-of-type{
         h2{
-            float: right;
+            text-align: right;
             margin-bottom: 5px;
             i{
                 margin-left: 8px;
@@ -84,28 +84,28 @@ Make the grid card hover on mouse over
 /*
 Used on post pages where grid card will contain content as a fixed header
 */
-.grid-card.sticky-element{
-    background-color: #fefefe;
-    box-shadow: none;
-    border-bottom: 1px solid #d6d6d6;
-    border-left: 1px solid #d6d6d6;
-    border-right: 1px solid #d6d6d6;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    transition: none;
-    p{
-        font-size: 65%;
-        font-weight: bold;
-    }
-    h3{
-        font-weight: 300;
-        font-size: 75%;
-        margin-top: 1px;
-    }
-    img{
-        border-radius: 3px;
-    }
-}
+// .grid-card.sticky-element{
+//     background-color: #fefefe;
+//     box-shadow: none;
+//     border-bottom: 1px solid #d6d6d6;
+//     border-left: 1px solid #d6d6d6;
+//     border-right: 1px solid #d6d6d6;
+//     border-top-left-radius: 0;
+//     border-top-right-radius: 0;
+//     transition: none;
+//     p{
+//         font-size: 65%;
+//         font-weight: bold;
+//     }
+//     h3{
+//         font-weight: 300;
+//         font-size: 75%;
+//         margin-top: 1px;
+//     }
+//     img{
+//         border-radius: 3px;
+//     }
+// }
 
 .ribbon-card{
     position: relative;

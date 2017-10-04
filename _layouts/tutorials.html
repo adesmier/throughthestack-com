@@ -63,70 +63,12 @@ layout: default
             <div id="post-intro-text">{{ section[1] | markdownify }}</div>
         {% endfor %}
 
-        <hr />
+        <!-- <hr />
 
         <div id="post-intro-dropdown-container" class="sticky-element">
-            {% if page.previous %}
-            <div id="post-intro-section-left-content">
-                <a href="{{ page.previous.url }}">
-                    <img src="{{base}}/{{ page.previous.thumbnail }}" alt="post header image" />
-                    <p>Previous</p>
-                    <h3>{{ page.previous.title }}</h3>
-                </a>
-            </div>
-            <!-- If there is no previous post then display the next post and hide it. This is so the Jump to section
-            menu remains centered. The same goes for the post-intro-section-right-content div  -->
-            {% else %}
-            <div id="post-intro-section-left-content" class="post-intro-section-dummy">
-                <a href="{{ page.next.url }}">
-                    <img src="{{base}}/{{ page.next.thumbnail }}" alt="post header image" />
-                    <p>Previous</p>
-                    <h3>{{ page.next.title }}</h3>
-                </a>
-            </div>
-            {% endif %}
-
-            {% if page.codepen %}
-                <div class="post-intro-links">
-                    <button class="fa fa-arrow-right"><span><i class="fa fa-codepen"></i></span></button>
-                </div>
-            {% endif %}
-
-            <div id="post-intro-section-dropdown">
-                <button class="dropdown-button">Jump to Section</button>
-                <div class="dropdown-content">
-
-                    {% for section in page.sections %}
-                        <a href="#{{ section[0] | replace: ' ', '' }}">{{ section[0] }}</a>
-                    {% endfor %}
-
-                </div>
-            </div>
-
-            {% if page.github %}
-                <div class="post-intro-links">
-                    <button class="fa fa-arrow-right"><span><i class="fa fa-github"></i></span></button>
-                </div>
-            {% endif %}
-
-            {% if page.next%}
-            <div id="post-intro-section-right-content">
-                <a href="{{ page.next.url }}">
-                    <img src="{{base}}/{{ page.next.thumbnail }}" alt="post header image" />
-                    <p>Up Next</p>
-                    <h3>{{ page.next.title }}</h3>
-                </a>
-            </div>
-            {% else %}
-            <div id="post-intro-section-right-content" class="post-intro-section-dummy">
-                <a href="{{ page.previous.url }}">
-                    <img src="{{base}}/{{ page.previous.thumbnail }}" alt="post header image" />
-                    <p>Previous</p>
-                    <h3>{{ page.previous.title }}</h3>
-                </a>
-            </div>
-            {% endif %}
-        </div>
+           
+        </div> -->
+        
     </div>
 
     <!-- MAIN CONTENT OF THE POST -->
