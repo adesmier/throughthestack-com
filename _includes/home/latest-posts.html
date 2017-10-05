@@ -4,8 +4,9 @@
 
         {% for post in site.posts limit:3 %}
 
-            {% include _common/article-summary.html articleType='latest-post-preview' wrapperType='article-inner-wrapper'
-            thumbnailLinkType='article-thumbnail-link' thumbnailType='article-thumbnail' displayIntro=true %}
+            {% include _common/article-summary.html articleType='latest-post-preview'
+            wrapperType='article-inner-wrapper' thumbnailLinkType='article-thumbnail-link'
+            thumbnailType='article-thumbnail' displayIntro=true displayTags=true %}
 
         {% endfor %}
 

@@ -234,7 +234,7 @@ gulp.task('watch', ['browser-sync'], function () {
     gulp.watch('assets/css/**', ['sass']);
    // gulp.watch('assets/script/modules/**', ['scripts']);
     //gulp.watch('react/**', ['build-react']);
-    gulp.watch(['*.html', '_layouts/**', '_includes/**', '_posts/**'], ['jekyll-rebuild']);
+    gulp.watch(['*.html', '_layouts/**', '_includes/**', '_posts/**', 'assets/scripts/**'], ['jekyll-rebuild']);
 });
 
 

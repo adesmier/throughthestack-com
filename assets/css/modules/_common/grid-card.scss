@@ -55,8 +55,12 @@ Make the grid card hover on mouse over
 }
 
 .multi-width-card{
-    flex: 30%;
+    //flex: 32%;
     margin: 5px;
+    max-width: 32%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .multi-card-flex-container{
@@ -64,7 +68,7 @@ Make the grid card hover on mouse over
     margin: 0 auto 20px auto;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    //justify-content: center;
 }
 
 .multi-width-card-justify{

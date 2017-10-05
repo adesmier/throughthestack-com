@@ -1,8 +1,10 @@
 <article class="{{ include.articleType }}">
     <div class="{{ include.wrapperType }}">
+
         <a class="{{ include.thumbnailLinkType }}" href="{{ post.url }}">
             <figure class="{{ include.thumbnailType }}" style="background-image:url(/{{ post.image }})"></figure>
         </a>
+
         <summary class="article-summary">
 
             <a href="{{ post.url }}">
@@ -21,14 +23,17 @@
 
             </a>
 
-            <div class="article-tags">
-                <i class="fa fa-tags" aria-hidden="true"></i>
+            {% if include.displayTags %}
+                <div class="article-tags">
+                    <i class="fa fa-tags" aria-hidden="true"></i>
 
-                {% for tag in post.tags %}
-                    <a class="tag-name" href="#">{{ tag }}</a>
-                {% endfor %}
+                    {% for tag in post.tags %}
+                        <a class="tag-name" href="#">{{ tag }}</a>
+                    {% endfor %}
 
-            </div>
+                </div>
+            {% endif %}
+
         </summary>
     </div>
 </article>
