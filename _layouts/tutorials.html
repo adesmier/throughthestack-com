@@ -86,8 +86,8 @@ layout: default
     <hr />
 
     <!-- RELATED AND RECENT POSTS SECTION -->
-    <div id="related-posts-wrapper" class="multi-card-flex-container">
-        <div class="multi-width-card-justify grid-card multi-width-card">
+    <aside id="post__related-recent-posts-wrapper" class="multi-card-flex-container">
+        <div class="grid-card multi-width-card">
             <h2><i class="fa fa-pencil" aria-hidden="true"></i>Related Posts</h2><hr>
 
             {% assign RELATED_POSTS_THRESHOLD = 3 %}
@@ -112,7 +112,7 @@ layout: default
             {% endfor %}
 
         </div>
-        <div class="multi-width-card-justify grid-card multi-width-card">
+        <div class="grid-card multi-width-card">
             <h2>Recent Posts<i class="fa fa-pencil" aria-hidden="true"></i></h2><hr>
 
             {% assign RELATED_POSTS_THRESHOLD = 3 %}
@@ -137,7 +137,7 @@ layout: default
             {% endfor %}
 
         </div>
-    </div>
+    </aside>
 
 
     {% if jekyll.environment == 'production' %}

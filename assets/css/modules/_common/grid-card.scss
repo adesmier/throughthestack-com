@@ -1,6 +1,7 @@
-/*
-Contains stylings for the grid cards that various site content will be placed in
-*/
+/************************************************/
+/* Contains general stylings for the grid cards */
+/* that various site content will be placed in  */
+/************************************************/
 
 .grid-card{
     height: auto;
@@ -49,30 +50,38 @@ Make the grid card hover on mouse over
     }
 }
 
+/*
+Full width cards will be displayed on the home page
+*/
 .full-width-card{
     width: 95%;
     margin: 0 auto 15px auto;
 }
 
+/*
+Stylings for cards that will be displayed 2-3 per row.
+Used on Blog page and related/recent posts sections
+*/
 .multi-width-card{
-    //flex: 32%;
-    margin: 5px;
-    max-width: 32%;
-    display: flex;
+    flex: 33%;
+    display: flex; //article content with the card will be column flexed
     flex-direction: column;
-    justify-content: space-between;
 }
 
-.multi-card-flex-container{
-    width: 95%;
-    margin: 0 auto 20px auto;
-    display: flex;
-    flex-wrap: wrap;
-    //justify-content: center;
+//Blog page only!
+#blog__blog-post-flexgrid-wrapper.multi-width-card{
+    flex: 0 0 32%;
+    justify-content: space-between; //drops article tags to bottom of card
+    margin: 0.5% 0;
+    &:nth-child(3n-1){ //https://codepen.io/tuxsudo/pen/VYERQJ
+        margin-left: 1%;
+        margin-right: 1%;
+    }
 }
 
-.multi-width-card-justify{
-    height: auto;
+//post page only!
+#post__related-recent-posts-wrapper > .multi-width-card{
+    margin: 5px;
     &:last-of-type{
         h2{
             text-align: right;
@@ -84,6 +93,26 @@ Make the grid card hover on mouse over
         }
     }
 }
+
+.multi-card-flex-container{
+    margin: 0 auto 20px auto;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+//Blog page only!
+#blog__blog-post-section-wrapper.multi-card-flex-container{
+    padding-left: 20px; //hack to center cards due to 'justify-content: center' centering last row
+}
+
+//post page only!
+#post__related-recent-posts-wrapper.multi-card-flex-container{
+    //width: 95%;
+    padding: 0 20px;
+    justify-content: center;
+}
+
+
 
 /*
 Used on post pages where grid card will contain content as a fixed header

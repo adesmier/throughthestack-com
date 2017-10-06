@@ -1,6 +1,6 @@
 /* COLOUR VARIABLES */
 
-//colours for blockquote and notice tips
+//colours for blockquote and notice tips on blog posts
 $noticeTip: rgba(52, 152, 219, 0.1);
 $noticeTipBorder: rgb(74, 139, 181);
 $noticeTipBorderAlpha: rgba(41, 128, 185, 0.4);
@@ -10,9 +10,9 @@ $noticeUpdateBorderAlpha: rgba(22, 160, 133, 0.4);
 $noticeWarn: rgba(241, 196, 15, 0.1);
 $noticeWarnBorder: rgb(241, 182, 88);
 $noticeWarnBorderAlpha: rgba(243, 156, 18, 0.4);
-//$noticeWarn: rgba(231, 76, 60, 0.3);
-//$noticeWarnBorder: rgb(192, 57, 43);
-//$noticeWarnBorderAlpha: rgba(192, 57, 43, 0.4);
+//$noticeError: rgba(231, 76, 60, 0.3);
+//$noticeErrorBorder: rgb(192, 57, 43);
+//$noticeErrorBorderAlpha: rgba(192, 57, 43, 0.4);
 
 /********************/
 
@@ -94,63 +94,7 @@ button{
 
 /**************************/
 
+//change colour of highlighted text
 ::selection {
   background: rgb(185, 220, 235); /* WebKit/Blink Browsers */
 }
-
-/* STYLING FOR CODE BLOCKS IN MARKDOWN FILES */
-.highlighter-rouge{
-    background-color: #f9f9f9;
-    padding: 2px 6px;
-    border-radius: 3px;
-    font-size: 85%;
-    letter-spacing: 0;
-    word-spacing: -5px;
-    overflow-x: auto;
-}
-
-blockquote .highlighter-rouge{
-    background-color: $noticeTipBorderAlpha;
-}
-.notice-update .highlighter-rouge{
-    background-color: $noticeUpdateBorderAlpha;
-}
-.notice-warn .highlighter-rouge{
-    background-color: $noticeWarnBorderAlpha;
-}
-//.notice-warn .highlighter-rouge{
-//    background-color: $noticeWarnBorderAlpha;
-//}
-
-#post-intro-text div[class^="language"],
-.post-content-text div[class^="language"]{
-    width: 80%;
-    margin: 30px auto;
-    font-size: 80%;
-    padding: 0 0 0 2px;
-    background-color: #f9f9f9;
-    border-radius: 4px;
-}
-
-.codeblock-highlight{
-    background-color: #f9f9f9;
-
-    .gutter{
-        padding: 3px 5px;
-        font-size: 85%;
-        border-right: 3px solid #fff;
-        user-select: none;
-    }
-
-    .code{
-        padding-left: 6px;
-        pre{
-            letter-spacing: 0.2px;
-            word-spacing: 0px;
-            font-size: 85%;
-        }
-    }
-
-}
-
-/**************************/
