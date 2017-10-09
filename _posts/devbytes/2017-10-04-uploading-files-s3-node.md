@@ -1,12 +1,12 @@
 ---
-layout: tutorials
+layout: devbytes
 title: Uploading Multiple Files to S3 using Node.js
 category: devbytes
-image: assets/images/posts/tutorials/cms-jekyll-contentful/header.jpg
-thumbnail: assets/images/50x50.jpg
+image: assets/images/posts/devbytes/multiple-file-s3-upload/header.jpg
+thumbnail: assets/images/posts/devbytes/multiple-file-s3-upload/header.jpg
 time: 10 min
 comments: true
-heading: The AWS S3 javascript SDK provides methods that allow you to upload files directly to an S3 bucket. Coupling this with the Node Async library will allow you to upload multiple files asynchronously
+heading: The AWS S3 javascript SDK provides methods that allow you to upload files directly to an S3 bucket. Coupling this with the Node Async library will allow you to upload multiple files asynchronously.
 tags: [javascript, node, aws, s3, async]
 sections:
     Prerequisites: |

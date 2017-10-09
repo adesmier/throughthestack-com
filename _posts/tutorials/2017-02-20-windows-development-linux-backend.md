@@ -2,11 +2,11 @@
 layout: tutorials
 title: Developing on Windows with a Linux backend
 category: tutorials
-image: assets/images/tutorials/cms-jekyll-contentful/header.jpg
-thumbnail: assets/images/tutorials/cms-jekyll-contentful/thumbnail.jpg
+image: assets/images/posts/tutorials/windows-linux-backend/header.jpg
+thumbnail: assets/images/posts/tutorials/windows-linux-backend/thumbnail.jpg
 time: 20 min
 comments: true
-heading: A lot of backend development environments are linux-based. But what if wanted to use Windows to do all your coding and design work. You can setup a linux-based virtual server, using something like VirtualBox, to handle all your builds and then use Windows to do all your coding
+heading: A lot of backend development environments are linux-based. But what if wanted to use Windows to do all your coding and design work? You can setup a linux-based virtual server, using something like VirtualBox, to handle all your builds and then use Windows to do all your coding. Let's see how we can set that up...
 tags: [windows, ubuntu, linux, virtualbox, virtualisation]
 sections:
     Intro: |

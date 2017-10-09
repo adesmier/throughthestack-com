@@ -27,6 +27,7 @@ kramdown:
       start_line: 1
 
 exclude:
+  - attic
   - node_modules
   - gulpfile.js
   - package.json

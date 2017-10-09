@@ -1,14 +1,14 @@
-#page-header{
+#index__page-header{
 	margin: 0 auto;
     letter-spacing: 1px;
 }
 
 #logo{
 	font-family: $logoFontStyle;
-	color: #333;
+	color: $menuItemActive;
 	margin-left: 20px;
 	padding: 0px 0px 5px 10px;
-	border-left: 4px solid #333;
+	border-left: 4px solid $menuItemActive;
 	border-top-left-radius: 8px;
 	border-bottom-left-radius: 8px;
 	p{
@@ -19,17 +19,17 @@
 	a{
 		transition: color 0.3s;
 		&:hover{
-			color: #929292;
+			color: $menuItemHover;
 			transition: color 0.3s;
 		}
 	}
-	#subdomain-links{
+	#twitter-header-link{
         width: 280px;
         h4{
             display: inline;
             padding-right: 8px;
             font-weight: 300;
-			border-right: 2px solid #333;
+			border-right: 2px solid $menuItemActive;
             border-top-right-radius: 3px;
             border-bottom-right-radius: 3px;
 
@@ -88,18 +88,18 @@
 	text-align: center;
 	margin-top: 20px;
 	a{
-		color: #b5b5b5;
+		color: $menItemNonActive;
         padding-bottom: 5px;
         transition: color 0.3s;
 		&:hover{
-			color: #929292;
+			color: $menuItemHover;
             transition: color 0.3s;
 		}
 	}
 
     .header-main-nav-item.header-main-nav-item--current a{
-        color: #333;
-        border-bottom: 2px solid #333;
+        color: $menuItemActive;
+        border-bottom: 2px solid $menuItemActive;
         border-bottom-right-radius: 7px;
         border-bottom-left-radius: 7px;
     }

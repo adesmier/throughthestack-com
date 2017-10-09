@@ -1,4 +1,4 @@
-#page-footer{
+#index__page-footer{
     margin: 20px auto;
     text-align: center;
     p{
@@ -7,23 +7,27 @@
         q{
             font-style: italic;
         }
-        a:hover{
-            color: #929292;
+    }
+
+    #footer-social-links{
+        ul{
+            list-style: none;
+            margin-bottom: 10px;
+        }
+        li{
+            display: inline;
+            font-size: 120%;
+            &:not(:last-of-type){
+                margin-right: 20px;
+            }
+        }
+        a{
             transition: color 0.3s;
+            &:hover{
+                color: $menuItemHover;
+                transition: color 0.3s;
+            }
         }
     }
 }
 
-#footer-social-links{
-    ul{
-        list-style: none;
-        margin-bottom: 10px;
-    }
-    li{
-        display: inline;
-        font-size: 120%;
-        &:not(:last-of-type){
-            margin-right: 20px;
-        }
-    }
-}

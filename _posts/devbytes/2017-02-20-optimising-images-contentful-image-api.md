@@ -1,12 +1,12 @@
 ---
-layout: tutorials
-title: Deplying to Netlify using Jekyll and Gulp
-category: tutorials
-image: assets/images/tutorials/cms-jekyll-contentful/header.jpg
-thumbnail: assets/images/tutorials/cms-jekyll-contentful/thumbnail.jpg
+layout: devbytes
+title: Optimising Images Using the Contentful Images API
+category: devbytes
+image: assets/images/posts/devbytes/optimise-images-contentful/header.jpg
+thumbnail: assets/images/posts/devbytes/optimise-images-contentful/thumbnail.jpg
 time: 20 min
 comments: true
-heading: Netlify is a great solution that will allow you to host a static website, for free! Here were going to look at how to deploy your Jekyll based website to Netlify using the Gulp task runner.
+heading: If you're using the fabulous Contentful CMS solution to help manage the content of your static site, the you might have overlooked another brilliant solution from these guys - the Contentful Images API. In this DevByte while see how we can use this API to help optimise, resize and edit our images with a simple API request.
 tags: [netlify, jekyll, gulp]
 sections:
     Intro: |

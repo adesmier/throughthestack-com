@@ -78,7 +78,7 @@ gulp.task('set-jekyll-env-prod', function(){
 gulp.task('pre-build', ['move-fonts']);
 
 /**
- * Moves font files into a common font folder ready to be consummed by jekyll. Src font folder is ignored in _config.yml
+ * Moves font files into a common font folder ready to be consumed by jekyll. Src font folder is ignored in _config.yml
  */
 gulp.task('move-fonts', function(){
     return gulp.src('assets/fonts/font-awesome/fonts/*')
@@ -207,7 +207,7 @@ gulp.task('scripts', function(){
  */
 gulp.task('jekyll-build', ['pre-build', 'sass'/*, 'build-react', 'scripts'*/], function (done) {
     browserSync.notify(messages.jekyllBuild);
-	return cp.spawn('bundle', ['exec', 'jekyll', 'build'], {stdio: 'inherit'})
+	return cp.spawn('bundle', ['exec', 'jekyll', 'build', '--incremental'], {stdio: 'inherit'})
         .on('close', done);
 });
 
@@ -219,7 +219,7 @@ gulp.task('jekyll-rebuild', function () {
     var env = process.env.NODE_ENV === 'production' ? true : false;
     if(!env) browserSync.notify(messages.jekyllReBuild);
 
-    return cp.spawn('bundle', ['exec', 'jekyll', 'build'], {stdio: 'inherit'})
+    return cp.spawn('bundle', ['exec', 'jekyll', 'build', '--incremental'], {stdio: 'inherit'})
         .on('close', function(){
             if(!env) browserSync.reload(); //once jekyll has finished building
         });
