@@ -1,8 +1,8 @@
-name: aDesmier Web Dev Site
-description: Web Dev site of adesmier.com
+name: DevBytes - Web Development in small Bytes
+description: Tips and tutorials to help you with Web Development
 author: Anthony Desmier
 author_email: anthony@adesmier.com
-url: https://localhost:3000
+url: http://10.250.2.134:3000
 permalink: /blog/:categories/:title/
 
 include: ['_pages']
@@ -27,13 +27,14 @@ kramdown:
       start_line: 1
 
 exclude:
-  - attic
   - node_modules
   - gulpfile.js
   - package.json
+  - package-lock.json
   - Gemfile
   - Gemfile.lock
   - README.md
   - assets/css/modules
   - assets/css/main.scss
+  - assets/images
   - assets/fonts/font-awesome

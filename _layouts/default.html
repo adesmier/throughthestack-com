@@ -17,15 +17,15 @@
         <meta name="twitter:description" content="{{ page.description }}">
         <meta name="keywords" content="{{ page.keywords }}">
 
-        <link rel="canonical" href="{{ site.myurl }}{{ page.url | replace:'index.html',''}}">
+        <link rel="canonical" href="{{ site.url }}{{ page.url | replace:'index.html',''}}">
 
-        <meta property="og:url" content="{{ site.myurl }}{{ page.url | replace:'index.html',''}}">
-        <meta name="twitter:url" content="{{ site.myurl }}{{ page.url | replace:'index.html',''}}">
+        <meta property="og:url" content="{{ site.url }}{{ page.url | replace:'index.html',''}}">
+        <meta name="twitter:url" content="{{ site.url }}{{ page.url | replace:'index.html',''}}">
         <meta property="og:site_name" content="{{ site.name }}">
 
-        <meta property="og:image" content="{{ site.myurl }}{{ page.image_social }}">
+        <meta property="og:image" content="{{ site.url }}{{ page.image_social }}">
         <meta property="og:image:type" content="image/jpeg">
-        <meta name="twitter:image" content="{{ site.myurl }}{{ page.image_social }}">
+        <meta name="twitter:image" content="{{ site.url }}{{ page.image_social }}">
 
         <!-- Custom CSS -->
         {% if jekyll.environment == 'production' %}

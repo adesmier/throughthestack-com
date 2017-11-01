@@ -1,5 +1,5 @@
 ---
-layout: devbytes
+layout: tutorials
 title: Optimising Images Using the Contentful Images API
 category: devbytes
 image: assets/images/posts/devbytes/optimise-images-contentful/header.jpg

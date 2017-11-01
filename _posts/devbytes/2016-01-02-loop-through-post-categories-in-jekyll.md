@@ -1,5 +1,5 @@
 ---
-layout: devbytes
+layout: tutorials
 title: Customise the Order of a Jekyll Post Loop
 category: devbytes
 image: assets/images/posts/devbytes/loop-jekyll-posts/header.jpg

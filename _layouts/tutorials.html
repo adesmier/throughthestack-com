@@ -12,7 +12,7 @@ layout: default
     <div id="post-header-wrapper" class="grid-card full-width-card ribbon-card">
 
         {% if page.category == 'devbytes' %}
-            <div class="corner-ribbon ribbon-top-left"><span>DevBytes</span></div>
+            <!-- <div class="corner-ribbon ribbon-top-left"><span>DevBytes</span></div> -->
         {% endif %}
 
         {% if page.category == 'tutorials' %}
@@ -115,24 +115,17 @@ layout: default
         <div class="grid-card multi-width-card">
             <h2>Recent Posts<i class="fa fa-pencil" aria-hidden="true"></i></h2><hr>
 
-            {% assign RELATED_POSTS_THRESHOLD = 3 %}
-            {% assign related_post_count = 0 %}
+            {% assign RECENT_POSTS_THRESHOLD = 3 %}
+            {% assign recent_post_count = 0 %}
 
             {% for post in site.related_posts %}
 
-                {% if related_post_count == RELATED_POSTS_THRESHOLD %}
+                {% if recent_post_count == RECENT_POSTS_THRESHOLD %}
                     {% break %}
                 {% endif %}
 
-                {% for tag in post.tags %}
-
-                    {% if page.tags contains tag %}
-                        {% include _common/article-summary.html articleType='latest-post-preview' wrapperType='article-inner-wrapper' thumbnailLinkType='article-thumbnail-link' thumbnailType='article-thumbnail' %}
-                        {% assign related_post_count = related_post_count | plus: 1 %}
-                        {% break %}
-                    {% endif %}
-
-                {% endfor %}
+                {% include _common/article-summary.html articleType='latest-post-preview' wrapperType='article-inner-wrapper' thumbnailLinkType='article-thumbnail-link' thumbnailType='article-thumbnail' %}
+                {% assign recent_post_count = recent_post_count | plus: 1 %}
 
             {% endfor %}
 

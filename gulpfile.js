@@ -14,6 +14,8 @@ var cp          = require('child_process');
 var del         = require('del');
 var fs          = require('fs');
 var critical    = require('critical').stream;
+var log         = require('gulp-util').log;
+var logColour   = require('gulp-util').colors;
 
 //transpiling and bundling react code
 var browserify  = require('browserify');
@@ -30,7 +32,7 @@ var messages = {
     jekyllReBuild: 'DEV MODE: Jekyll Re-build triggered'
 };
 
-//to absract module version numbers
+//to abstract module version numbers
 //var package = JSON.parse(fs.readFileSync('./package.json'));
 
 //External dependencies not to bundle while developing, but include in application deployment
@@ -75,15 +77,7 @@ gulp.task('set-jekyll-env-prod', function(){
  /**
  * All pre-build tasks can be run by calling the pre-build task
  */
-gulp.task('pre-build', ['move-fonts']);
-
-/**
- * Moves font files into a common font folder ready to be consumed by jekyll. Src font folder is ignored in _config.yml
- */
-gulp.task('move-fonts', function(){
-    return gulp.src('assets/fonts/font-awesome/fonts/*')
-        .pipe(gulp.dest('assets/fonts'));
-});
+gulp.task('pre-build');
 
 
 /**
@@ -216,12 +210,13 @@ gulp.task('jekyll-build', ['pre-build', 'sass'/*, 'build-react', 'scripts'*/], f
  */
 gulp.task('jekyll-rebuild', function () {
 
-    var env = process.env.NODE_ENV === 'production' ? true : false;
-    if(!env) browserSync.notify(messages.jekyllReBuild);
+    //var env = process.env.NODE_ENV === 'production' ? true : false;
+    //if(!env) browserSync.notify(messages.jekyllReBuild);
 
+    browserSync.notify(messages.jekyllReBuild);
     return cp.spawn('bundle', ['exec', 'jekyll', 'build', '--incremental'], {stdio: 'inherit'})
         .on('close', function(){
-            if(!env) browserSync.reload(); //once jekyll has finished building
+            /*if(!env) */browserSync.reload(); //once jekyll has finished building
         });
 
 });
@@ -245,7 +240,7 @@ gulp.task('watch', ['browser-sync'], function () {
  /**
  * All post-build tasks can be run by calling the post-build task
  */
-gulp.task('post-build', ['critical-css']);
+gulp.task('post-build', ['critical-css', 'move-fonts', 'move-images']);
 
 /**
  * Generate critical css inline for 'above-the-fold' content (only for production builds)
@@ -263,11 +258,30 @@ gulp.task('critical-css', ['jekyll-build'], function (){
                 width: 1140,
                 height: 1000
             }))
+            .on('error', function(err){log(logColour.red(err.message))})
             .pipe(gulp.dest('_site'));
     } else {
         return;
     }
 
+});
+
+/**
+ * Move font files to _site/asset folder after Jekyll build
+ */
+gulp.task('move-fonts', ['jekyll-build'], function(){
+    return gulp.src('assets/fonts/font-awesome/fonts/*')
+        .pipe(gulp.dest('_site/assets/fonts'));
+});
+
+/**
+ * Move image files to _site/assets folder after Jekyll build
+ * This saves Jekyll having to go through them
+ * https://wiredcraft.com/blog/make-jekyll-fast/
+ */
+gulp.task('move-images', ['jekyll-build'], function(){
+    return gulp.src('assets/images/**')
+        .pipe(gulp.dest('_site/assets/images'));
 });
 
 
@@ -279,7 +293,7 @@ gulp.task('critical-css', ['jekyll-build'], function (){
  * task to run when building on Netlify (runs all tasks
  * appart from browser-sync)
  */
-gulp.task('netlify-deploy', ['set-node-env-prod', 'set-jekyll-env-prod', 'clean', 'sass', 'jekyll-build', 'post-build'/*, 'scripts', 'build-react', 'create-posts'*/]);
+gulp.task('netlify-deploy', ['set-node-env-prod', 'set-jekyll-env-prod', 'sass', 'jekyll-build', 'post-build'/*, 'scripts', 'build-react', 'create-posts'*/]);
 
 
 /**
