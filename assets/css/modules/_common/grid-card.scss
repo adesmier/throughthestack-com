@@ -72,10 +72,10 @@ Used on Blog page and related/recent posts sections
 #blog__blog-post-flexgrid-wrapper.multi-width-card{
     flex: 0 0 32%;
     justify-content: space-between; //drops article tags to bottom of card
-    margin: 0.5% 0;
+    margin: 6px 0;
     &:nth-child(3n-1){ //https://codepen.io/tuxsudo/pen/VYERQJ
-        margin-left: 1%;
-        margin-right: 1%;
+        margin-left: 12px;
+        margin-right: 12px;
     }
 }
 
