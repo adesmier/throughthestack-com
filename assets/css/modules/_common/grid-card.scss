@@ -98,11 +98,13 @@ Used on Blog page and related/recent posts sections
     margin: 0 auto 20px auto;
     display: flex;
     flex-flow: row wrap;
+    border: 1px solid red;
 }
 
 //Blog page only!
 #blog__blog-post-section-wrapper.multi-card-flex-container{
     padding-left: 20px; //hack to center cards due to 'justify-content: center' centering last row
+    padding-right: 5px;
 }
 
 //post page only!
