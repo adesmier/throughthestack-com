@@ -17,7 +17,7 @@
         color: #333;
     }
     h1,h2{
-        font-family: 'Patua One', cursive;
+        font-family: $logoFontStyle;
         font-weight: 500;
         font-size: 110%;
         color: #333;
@@ -98,7 +98,6 @@ Used on Blog page and related/recent posts sections
     margin: 0 auto 20px auto;
     display: flex;
     flex-flow: row wrap;
-    border: 1px solid red;
 }
 
 //Blog page only!
