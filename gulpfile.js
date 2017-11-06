@@ -215,9 +215,9 @@ gulp.task('jekyll-rebuild', function () {
 
     browserSync.notify(messages.jekyllReBuild);
     return cp.spawn('bundle', ['exec', 'jekyll', 'build', '--incremental'], {stdio: 'inherit'})
-        .on('close', function(){
-            /*if(!env) */browserSync.reload(); //once jekyll has finished building
-        });
+            .on('close', function(){
+                /*if(!env) */browserSync.reload(); //once jekyll has finished building
+            });
 
 });
 
@@ -240,7 +240,7 @@ gulp.task('watch', ['browser-sync'], function () {
  /**
  * All post-build tasks can be run by calling the post-build task
  */
-gulp.task('post-build', ['critical-css', 'move-fonts', 'move-images']);
+gulp.task('post-build', ['critical-css'/*, 'move-fonts', 'move-images'*/]);
 
 /**
  * Generate critical css inline for 'above-the-fold' content (only for production builds)
@@ -266,23 +266,49 @@ gulp.task('critical-css', ['jekyll-build'], function (){
 
 });
 
-/**
- * Move font files to _site/asset folder after Jekyll build
- */
-gulp.task('move-fonts', ['jekyll-build'], function(){
-    return gulp.src('assets/fonts/font-awesome/fonts/*')
-        .pipe(gulp.dest('_site/assets/fonts'));
-});
+// /**
+//  * Move font files to _site/asset folder after Jekyll build
+//  */
+// gulp.task('move-fonts', ['jekyll-build'], function(){
+//     return gulp.src('assets/fonts/font-awesome/fonts/*')
+//         .pipe(gulp.dest('_site/assets/fonts'));
+// });
 
-/**
- * Move image files to _site/assets folder after Jekyll build
- * This saves Jekyll having to go through them
- * https://wiredcraft.com/blog/make-jekyll-fast/
- */
-gulp.task('move-images', ['jekyll-build'], function(){
-    return gulp.src('assets/images/**')
-        .pipe(gulp.dest('_site/assets/images'));
-});
+// /**
+//  * Move image files to _site/assets folder after Jekyll build
+//  * This saves Jekyll having to go through them
+//  * https://wiredcraft.com/blog/make-jekyll-fast/
+//  */
+// gulp.task('move-images', ['jekyll-build'], function(){
+//     return gulp.src('assets/images/**')
+//         .pipe(gulp.dest('_site/assets/images'));
+// });
+
+
+// /**
+//  * ########## GULP TASKS --- POST RE-BUILD ##########
+//  */
+
+//   /**
+//  * Reload the browser after a Jekyll re-build to load images and fonts
+//  */
+// gulp.task('post-rebuild', ['move-fonts-rebuild', 'move-images-rebuild'], function(){
+//     return browserSync.reload();
+// });
+
+// /**
+//  * Seems really unnecessary to create these duplicate 2 tasks but don't know a
+//  * way round this yet
+//  */
+// gulp.task('move-fonts-rebuild', function(){
+//     return gulp.src('assets/fonts/font-awesome/fonts/*')
+//         .pipe(gulp.dest('_site/assets/fonts'));
+// });
+
+// gulp.task('move-images-rebuild', function(){
+//     return gulp.src('assets/images/**')
+//         .pipe(gulp.dest('_site/assets/images'));
+// });
 
 
 /**
@@ -304,7 +330,7 @@ gulp.task('netlify-deploy', ['set-node-env-prod', 'set-jekyll-env-prod', 'sass',
  * Delete the _site folder and other generated files
  */
 gulp.task('clean', function() {
-  return del.sync(['_site', 'assets/css/*.css', 'assets/fonts/*.*']);
+  return del.sync(['_site', 'assets/css/*.css'/*, 'assets/fonts/*.*'*/]);
 });
 
 
