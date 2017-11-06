@@ -1,8 +1,18 @@
-;(function($){
+;(function(){
 
-    $('.article-summary p').text(function(index, currentText){
-        return currentText.substr(0, 150) + '...';
+    // $('.article-summary p').text(function(index, currentText){
+    //     return currentText.substr(0, 150) + '...';
+    // });
+
+    document.querySelectorAll('.article-heading').forEach(function(heading){
+        var headingText = heading.textContent;
+        headingText = headingText.substring(0, 120);
+        var finalHeading = headingText + '...';
+        
+        heading.innerHTML = finalHeading;
     });
+
+    
 
     //$('.tutorial-section .article-summary h3').text(function(index, currentText){
     //    return currentText.substr(0, 30) + '...';
@@ -38,4 +48,4 @@
     // });
 
 
-})(jQuery);
+})();
