@@ -36,5 +36,4 @@ exclude:
   - README.md
   - assets/css/modules
   - assets/css/main.scss
-  - assets/images
   - assets/fonts/font-awesome
