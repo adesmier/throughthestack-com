@@ -14,6 +14,7 @@
 @import "modules/_common/grid-card";
 @import "modules/_common/article-summary";
 @import "modules/_common/header";
+@import "modules/_common/navigation";
 @import "modules/_common/footer";
 @import "modules/_common/holding-page";
 
@@ -27,6 +28,8 @@
 
 //MEDIA QUERIES
 
+@import "modules/_media-queries/mq_globals";
+@import "modules/_media-queries/mq_header";
 @import "modules/_media-queries/mq_tutorials";
 @import "modules/_media-queries/mq_blog-post-grid";
 

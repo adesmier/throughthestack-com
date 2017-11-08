@@ -1,0 +1,23 @@
+@media screen and (max-width: 640px){
+
+    #index__header-categories{
+        display: none;
+    }
+
+    #index__header-title{
+        font-size: 100%;
+    }
+
+    div[id^="index__header-icon"]{
+        font-size: 110%;
+    }
+
+}
+
+@media screen and (max-width: 480px){
+
+    #index__header-title{
+        font-size: 80%;
+    }
+
+}    
