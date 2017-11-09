@@ -41,15 +41,14 @@
     #post-heading{
         margin: 10px auto 15px auto;
         width: 85%;
-        color: #585353;
         padding-left: 10px;
-        border-left: 4px solid #333;
+        border-left: 4px solid $mainFontColour;
         border-top-left-radius: 8px;
         border-bottom-left-radius: 8px;
 
         ul{
             list-style: none;
-            color: #929292;
+            color: $articleMetaTagColour;
             padding: 3px 0;
             li{
                 display: inline-block;
@@ -89,14 +88,16 @@
 
     button{
         position: relative;
-        border: 2px solid #929292;
-        color: #706b6b;
-        min-width: 140px;
+        border: 1px solid $articleMetaTagColour;
+        color: $articleMetaTagColour;
+        font-size: 90%;
+        min-width: 120px;
         overflow: hidden;
         backface-visibility: hidden;
         cursor: pointer;
         padding: 10px 15px;
         margin: 10px 15px 0 15px;
+        border-radius: 2px;
         transition: all 0.3s;
         &:before{
             left: 0;
@@ -104,7 +105,7 @@
             position: absolute;
             height: 100%;
             width: 100%;
-            line-height: 2.5;
+            line-height: 2.8;
             transition: all 0.3s;
         }
     }
@@ -159,7 +160,7 @@
         color: rgb(64, 77, 82);
         line-height: 27px;
         em{
-            color: #333;
+            color: $mainFontColour;
             font-weight: bold;
         }
     }
