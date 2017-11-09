@@ -6,7 +6,7 @@
 	height: 40px;
 	border-width: 0px;
 	border-style: solid;
-	border-color: #333;
+	border-color: $mainFontColour;
 	background-color: rgba(0,0,0,0);
     transition: border-width 0.3s, background-color 0.3s, height 0s 0.3s;
     ul{
