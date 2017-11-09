@@ -7,7 +7,7 @@
 .latest-post-preview{
     display: block;
     margin-top: 10px;
-    color: #333;
+    color: $mainFontColour;
     transition: transform 0.3s;
     &:not(:last-of-type){
         margin-bottom: 10px;
@@ -79,7 +79,7 @@ and blog page */
     }
     margin: 2px 0 5px 0;
     font-size: 70%;
-    color: #929292;
+    color: $articleMetaTagColour;
 }
 
 .article-tags{
@@ -87,20 +87,20 @@ and blog page */
 
     i{
         font-size: 70%;
-        color: #929292;
+        color: $articleMetaTagColour;
     }
 
     .tag-name{
         font-size: 65%;
-        border: 1px solid #929292;
+        border: 1px solid $articleMetaTagColour;
         border-radius: 3px;
         padding: 1px 5px;
         transition: background-color 0.3s;
-        color: #929292;
+        color: $articleMetaTagColour;
         transition: color 0.3s;
 
         &:hover{
-            background-color: #929292;
+            background-color: $articleMetaTagColour;
             transition: background-color 0.3s;
             color: #fff;
             transition: color 0.3s;

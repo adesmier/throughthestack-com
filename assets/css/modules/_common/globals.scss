@@ -14,9 +14,15 @@ $noticeWarnBorderAlpha: rgba(243, 156, 18, 0.4);
 //$noticeErrorBorder: rgb(192, 57, 43);
 //$noticeErrorBorderAlpha: rgba(192, 57, 43, 0.4);
 
+//**********global site colours**********
+$mainFontColour: #333;
+$fontSelectionColour: rgb(185, 220, 235);
+$articleMetaTagColour: #a8a8a8;
+
+
 
 //MAIN MENU ITEMS
-$menuItemActive: #333;
+$menuItemActive: $mainFontColour;
 $menItemNonActive: #b5b5b5;
 $menuItemHover: #696969;
 
@@ -41,7 +47,7 @@ body{
 	font-family: $mainFontStyle;
 	font-size: $mainFontSize;
 	background-color: #f9f9f9;
-    color: #333;
+    color: $mainFontColour;
 }
 
 main{
@@ -68,7 +74,7 @@ a{
 }
 
 p{
-    letter-spacing: 0.5px;
+    letter-spacing: 0.1px;
 }
 
 article,
@@ -106,5 +112,5 @@ button{
 
 //change colour of highlighted text
 ::selection {
-  background: rgb(185, 220, 235); /* WebKit/Blink Browsers */
+  background: $fontSelectionColour; /* WebKit/Blink Browsers */
 }
