@@ -1,13 +1,14 @@
 <header id="index__page-header">
-    <div id="index__header-components">
+    <div id="index__header-components" class="index__header-components">
         <div>
             <i class="fa fa-user-circle-o index__header-icon"></i>
         </div>
-        <div id="index__header-title">
+        <div id="index__header-title" class="index__header-title">
             <a href="/">OpenAsset InDesign Plugin</a>
         </div>
         <div id="index__header-icon-menu-div" onclick="
                             toggleClass(this.id, 'index__header-menu-icon-open');
+                            toggleClass('index__header-components', 'index__header-components-menu-open');
                             toggleClass('index__header-navigation', 'index__header-menu-open')">
             <i class="fa fa-server index__header-icon"></i>
         </div>

@@ -10,17 +10,21 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #fff;
     height: 55px;
     padding: 0 20px;
     border-bottom: 1px solid #d4d4d4;
     //box-shadow: 0 3px 3px 0 rgba(0,0,0,0.23);
-    .index__header-icon{
-        font-size: 120%;
-    }
     div[id=index__header-icon-menu-div]{
         cursor: pointer;
         transition: transform 0.3s;
+    }
+}
+
+.index__header-components{
+    background-color: #fff;
+    transition: background-color 0.3s;
+    .index__header-icon{
+        font-size: 120%;
     }
 }
 
@@ -66,3 +70,13 @@
     transition: height 0.3s;
 }
 
+.index__header-components-menu-open{
+    background-color: #333;
+    transition: background-color 0.3s;
+    .index__header-icon{
+        color: #dddddd;
+    }
+    .index__header-title{
+        color: #dddddd;
+    }
+}
