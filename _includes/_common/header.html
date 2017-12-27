@@ -9,6 +9,9 @@
         <div id="index__header-icon-menu-div" onclick="
                             toggleClass(this.id, 'index__header-menu-icon-open');
                             toggleClass('index__header-components', 'index__header-components-menu-open');
+                            toggleClass('index__header-categories', 'index__header-categories-open');
+                            toggleClass('index__main-page-content', 'header-open-blur-main');
+                            toggleClass('index__main-page-overlay', 'index__main-page-overlay-visible');
                             toggleClass('index__header-navigation', 'index__header-menu-open')">
             <i class="fa fa-server index__header-icon"></i>
         </div>
@@ -23,19 +26,24 @@
     </nav>
     <div id="index__header-categories">
         <div class="header-category">
-            Front-End
+            <i class="fa fa-desktop"></i>
+            <span>Front-End</span>
         </div>
         <div class="header-category">
-            Server-Side
+            <i class="fa fa-server"></i>
+            <span>Server-Side</span>
         </div>
         <div class="header-category">
-            Build &amp; Test
+            <i class="fa fa-cogs"></i>
+            <span>Build &amp; Test</span>
         </div>
         <div class="header-category">
-            Database
+            <i class="fa fa-database"></i>
+            <span>Database</span>
         </div>
         <div class="header-category">
-            Hardware
+            <i class="fa fa-hdd-o"></i>
+            <span>Hardware</span>
         </div>
     </div>
 </header>
