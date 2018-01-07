@@ -1,8 +1,8 @@
-name: DevBytes - Web Development in small Bytes
-description: Tips and tutorials to help you with Web Development
+name: Throught The Stack - Hacking the Stack one Byte at a Time
+description: Tips and tutorials for all elements of the Web Development Stack
 author: Anthony Desmier
 author_email: anthony@adesmier.com
-url: http://10.250.2.134:3000
+url: https://www.throughthestack.com
 permalink: /blog/:categories/:title/
 
 include: ['_pages']

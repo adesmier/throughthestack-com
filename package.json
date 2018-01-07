@@ -1,7 +1,7 @@
 {
-  "name": "devbytes.co.uk",
+  "name": "throughthestack.com",
   "version": "0.0.1",
-  "description": "Project for my Web Dev site",
+  "description": "My tech blog site focusing on quick tips and tutorials for all elements of the Web Development Stack",
   "main": "gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
