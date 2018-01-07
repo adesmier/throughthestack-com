@@ -17,14 +17,18 @@ var critical    = require('critical').stream;
 var log         = require('gulp-util').log;
 var logColour   = require('gulp-util').colors;
 
-//transpiling and bundling react code
+// transpiling and bundling react code
 var browserify  = require('browserify');
 var vsource     = require('vinyl-source-stream');
-var buffer      = require('vinyl-buffer'); //to uglify files from a vinyl source https://stackoverflow.com/questions/24992980/how-to-uglify-output-with-browserify-in-gulp
-var collapse    = require('bundle-collapser/plugin'); //for building production react module
+// to uglify files from a vinyl source
+// https://stackoverflow.com/questions/24992980/how-to-uglify-output-with-
+// browserify-in-gulp
+var buffer      = require('vinyl-buffer');
+// for building production react module
+var collapse    = require('bundle-collapser/plugin');
 
 
-/*********************************************************************************************************/
+/******************************************************************************/
 
 
 var messages = {
@@ -35,7 +39,8 @@ var messages = {
 //to abstract module version numbers
 //var package = JSON.parse(fs.readFileSync('./package.json'));
 
-//External dependencies not to bundle while developing, but include in application deployment
+//External dependencies not to bundle while developing,
+// but include in application deployment
 // var dependencies = [
 // 	'react',
 //   	'react-dom'
@@ -50,7 +55,7 @@ var messages = {
 // ];
 
 
-/*********************************************************************************************************/
+/******************************************************************************/
 
 
 /**
@@ -85,15 +90,18 @@ gulp.task('pre-build');
  */
 
 /**
- * Default task, running just `gulp` will run pre/post build steps, compile the sass, scripts, react
- * compile the jekyll site, launch BrowserSync & watch files.
+ * Default task, running just `gulp` will run pre/post build steps, compile the 
+ * sass, scripts, react compile the jekyll site,
+ * launch BrowserSync & watch files.
  */
 gulp.task('default', ['set-node-env-dev', 'browser-sync', 'watch']);
 
 /**
  * Wait for all 4 tasks to complete, then launch the Server
  */
-gulp.task('browser-sync', ['sass',/* 'build-react', 'scripts',*/ 'jekyll-build', 'post-build'], function(){
+gulp.task('browser-sync', ['sass',/* 'build-react', 'scripts',*/
+                           'jekyll-build',
+                           'post-build'], function(){
     browserSync({
         server: {
             baseDir: '_site'
@@ -104,7 +112,8 @@ gulp.task('browser-sync', ['sass',/* 'build-react', 'scripts',*/ 'jekyll-build',
 });
 
 /**
- * Compile files from assets/css/main.scss into both _site/assets/css (for browsersync live injecting) and assets/css (for future jekyll builds)
+ * Compile files from assets/css/main.scss into both _site/assets/css
+ * (for browsersync live injecting) and assets/css (for future jekyll builds)
  */
 gulp.task('sass', function (){
 
@@ -133,15 +142,17 @@ gulp.task('build-react', ['build-vendor-react'],  function(){
     });
 
     if(!env){
-        //make the dependencies external in dev environment so they dont get bundled by the app bundler
+        // make the dependencies external in dev environment so they
+        // dont get bundled by the app bundler
         dependencies.forEach(function(dep){
             appBundler.external(dep);
         });
     }
 
     if(env){
-        //for production bundle all vendor react and custom react together and optimize
-        //https://facebook.github.io/react/docs/optimizing-performance.html#browserify
+        // for production bundle all vendor react and custom react together
+        // and optimize https://facebook.github.io/react/docs/
+        // optimizing-performance.html#browserify
         appBundler
             .transform('envify', {'global': true})
             .transform('uglifyify', {'global': true})
@@ -196,17 +207,25 @@ gulp.task('scripts', function(){
 });
 
 /**
- * Build the Jekyll Site. Sass, react and scripts tasks are not dependant on each other but jekyll-build requires these to have finished
+ * Build the Jekyll Site. Sass, react and scripts tasks are not dependant on
+ * each other but jekyll-build requires these to have finished
  * so put these tasks within []
  */
-gulp.task('jekyll-build', ['pre-build', 'sass'/*, 'build-react', 'scripts'*/], function (done) {
+gulp.task('jekyll-build', ['pre-build',
+                           'sass'/*,
+                           'build-react',
+                           'scripts'*/], function (done) {
     browserSync.notify(messages.jekyllBuild);
-	return cp.spawn('bundle', ['exec', 'jekyll', 'build', '--incremental'], {stdio: 'inherit'})
+    return cp.spawn('bundle', ['exec',
+                               'jekyll',
+                               'build',
+                               '--incremental'], {stdio: 'inherit'})
         .on('close', done);
 });
 
 /**
- * Rebuild Jekyll & do page reload (in development). No need to re-build any scripts or sass as they have their own watch events
+ * Rebuild Jekyll & do page reload (in development). No need to re-build
+ * any scripts or sass as they have their own watch events
  */
 gulp.task('jekyll-rebuild', function () {
 
@@ -214,9 +233,13 @@ gulp.task('jekyll-rebuild', function () {
     //if(!env) browserSync.notify(messages.jekyllReBuild);
 
     browserSync.notify(messages.jekyllReBuild);
-    return cp.spawn('bundle', ['exec', 'jekyll', 'build', '--incremental'], {stdio: 'inherit'})
+    return cp.spawn('bundle', ['exec',
+                               'jekyll',
+                               'build',
+                               '--incremental'], {stdio: 'inherit'})
             .on('close', function(){
-                /*if(!env) */browserSync.reload(); //once jekyll has finished building
+                // once jekyll has finished building
+                /*if(!env) */browserSync.reload();
             });
 
 });
@@ -227,9 +250,13 @@ gulp.task('jekyll-rebuild', function () {
  */
 gulp.task('watch', ['browser-sync'], function () {
     gulp.watch('assets/css/**', ['sass']);
-   // gulp.watch('assets/script/modules/**', ['scripts']);
+    //gulp.watch('assets/script/modules/**', ['scripts']);
     //gulp.watch('react/**', ['build-react']);
-    gulp.watch(['*.html', '_layouts/**', '_includes/**', '_posts/**', 'assets/scripts/**'], ['jekyll-rebuild']);
+    gulp.watch(['*.html',
+                '_layouts/**',
+                '_includes/**',
+                '_posts/**',
+                'assets/scripts/**'], ['jekyll-rebuild']);
 });
 
 
@@ -243,7 +270,8 @@ gulp.task('watch', ['browser-sync'], function () {
 gulp.task('post-build', ['critical-css'/*, 'move-fonts', 'move-images'*/]);
 
 /**
- * Generate critical css inline for 'above-the-fold' content (only for production builds)
+ * Generate critical css inline for 'above-the-fold'
+ * content (only for production builds)
  */
 gulp.task('critical-css', ['jekyll-build'], function (){
     
@@ -292,13 +320,14 @@ gulp.task('critical-css', ['jekyll-build'], function (){
 //   /**
 //  * Reload the browser after a Jekyll re-build to load images and fonts
 //  */
-// gulp.task('post-rebuild', ['move-fonts-rebuild', 'move-images-rebuild'], function(){
+// gulp.task('post-rebuild', ['move-fonts-rebuild',
+//                            'move-images-rebuild'], function(){
 //     return browserSync.reload();
 // });
 
 // /**
-//  * Seems really unnecessary to create these duplicate 2 tasks but don't know a
-//  * way round this yet
+//  * Seems really unnecessary to create these duplicate 2
+//  * tasks but don't know a way round this yet
 //  */
 // gulp.task('move-fonts-rebuild', function(){
 //     return gulp.src('assets/fonts/font-awesome/fonts/*')
@@ -317,9 +346,14 @@ gulp.task('critical-css', ['jekyll-build'], function (){
 
 /**
  * task to run when building on Netlify (runs all tasks
- * appart from browser-sync)
+ * apart from browser-sync)
  */
-gulp.task('netlify-deploy', ['set-node-env-prod', 'set-jekyll-env-prod', 'sass', 'jekyll-build', 'post-build'/*, 'scripts', 'build-react', 'create-posts'*/]);
+gulp.task('netlify-deploy', ['set-node-env-prod',
+                             'set-jekyll-env-prod',
+                             'sass',
+                             'jekyll-build',
+                             'post-build'/*,
+                             'scripts', 'build-react', 'create-posts'*/]);
 
 
 /**
