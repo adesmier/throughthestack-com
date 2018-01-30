@@ -37,3 +37,6 @@ exclude:
   - assets/css/modules
   - assets/css/main.scss
   - assets/fonts/font-awesome
+
+include:
+  - _redirects

@@ -1,0 +1,2 @@
+# proxying redirects for demos
+/demos/auth0-webtask-app  https://auth0-webtask-app.netlify.com  200
