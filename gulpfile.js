@@ -62,7 +62,7 @@ gulp.task('pre-build');
 
 /**
  * Default task, running just `gulp` will run pre/post build steps, compile the 
- * sass, scripts, react compile the jekyll site,
+ * sass, scripts and compile the jekyll site,
  * launch BrowserSync & watch files.
  */
 gulp.task('default', ['set-node-env-dev', 'browser-sync', 'watch']);
@@ -88,6 +88,7 @@ gulp.task('browser-sync', ['sass',
  */
 gulp.task('sass', function (){
 
+    //check for dev/prod build
     var env = process.env.NODE_ENV === 'production' ? true : false;
     return gulp.src('assets/css/main.scss')
         .pipe(sass())
@@ -117,7 +118,7 @@ gulp.task('sass', function (){
 // });
 
 /**
- * Build the Jekyll Site. Sass, react and scripts tasks are not dependant on
+ * Build the Jekyll Site. Sass and scripts tasks are not dependant on
  * each other but jekyll-build requires these to have finished
  * so put these tasks within []
  */
@@ -194,7 +195,7 @@ gulp.task('critical-css', ['jekyll-build'], function (){
                 width: 1140,
                 height: 1000
             }))
-            .on('error', function(err){log(logColour.red(err.message))})
+            .on('error', function(err){ log(logColour.red(err.message)) })
             .pipe(gulp.dest('_site'));
     } else {
         return;
