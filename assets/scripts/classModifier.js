@@ -1,5 +1,7 @@
-function toggleClass(elementId, classToAdd){
+;(function(w, d){
 
-    document.getElementById(elementId).classList.toggle(classToAdd);
-  
-}
+    w.toggleClass = function(elementId, classToAdd){
+        d.getElementById(elementId).classList.toggle(classToAdd);
+    }
+
+})(window, document);
