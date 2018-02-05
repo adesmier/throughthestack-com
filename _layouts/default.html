@@ -2,30 +2,33 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="theme-color" content="#000000">
+
+        <link rel="manifest" href="/manifest.json">
+        <link rel="shortcut icon" href="/assets/img/favicon.ico">
 
         <title>{{ page.title }}</title>
 
-        <!-- <link rel="shortcut icon" href="/assets/img/favicon.ico"> -->
         <meta property="og:title" content="{{ page.title }}">
         <meta name="twitter:title" content="{{ page.title }}">
         <meta name="twitter:card" content="summary">
 
-        <meta name="description" content="{{ page.description }}">
         <meta property="og:description" content="{{ page.description }}">
+        <meta name="description" content="{{ page.description }}">
         <meta name="twitter:description" content="{{ page.description }}">
         <meta name="keywords" content="{{ page.keywords }}">
 
-        <link rel="canonical" href="{{ site.url }}{{ page.url | replace:'index.html',''}}">
-
-        <meta property="og:url" content="{{ site.url }}{{ page.url | replace:'index.html',''}}">
-        <meta name="twitter:url" content="{{ site.url }}{{ page.url | replace:'index.html',''}}">
-        <meta property="og:site_name" content="{{ site.name }}">
-
-        <meta property="og:image" content="{{ site.url }}{{ page.image_social }}">
+        <meta property="og:image" content="{{ site.url }}{{ page.image }}">
         <meta property="og:image:type" content="image/jpeg">
-        <meta name="twitter:image" content="{{ site.url }}{{ page.image_social }}">
+        <meta name="twitter:image" content="{{ site.url }}{{ page.image }}">
+        
+        <meta property="og:url" content="{{ site.url }}{{ page.url | replace:'index.html',''}}">
+        <meta property="og:site_name" content="{{ site.name }}">
+        <meta name="twitter:url" content="{{ site.url }}{{ page.url | replace:'index.html',''}}">
+
+        <link rel="canonical" href="{{ site.url }}{{ page.url | replace:'index.html',''}}">
 
         <!-- Custom CSS -->
         {% if jekyll.environment == 'production' %}
