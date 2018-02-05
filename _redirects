@@ -1,2 +1,13 @@
-# proxying redirects for demos
+## Netlify redirects file https://www.netlify.com/docs/redirects/
+
+## Contains redirect links for demos/projects hosted on netlify so they can be
+## accessed via sub-folders of the main throughthestack.com domain
+
+## Note: Due to this redirect the apps will most likely not work at the
+## netlify sudomain (https://<subdomain>.netlify.com)
+
+
+## proxying redirects for demos
 /demos/auth0-webtask-app/*    https://auth0-webtask-app.netlify.com/:splat  200
+
+## proxying redirects for projects
