@@ -67,7 +67,10 @@
 
         <!-- </div> -->
 
-        <script type="text/javascript" src="/assets/scripts/postTextLimit.js"></script>
-        <script type="text/javascript" src="/assets/scripts/classModifier.js"></script>
+        {% if jekyll.environment == 'production' %}
+            <script type="text/javascript" src="/assets/scripts/bundles/common.min.js"></script>
+        {% elsif jekyll.environment == 'development' %}
+            <script type="text/javascript" src="/assets/scripts/bundles/common.js"></script>
+        {% endif %}
     </body>
 </html>

@@ -25,6 +25,11 @@ var messages = {
     jekyllReBuild: 'DEV MODE: Jekyll Re-build triggered'
 };
 
+var jsFiles = [
+    'assets/scripts/plugins/classModifier.js',
+    'assets/scripts/plugins/postTextLimit.js'
+];
+
 
 /******************************************************************************/
 
@@ -104,18 +109,18 @@ gulp.task('sass', function (){
 /**
  * Concatenation of javascript files. Only common files for now
  */
-// gulp.task('scripts', function(){
+gulp.task('scripts', function(){
 
-//     var env = process.env.NODE_ENV === 'production' ? true : false;
-//     return gulp.src(jsFiles)
-//         .pipe(concat('common.js'))
-//         .pipe(gulpif(env, uglify()))
-//         .pipe(gulpif(env, rename('common.min.js')))
-//         .pipe(gulpif(!env, gulp.dest('_site/assets/script/bundle')))
-//         .pipe(gulpif(!env, browserSync.reload({stream:true})))
-//         .pipe(gulp.dest('assets/script/bundle'));
+    var env = process.env.NODE_ENV === 'production' ? true : false;
+    return gulp.src(jsFiles)
+        .pipe(concat('common.js'))
+        .pipe(gulpif(env, uglify()))
+        .pipe(gulpif(env, rename('common.min.js')))
+        .pipe(gulpif(!env, gulp.dest('_site/assets/scripts/bundles')))
+        .pipe(gulpif(!env, browserSync.reload({stream:true})))
+        .pipe(gulp.dest('assets/scripts/bundles'));
 
-// });
+});
 
 /**
  * Build the Jekyll Site. Sass and scripts tasks are not dependant on
@@ -123,8 +128,8 @@ gulp.task('sass', function (){
  * so put these tasks within []
  */
 gulp.task('jekyll-build', ['pre-build',
-                           'sass'/*,
-                           'scripts'*/], function (done) {
+                           'sass',
+                           'scripts'], function (done) {
     browserSync.notify(messages.jekyllBuild);
     return cp.spawn('bundle', ['exec',
                                'jekyll',
@@ -273,7 +278,9 @@ gulp.task('netlify-deploy', ['set-node-env-prod',
  * Delete the _site folder and other generated files
  */
 gulp.task('clean', function() {
-  return del.sync(['_site', 'assets/css/*.css'/*, 'assets/fonts/*.*'*/]);
+  return del.sync(['_site',
+                   'assets/css/*.css',
+                   'assets/scripts/bundles/*.js']);
 });
 
 

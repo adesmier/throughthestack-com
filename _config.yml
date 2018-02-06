@@ -43,3 +43,4 @@ exclude:
   - assets/css/modules
   - assets/css/main.scss
   - assets/fonts/font-awesome
+  - assets/scripts/plugins
