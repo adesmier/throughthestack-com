@@ -2,9 +2,12 @@
 
 {% for chapter in include.chapters %}
 
-    <p>
+    {% assign title = chapter[0] | replace: ' ', '-' | downcase %}
+
+    <h6 id="chapter-{{ title }}" class="post-section-chapter-headings"
+        onclick="scrollToElement(this, 'anchor-{{ title }}', 'active-chapter')">
         {{ chapter[0] }}
-    </p>
+    </h6>
 
 {% endfor %}
 

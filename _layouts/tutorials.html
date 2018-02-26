@@ -48,7 +48,7 @@ layout: default
 
         <hr />
 
-        <!-- POST INTRO TEXT SECTION WITH SECTION MENU AT END -->
+        <!-- POST INTRO TEXT SECTION -->
         <div id="post-intro-wrapper" class="grid-card full-width-card">
 
             {% if page.category == 'tutorials' %}
@@ -59,7 +59,7 @@ layout: default
                 </div>
             {% endif %}
 
-            <a class="link-anchor" name="Intro"></a>
+            <a id="anchor-intro" class="link-anchor"></a>
             {% for section in page.sections limit:1 %}
                 <h2 class="post-section-heading" name="Intro">{{ section[0] }}</h2>
                 <div id="post-intro-text">{{ section[1] | markdownify }}</div>
@@ -77,8 +77,10 @@ layout: default
         <a class="link-anchor" name="Sections"></a>
         {% for section in page.sections offset:1 %}
 
+            {% assign title = section[0] | replace: ' ', '-' | downcase %}
+
             <div class="post-content-wrapper grid-card full-width-card">
-                <a class="link-anchor" name="{{ section[0] | replace: ' ', '' }}"></a>
+                <a id="anchor-{{ title }}" class="link-anchor post-chapter-links"></a>
                 <h2 class="post-section-heading">{{ section[0] }}</h2>
                 <div class="post-content-text">{{ section[1] | markdownify }}</div>
             </div>
@@ -137,7 +139,7 @@ layout: default
 
         {% if jekyll.environment == 'production' %}
             <!-- DISQUS COMMENT SECTION -->
-            <div class="post-content-wrapper grid-card full-width-card">
+            <div class="grid-card full-width-card">
 
                 {% if page.comments %}
                     {% include _common/disqus.html %}

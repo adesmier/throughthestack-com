@@ -24,9 +24,22 @@
     flex: 1;
     width: 19%;
     margin-right: 1%;
+    h6{
+        font-size: 85%;
+        font-weight: 300;
+        line-height: 130%;
+        transition: all 0.3s;
+        cursor: pointer;
+    }
     div{
         position: fixed;
         width: inherit;
+    }
+    .active-chapter{
+        font-weight: bold;
+        border-left: 5px solid rgb(185, 220, 235);
+        padding-left: 5px;
+        transition: all 0.3s;
     }
 }
 
