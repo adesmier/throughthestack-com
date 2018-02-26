@@ -27,7 +27,9 @@ var messages = {
 
 var jsFiles = [
     'assets/scripts/plugins/classModifier.js',
-    'assets/scripts/plugins/postTextLimit.js'
+    'assets/scripts/plugins/postTextLimit.js',
+    'assets/scripts/plugins/scrollToElement.js',
+    'assets/scripts/plugins/detectScrollToChapter.js'
 ];
 
 
@@ -165,12 +167,11 @@ gulp.task('jekyll-rebuild', function () {
  */
 gulp.task('watch', ['browser-sync'], function () {
     gulp.watch('assets/css/**', ['sass']);
-    //gulp.watch('assets/script/modules/**', ['scripts']);
+    gulp.watch('assets/scripts/**', ['scripts']);
     gulp.watch(['*.html',
                 '_layouts/**',
                 '_includes/**',
-                '_posts/**',
-                'assets/scripts/**'], ['jekyll-rebuild']);
+                '_posts/**'], ['jekyll-rebuild']);
 });
 
 
