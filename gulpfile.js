@@ -29,7 +29,8 @@ var jsFiles = [
     'assets/scripts/plugins/classModifier.js',
     'assets/scripts/plugins/postTextLimit.js',
     'assets/scripts/plugins/scrollToElement.js',
-    'assets/scripts/plugins/detectScrollToChapter.js'
+    'assets/scripts/plugins/detectScrollToChapter.js',
+    'assets/scripts/plugins/detectBrowserWidth.js'
 ];
 
 

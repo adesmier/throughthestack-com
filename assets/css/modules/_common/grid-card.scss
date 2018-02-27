@@ -113,6 +113,13 @@ Used on Blog page and related/recent posts sections
     justify-content: center;
 }
 
+//invert the colours for a posts contents section at width < 1100px
+#post-section-wrapper-chapters > .grid-card.invert-colours{
+    background-color: #333;
+    box-shadow: 0 2px 1px 0 #757575;
+    color: #fff;
+}
+
 
 
 /*
