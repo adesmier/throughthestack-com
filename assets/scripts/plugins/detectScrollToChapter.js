@@ -1,51 +1,61 @@
 ;(function(w, d){
 
-    var chapterHdrs = d.querySelectorAll('.post-chapter-links');
+    //get all anchor tags in the post content
+    var chapterAnchorHdrs = d.querySelectorAll('.post-chapter-links');
+    //get all h6 tags in the chapter secltion
+    var chapterSelectionHdrs = d.querySelectorAll('.post-section-chapter-headings');
     var scrollingActive;
 
     w.addEventListener('scroll', function(){
 
-        //only run the scroll callback when scrolling finishes so we
-        //only run the for loop after a timeout
-        //https://gomakethings.com/detecting-when-a-visitor-has-stopped-scrolling-with-vanilla-javascript/
         w.clearTimeout(scrollingActive);
-
+        //we only want the callback of the scroll event to fire after
+        //scrolling has ended, so lets wait 100ms before runing this
         scrollingActive = setTimeout(function(){
-            for(var i = 0; i < chapterHdrs.length; i++){
-                var elementTop = getElementDistanceFromTop(chapterHdrs[i]);
-    
-                if(chapterHdrs[i+1]){
-                    var nextElementTop = getElementDistanceFromTop(chapterHdrs[i+1]);
+
+            for(var i = 0; i < chapterAnchorHdrs.length; i++){
+                var elementTop = getElementDistanceFromTop(chapterAnchorHdrs[i]);
+
+                if(chapterAnchorHdrs[i+1]){
+                    var nextElementTop = getElementDistanceFromTop(chapterAnchorHdrs[i+1]);
                     //we need to target the chapter selector headings
                     //so lets form the id out of the anchor id
-                    var id = chapterHdrs[i].id.replace(/anchor/g, 'chapter');
-                    var element = d.getElementById(id);
+                    var id = chapterAnchorHdrs[i].id.replace(/anchor/g, 'chapter');
+                    var headerElement = d.getElementById(id);
 
+                    //so we need to check if the distance scrolled is >= to the
+                    //current elements top offset. It also has to be less than the
+                    //next element so that we only target a single anchor element
                     if(w.pageYOffset >= elementTop && w.pageYOffset < nextElementTop){
-                        console.log('Just passed ' + id);
-                        if(!element.classList.contains('active-chapter')){
-                            console.log('Adding class ');
-                            console.log(element);
-                            element.classList.add('active-chapter');
+                        if(!headerElement.classList.contains('active-chapter')){
+
+                            //we need to remove the active-chapter class
+                            //from all other header elements first as these might
+                            //also have been added via the onclick event
+                            w.removeClassFromMultiple(chapterSelectionHdrs, 'active-chapter');
+                            headerElement.classList.add('active-chapter');
+
                         }
-                    } else {
-                        console.log('Element: ' + element.id);
-                        element.classList.remove('active-chapter');
+                    }
+                } else { //last element in list as there is no next element
+
+                    var id = chapterAnchorHdrs[i].id.replace(/anchor/g, 'chapter');
+                    //well get the height of the elements parent instead to use
+                    //as our check to target the single anchor element
+                    var parentHeight = chapterAnchorHdrs[i].parentElement.offsetHeight;
+                    var headerElement = d.getElementById(id);
+
+                    if(w.pageYOffset >= elementTop && w.pageYOffset < (w.pageYOffset + parentHeight)){
+                        if(!headerElement.classList.contains('active-chapter')){
+                            w.removeClassFromMultiple(chapterSelectionHdrs, 'active-chapter');
+                            headerElement.classList.add('active-chapter');
+                        }
                     }
 
-                } else {
-                    if(w.pageYOffset > elementTop){
-                        var id = chapterHdrs[i].id.replace(/anchor/g, 'chapter');
-                        console.log('Just passed ' + id);
-                        if(!element.classList.contains('active-chapter')){
-                            element.classList.add('active-chapter');
-                        }
-                    } else {
-                        element.classList.remove('active-chapter');
-                    }
                 }
             }
-        }, 66);
+
+        }, 100);
 
     });
 
