@@ -75,18 +75,20 @@ layout: default
 
         <!-- MAIN CONTENT OF THE POST -->
         <a class="link-anchor" name="Sections"></a>
-        {% for section in page.sections offset:1 %}
+        <div class="post-content-wrapper grid-card full-width-card">
 
-            {% assign title = section[0] | replace: ' ', '-' | downcase %}
+            {% for section in page.sections offset:1 %}
 
-            <div class="post-content-wrapper grid-card full-width-card">
+                {% assign title = section[0] | replace: ' ', '-' | downcase %}
+
                 <a id="anchor-{{ title }}" class="link-anchor post-chapter-links"></a>
                 <h2 class="post-section-heading">{{ section[0] }}</h2>
                 <div class="post-content-text">{{ section[1] | markdownify }}</div>
-            </div>
+                <br />
 
-        {% endfor %}
+            {% endfor %}
 
+        </div>
         <hr />
 
         <!-- RELATED AND RECENT POSTS SECTION -->

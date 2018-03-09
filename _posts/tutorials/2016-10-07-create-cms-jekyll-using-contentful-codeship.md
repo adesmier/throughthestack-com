@@ -63,11 +63,9 @@ sections:
 
         Some might find the limitation on 100 assets i.e. images, audio files, PDF's etc an issue. In this case you might want to pull non-blog related images such as background images, profile images etc from BitBucket so that the user only uploads blog related images to Contentful.<br /><br />
 
-        <div class="notice-update" markdown="1">
-        *Update:* Contentful have now updated their free subscription to include [10,000 records](https://www.contentful.com/pricing/). Records encompass posts entries and assets so this allows a lot more room for your posts and images.
-        </div><br />
+        >*Update:* Contentful have now updated their free subscription to include [10,000 records](https://www.contentful.com/pricing/). Records encompass posts entries and assets so this allows a lot more room for your posts and images.
 
-        **Step 1 - Setup your Space<br />**
+        <br />**Step 1 - Setup your Space<br />**
         Once signed up, choose a blank template and you can start creating your first [Space](https://www.contentful.com/developers/docs/concepts/data-model/). A Space is essentially a project in Contentful, so a Space can map directly to the name of your site (in my case ianarber.com)<br /><br />
 
         **Step 2 - Setup your Content Type<br />**

@@ -1,12 +1,12 @@
 /* COLOUR VARIABLES */
 
 //colours for blockquote and notice tips on blog posts
-$noticeTip: rgba(52, 152, 219, 0.1);
-$noticeTipBorder: rgb(74, 139, 181);
-$noticeTipBorderAlpha: rgba(41, 128, 185, 0.4);
-$noticeUpdate: rgba(26, 188, 156, 0.1);
-$noticeUpdateBorder: rgb(73, 194, 170);
-$noticeUpdateBorderAlpha: rgba(22, 160, 133, 0.4);
+// $noticeTip: rgba(52, 152, 219, 0.1);
+// $noticeTipBorder: rgb(74, 139, 181);
+// $noticeTipBorderAlpha: rgba(41, 128, 185, 0.4);
+$noticeTip: rgba(26, 188, 156, 0.1);
+$noticeTipBorder: rgb(73, 194, 170);
+$noticeTipBorderAlpha: rgba(22, 160, 133, 0.4);
 $noticeWarn: rgba(241, 196, 15, 0.1);
 $noticeWarnBorder: rgb(241, 182, 88);
 $noticeWarnBorderAlpha: rgba(243, 156, 18, 0.4);
@@ -16,7 +16,7 @@ $noticeWarnBorderAlpha: rgba(243, 156, 18, 0.4);
 
 //**********global site colours**********
 $mainFontColour: #333;
-$fontSelectionColour: rgb(185, 220, 235);
+$accentColour: rgb(118, 198, 233);
 $articleMetaTagColour: #a8a8a8;
 
 
@@ -132,5 +132,5 @@ button{
 
 //change colour of highlighted text
 ::selection {
-  background: $fontSelectionColour; /* WebKit/Blink Browsers */
+  background: $accentColour; /* WebKit/Blink Browsers */
 }
