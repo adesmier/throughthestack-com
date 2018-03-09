@@ -31,6 +31,9 @@
     font-family: $logoFontStyle;
     font-size: 130%;
     letter-spacing: 0.5px;
+    a:hover {
+        color: $accentColour;
+    }
 }
 
 .index__header-navigation{
@@ -50,7 +53,7 @@
         text-transform: uppercase;
         font-size: 60%;
         letter-spacing: 0.5px;
-        color: $articleMetaTagColour;
+        color: $mainFontColour;
         border-left: 1px solid #d4d4d4;
         padding: 6px 0;
         cursor: pointer;
@@ -89,9 +92,9 @@
 
 //ON CLICK CLASSES
 
-#index__main-page-content.header-open-blur-main{
+// #index__main-page-content.header-open-blur-main{
     
-}
+// }
 
 .index__header-menu-icon-open{
     transform: rotate(90deg);
@@ -124,6 +127,6 @@
     }
     padding: 10px 0;
     &:hover{
-        background-color: red;
+        background-color: $accentColour;
     }
 }
