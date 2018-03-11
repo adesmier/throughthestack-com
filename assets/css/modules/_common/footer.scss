@@ -24,7 +24,7 @@
         a{
             transition: color 0.3s;
             &:hover{
-                color: $menuItemHover;
+                color: $accentColour;
                 transition: color 0.3s;
             }
         }
