@@ -1,7 +1,9 @@
 ---
-layout: tutorials
+layout: blogpost
 title: Create a CMS for Jekyll using Contentful and Codeship
 category: tutorials
+scripts: |
+  <script type="text/javascript" src="/assets/scripts/bundles/tutorials.js"></script>
 image: assets/images/posts/tutorials/cms-jekyll-contentful/header.jpg
 thumbnail: assets/images/posts/tutorials/cms-jekyll-contentful/thumbnail.jpg
 time: 30 min

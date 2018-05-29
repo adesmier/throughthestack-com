@@ -2,6 +2,10 @@
 layout: default
 ---
 
+{% if page.category == 'tutorials' %}
+    {% assign tutorials = true %}
+{% endif %}
+
 <!-- nolink class added to prevent link generation for http text. See 
      https://support.viglink.com/hc/en-us/articles/205077904-How-do-I-configure-and-customize-VigLink-Insert-
      No idea what is generating this, I assume Kramdown -->
@@ -17,7 +21,7 @@ layout: default
                 <!-- <div class="corner-ribbon ribbon-top-left"><span>DevBytes</span></div> -->
             {% endif %}
 
-            {% if page.category == 'tutorials' %}
+            {% if tutorials == true %}
                 <div id="post-image">
                     <img src="{{base}}/{{ page.image }}" alt="post header image" />
                 </div>
@@ -49,35 +53,39 @@ layout: default
         <hr />
 
         <!-- POST INTRO TEXT SECTION -->
-        <div id="post-intro-wrapper" class="grid-card full-width-card">
-
-            {% if page.category == 'tutorials' %}
+        {% if tutorials == true %}
+            <div id="post-intro-wrapper" class="grid-card full-width-card">
                 <div class="post-intro-links">
                     <a href="#Sections">
                         <button class="fa fa-arrow-down"><span>Skip Intro</span></button>
                     </a>
                 </div>
-            {% endif %}
-
-            <a id="anchor-intro" class="link-anchor"></a>
-            {% for section in page.sections limit:1 %}
-                <h2 class="post-section-heading" name="Intro">{{ section[0] }}</h2>
-                <div id="post-intro-text">{{ section[1] | markdownify }}</div>
-            {% endfor %}
-
-            <!-- <hr />
-
-            <div id="post-intro-dropdown-container" class="sticky-element">
             
-            </div> -->
-            
-        </div>
+                <a id="anchor-intro" class="link-anchor"></a>
+                {% for section in page.sections limit:1 %}
+                    <h2 class="post-section-heading" name="Intro">{{ section[0] }}</h2>
+                    <div id="post-intro-text">{{ section[1] | markdownify }}</div>
+                {% endfor %}
+
+                <!-- <hr />
+
+                <div id="post-intro-dropdown-container" class="sticky-element">
+                
+                </div> -->
+            </div>
+            <a class="link-anchor" name="Sections"></a>
+        {% endif %}
 
         <!-- MAIN CONTENT OF THE POST -->
-        <a class="link-anchor" name="Sections"></a>
         <div class="post-content-wrapper grid-card full-width-card">
 
-            {% for section in page.sections offset:1 %}
+            {% if tutorials == true %}
+                {% assign sectionOffset = 1 %}
+            {% else %}
+                {% assign sectionOffset = 0 %}
+            {% endif %}
+
+            {% for section in page.sections offset: sectionOffset %}
 
                 {% assign title = section[0] | replace: ' ', '-' | downcase %}
 
@@ -152,11 +160,13 @@ layout: default
 
     </article>
 
-    <aside id="post-section-wrapper-chapters">
+    {% if tutorials == true %}
+        <aside id="post-section-wrapper-chapters">
 
-        {% include blog/chapter-selection.html
-            chapters = page.sections %}
+            {% include blog/chapter-selection.html
+                chapters = page.sections %}
 
-    </aside>
+        </aside>
+    {% endif %}
 
 </section>
