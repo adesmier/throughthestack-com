@@ -67,10 +67,15 @@
 
         <!-- </div> -->
 
-        {% if jekyll.environment == 'production' %}
-            <script type="text/javascript" src="/assets/scripts/bundles/common.min.js"></script>
-        {% elsif jekyll.environment == 'development' %}
-            <script type="text/javascript" src="/assets/scripts/bundles/common.js"></script>
-        {% endif %}
+        {% comment %} SCRIPTS SECTION --- COMMON SCRIPTS {% endcomment %}
+
+            {% include _common/scripts.html %}
+
+        {% comment %} SCRIPTS SECTION --- PER-PAGE SCRIPTS {% endcomment %}
+
+            {% if page.scripts %}
+                {{ page.scripts }}
+            {% endif %}
+
     </body>
 </html>
