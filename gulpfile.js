@@ -1,6 +1,7 @@
 /*
  * REQUIRES
  */
+var _           = require('lodash');
 var gulp        = require('gulp');
 var sass        = require('gulp-sass');
 var cleanCss    = require('gulp-clean-css');
@@ -25,17 +26,39 @@ var messages = {
     jekyllReBuild: 'DEV MODE: Jekyll Re-build triggered'
 };
 
-var jsFiles = [
-    'assets/scripts/plugins/classModifier.js',
-    'assets/scripts/plugins/postTextLimit.js',
-    'assets/scripts/plugins/scrollToElement.js',
-    'assets/scripts/plugins/detectScrollToChapter.js',
-    'assets/scripts/plugins/detectBrowserWidth.js'
-];
+var jsFiles = {
+    'home.js': ['assets/scripts/src/home/postTextLimit.js',],
+    'tutorials.js': [
+        'assets/scripts/src/tutorials/detectBrowserWidth.js',
+        'assets/scripts/src/tutorials/detectScrollToChapter.js'
+    ],
+    'common.js': [
+        'assets/scripts/src/plugins/classModifier.js',
+        'assets/scripts/src/plugins/scrollToElement.js'
+    ]
+};
 
 
 /******************************************************************************/
 
+/**
+ * ########## CUSTOM FUNCTIONS ##########
+ */
+
+function concatJSFiles(files, dest) {
+    var env = process.env.NODE_ENV === 'production' ? true : false;
+
+    return gulp.src(files)
+        .pipe(concat(dest))
+        .pipe(gulpif(env, uglify()))
+        // .pipe(gulpif(env, rename(minifyName)))
+        .pipe(gulpif(!env, gulp.dest('_site/assets/scripts/bundles')))
+        .pipe(gulpif(!env, browserSync.reload({stream: true})))
+        .pipe(gulp.dest('assets/scripts/bundles'));
+}
+
+
+/******************************************************************************/
 
 /**
  * ########## GULP TASKS --- ENVIRONMENT SETTING ##########
@@ -113,16 +136,7 @@ gulp.task('sass', function (){
  * Concatenation of javascript files. Only common files for now
  */
 gulp.task('scripts', function(){
-
-    var env = process.env.NODE_ENV === 'production' ? true : false;
-    return gulp.src(jsFiles)
-        .pipe(concat('common.js'))
-        .pipe(gulpif(env, uglify()))
-        .pipe(gulpif(env, rename('common.min.js')))
-        .pipe(gulpif(!env, gulp.dest('_site/assets/scripts/bundles')))
-        .pipe(gulpif(!env, browserSync.reload({stream:true})))
-        .pipe(gulp.dest('assets/scripts/bundles'));
-
+    _.each(jsFiles, concatJSFiles);
 });
 
 /**
