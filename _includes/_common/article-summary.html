@@ -2,7 +2,11 @@
     <div class="{{ include.wrapperType }}">
 
         <a class="{{ include.thumbnailLinkType }}" href="{{ post.url }}">
-            <figure class="{{ include.thumbnailType }}" style="background-image:url(/{{ post.image }})"></figure>
+            {% if include.thumbnailType == 'article-thumbnail' %}
+                <figure class="{{ include.thumbnailType }}" style="background-image:url(/{{ post.thumbnail }})"></figure>
+            {% else %}
+                <figure class="{{ include.thumbnailType }}" style="background-image:url(/{{ post.image }})"></figure>
+            {% endif %}
         </a>
 
         <summary class="article-summary">

@@ -125,6 +125,14 @@ layout: default
 
                 {% endfor %}
 
+                {% if related_post_count < 3 %}
+                    <div class="related-post-links">
+                        <a href="/blog">
+                            <button class="fa fa-newspaper-o"><span>All Posts</span></button>
+                        </a>
+                    </div>
+                {% endif %}
+
             </div>
             <div class="grid-card multi-width-card">
                 <h2>Recent Posts<i class="fa fa-pencil" aria-hidden="true"></i></h2><hr>

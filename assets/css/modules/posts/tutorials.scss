@@ -125,20 +125,25 @@
     font-size: 120% !important;
 }
 
-.post-intro-links{
+.post-intro-links,
+.related-post-links{
     text-align: center;
+
+    a {
+        min-width: 120px;
+        margin: 0 auto;
+    }
 
     button{
         position: relative;
         border: 1px solid $articleMetaTagColour;
         color: $articleMetaTagColour;
         font-size: 90%;
-        min-width: 120px;
+        // min-width: 120px;
         overflow: hidden;
         backface-visibility: hidden;
         cursor: pointer;
         padding: 10px 15px;
-        margin: 10px 15px 0 15px;
         border-radius: 2px;
         transition: all 0.3s;
         &:before{
@@ -166,6 +171,17 @@
     button:hover > span{
         transform: translateY(-300%);
     }
+}
+
+.post-intro-links {
+    margin: 10px 15px 0 15px;
+}
+
+.related-post-links {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
 }
 
 #post-intro-text,
