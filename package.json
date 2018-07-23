@@ -4,7 +4,9 @@
   "description": "My tech blog site focusing on quick tips and tutorials for all elements of the Web Development Stack",
   "main": "gulpfile.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "./node_modules/gulp/bin/gulp.js",
+    "prod": "./node_modules/gulp/bin/gulp.js netlify-deploy",
+    "clean": "./node_modules/gulp/bin/gulp.js clean"
   },
   "author": "Anthony Desmier",
   "devDependencies": {
