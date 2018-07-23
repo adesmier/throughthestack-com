@@ -32,6 +32,18 @@ kramdown:
       line_numbers: true
       start_line: 1
 
+# settings for html minification in production using
+# https://github.com/penibelst/jekyll-compress-html
+compress_html:
+  clippings: all
+  comments: ["<!-- ", " -->"]
+  endings: []
+  ignore:
+    envs: ["development"]
+  blanklines: false
+  profile: false
+  startings: []
+
 exclude:
   - node_modules
   - gulpfile.js
