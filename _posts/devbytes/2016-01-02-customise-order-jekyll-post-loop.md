@@ -3,7 +3,7 @@ layout: blogpost
 title: Customise the Order of a Jekyll Post Loop
 category: devbytes
 image: assets/images/posts/devbytes/devbytes-jekyll.jpg
-thumbnail: assets/images/posts/devbytes/loop-jekyll-posts/thumbnail.jpg
+thumbnail: assets/images/posts/devbytes/devbytes-jekyll-thumb.jpg
 time: 5 min
 heading: By default, Jekyll will organise your posts in date order when looping through them. However you may want, for example, your most popular posts to go first and then the rest organised by date order. In this DevByte we'll look at customising the loop order using liquid.
 tags: [jekyll, blog, liquid]
