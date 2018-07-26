@@ -170,10 +170,33 @@ layout: default
 
     {% if tutorials == true %}
         <aside id="post-section-wrapper-chapters">
-
-            {% include blog/chapter-selection.html
+            <div id="aside-chapters-container">
+                {% include blog/chapter-selection.html
                 chapters = page.sections %}
 
+                {% if page.demo or page.github or page.codepen %}
+                    <div class="grid-card">
+                        <div class="post-demo-link">
+                            {% if page.demo %}
+                                <a href="{{ page.demo }}" target="_blank" rel="noopener noreferrer">
+                                    <button class="fa fa-code"><span>Demo</span></button>
+                                </a>
+                            {% endif %}
+                            {% if page.github %}
+                                <a href="{{ page.github }}" target="_blank" rel="noopener noreferrer">
+                                    <button class="fa fa-github"><span>Code</span></button>
+                                </a>
+                            {% endif %}
+                            {% if page.codepen %}
+                                <a href="{{ page.codepen }}" target="_blank" rel="noopener noreferrer">
+                                    <button class="fa fa-github"><span>Pen</span></button>
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+
+            </div>
         </aside>
     {% endif %}
 

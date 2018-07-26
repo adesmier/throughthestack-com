@@ -26,6 +26,13 @@
     flex: 1;
     width: 19%;
     margin-right: 1%;
+    #aside-chapters-container{
+        position: fixed;
+        width: inherit;
+        > div {
+            margin-bottom: 15px;
+        }
+    }
     h3{
         font-family: $logoFontStyle;
         font-weight: 300;
@@ -41,10 +48,6 @@
             padding-left: 5px;
             transition: all 0.3s;
         }
-    }
-    div{
-        position: fixed;
-        width: inherit;
     }
     .active-chapter{
         font-weight: bold;
@@ -126,14 +129,9 @@
 }
 
 .post-intro-links,
-.related-post-links{
+.related-post-links,
+.post-demo-link{
     text-align: center;
-
-    a {
-        min-width: 120px;
-        margin: 0 auto;
-    }
-
     button{
         position: relative;
         border: 1px solid $articleMetaTagColour;
@@ -152,7 +150,7 @@
             position: absolute;
             height: 100%;
             width: 100%;
-            line-height: 2.8;
+            line-height: 2.6;
             transition: all 0.3s;
         }
     }
@@ -182,6 +180,23 @@
     flex-direction: column;
     justify-content: center;
     height: 100%;
+}
+
+.post-demo-link {
+    a {
+        margin: 5px;
+    }
+    span {
+        color: #fff;
+        font-weight: bold;
+    }
+    button {
+        border: none;
+        color: #fff;
+        background-color: rgba(168, 168, 168, 0.6);
+    }
+    display: flex;
+    justify-content: space-evenly;
 }
 
 #post-intro-text,
