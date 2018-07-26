@@ -24,6 +24,9 @@
     border-bottom: 1px solid #d4d4d4;
     .index__header-icon{
         font-size: 120%;
+        &:hover {
+            color: $accentColour;
+        }
     }
 }
 
