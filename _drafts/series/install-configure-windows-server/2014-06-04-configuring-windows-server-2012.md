@@ -1,17 +1,15 @@
 ---
 layout: blogpost
-title: Securing a Static Web Page with Auth0 and Webtask
-category: tutorials
+title: Configuring Windows Server 2012
+category: series
 scripts: |
   <script type="text/javascript" src="/assets/scripts/bundles/tutorials.js"></script>
-image: assets/images/posts/tutorials/secure-static-page/header.jpg
-thumbnail: assets/images/posts/tutorials/secure-static-page/thumbnail.jpg
-demo: https://www.throughthestack.com/demos/auth0-webtask-app
-github: https://github.com/adesmier/auth0-webtask-app
-time: 20 min
+image: assets/images/posts/series/install-configure-windows-server/header.jpg
+thumbnail: assets/images/posts/series/install-configure-windows-server/thumbnail.jpg
+time: 15 min
 comments: true
-heading: Static site generators are a great way to quickly and easily develop a site that doesn't require a server backend. But sooner or later you'll want to start adding some features that require interaction with a server. A common feature is to provide a login, or password protect a page of the site. Trying to achieve this using a static site generator alone is not possible, but with the help of an identity management and function-as-a-service solution, you can easily secure sections or even your whole site.
-tags: [jekyll, auth0, webtask, static site, authentication]
+heading: Configuring Windows Server 2012 way to quickly and easily develop a site that doesn't require a server backend. But sooner or later you'll want to start adding some features that require interaction with a server. A common feature is to provide a login, or password protect a page of the site. Trying to achieve this using a static site generator alone is not possible, but with the help of an identity management and function-as-a-service solution, you can easily secure sections or even your whole site.
+tags: [windows server, virtualisation]
 sections:
     Intro: |
         During the design phase of a website it's important to define what services it will be providing to your readers. This will go towards identifing what sofware to use in order to build, deploy and host it. If you're creating a simple blog site, your main service is just delivering flat files (your blog posts) to your readers. In this case you can utilise something like Jekyll and a static hosting site like Netlify.<br /><br />
@@ -97,12 +95,18 @@ sections:
         
         Allowing this process to run 3 times gives enough time for the token to be written. But we have to handle clearing our interval, so we track the attempts to read the token in our _intervalCounter_ and add this to our state. Once this hits 3, we can be fairly certain we don't have a token, so we clear the interval and prompt the user to login.
 
+    Creating Our Auth0 Application: |
+        In order to get our authentication token, we need to setup an app in Auth0. Setup a free acount with them, head over to your Dashboard and select Create Application
+
+
+
     Setting Up Our Webtask: |
 
 
 
 
-    Creating Our Auth0 Application: |
+
+    
     The Auth0 Lock App: |
     Saving the Auth Token: |
     Putting it all Together: |
