@@ -1,7 +1,17 @@
 <article class="{{ include.articleType }}">
     <div class="{{ include.wrapperType }}">
 
-        <a class="{{ include.thumbnailLinkType }}" href="{{ post.url }}">
+        {% if post.serieslink %}
+            {% assign postUrl = # %}
+        {% else %}
+            {% assign postUrl = post.url %}
+        {% endif %}
+
+        <a
+            class="{{ include.thumbnailLinkType }}"
+            href="{{ postUrl }}"
+            onclick="{% if post.serieslink %}return renderSeriesPosts(){% endif %}"
+        >
             {% if include.thumbnailType == 'article-thumbnail' %}
                 <figure class="{{ include.thumbnailType }}" style="background-image:url(/{{ post.thumbnail }})"></figure>
             {% else %}
@@ -11,15 +21,20 @@
 
         <summary class="article-summary">
 
-            <a href="{{ post.url }}">
+            <a
+                href="{{ postUrl }}"
+                onclick="{% if post.serieslink %}return renderSeriesPosts(){% endif %}"
+            >
                 <h3 class="article-title"><strong><em>{{ post.title }}</em></strong></h3>
 
-                <div class="article-meta">
-                    <i class="fa fa-calendar-o" aria-hidden="true"></i>
-                    <span class="article-meta-data" href="#">{{ post.date | date: '%d %b %Y' }}</span>
-                    <i class="fa fa-clock-o" aria-hidden="true"></i>
-                    <span class="article-meta-data" href="#">{{ post.time }} read</span>
-                </div>
+                {% unless post.serieslink %}
+                    <div class="article-meta">
+                        <i class="fa fa-calendar-o" aria-hidden="true"></i>
+                        <span class="article-meta-data" href="#">{{ post.date | date: '%d %b %Y' }}</span>
+                        <i class="fa fa-clock-o" aria-hidden="true"></i>
+                        <span class="article-meta-data" href="#">{{ post.time }} read</span>
+                    </div>
+                {% endunless %}
 
                 {% if include.displayIntro %}
                     <p class="article-heading">{{ post.heading }}</p>

@@ -1,7 +1,10 @@
 <section id="blog__blog-post-section-wrapper" class="row section multi-card-flex-container">
-    <!-- <div id="blog__blog-post-grid-container" class="multi-card-flex-container"> -->
 
     {% for post in site.posts %}
+
+        {% if post.category == 'series' %}
+            {% continue %}
+        {% endif %}
 
         <div id="blog__blog-post-flexgrid-wrapper" class="grid-card hover multi-width-card">
 
@@ -22,5 +25,4 @@
 
     {% endfor %}
 
-    <!-- </div> -->
 </section>
