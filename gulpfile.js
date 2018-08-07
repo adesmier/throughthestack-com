@@ -27,7 +27,10 @@ var messages = {
 };
 
 var jsFiles = {
-    'home.js': ['assets/scripts/src/home/postTextLimit.js',],
+    'home.js': [
+        'assets/scripts/src/home/postTextLimit.js',
+        'assets/scripts/src/home/renderSeriesPosts.js'
+    ],
     'tutorials.js': [
         'assets/scripts/src/tutorials/detectBrowserWidth.js',
         'assets/scripts/src/tutorials/detectScrollToChapter.js'
@@ -295,6 +298,7 @@ gulp.task('netlify-deploy', ['set-node-env-prod',
  */
 gulp.task('clean', function() {
   return del.sync(['_site',
+                   '.jekyll-metadata',
                    'assets/css/*.css',
                    'assets/scripts/bundles/*.js']);
 });
