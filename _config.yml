@@ -10,7 +10,7 @@ include:
   - _pages
   - _redirects
 
-gems:
+plugins:
   - jekyll-sitemap
 
 # markdown engine to use
