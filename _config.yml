@@ -44,11 +44,6 @@ compress_html:
   profile: false
   startings: []
 
-# configuration for pushing search data to algolia
-algolia:
-  application_id: J62GWLVE45
-  index_name:     posts
-
 exclude:
   - node_modules
   - gulpfile.js
