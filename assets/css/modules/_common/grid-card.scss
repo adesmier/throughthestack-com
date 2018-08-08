@@ -69,7 +69,7 @@ Used on Blog page and related/recent posts sections
 }
 
 //Blog page only!
-#blog__blog-post-flexgrid-wrapper.multi-width-card{
+.blog__blog-post-flexgrid-wrapper.multi-width-card{
     flex: 0 0 32%;
     justify-content: space-between; //drops article tags to bottom of card
     margin: 6px 0;

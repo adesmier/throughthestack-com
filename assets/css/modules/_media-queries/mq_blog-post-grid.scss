@@ -1,6 +1,6 @@
-@media screen and (max-width: 1024px){
+@media screen and (max-width: 1024px) {
 
-    #blog__blog-post-flexgrid-wrapper.multi-width-card{
+    .blog__blog-post-flexgrid-wrapper.multi-width-card {
         flex: 0 0 47%;
         //margin: 0.8% 0;
         &:nth-child(n-1){ //https://codepen.io/tuxsudo/pen/VYERQJ
@@ -8,20 +8,17 @@
             margin-right: 4px;
         }
     }
-    
+
 }
 
-@media screen and (max-width: 768px){
-    
-    #blog__blog-post-flexgrid-wrapper.multi-width-card{
+@media screen and (max-width: 768px) {
+
+    .blog__blog-post-flexgrid-wrapper.multi-width-card {
         flex: 0 0 96%;
     }
 
-    #blog__blog-post-section-wrapper.multi-card-flex-container{
+    #blog__blog-post-section-wrapper.multi-card-flex-container {
         padding-left: 0px;
     }
-    
+
 }
-
-
-
