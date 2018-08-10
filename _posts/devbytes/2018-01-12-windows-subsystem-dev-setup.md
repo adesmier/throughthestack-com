@@ -1,5 +1,6 @@
 ---
 layout: blogpost
+id: 3
 title: My Windows Subsystem for Linux Development Setup
 category: devbytes
 image: assets/images/posts/devbytes/devbytes-wsl.jpg

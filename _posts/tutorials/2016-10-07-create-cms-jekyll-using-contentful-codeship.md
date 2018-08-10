@@ -1,5 +1,6 @@
 ---
 layout: blogpost
+id: 1
 title: Create a CMS for Jekyll using Contentful and Codeship
 category: tutorials
 scripts: |
