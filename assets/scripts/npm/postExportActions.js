@@ -68,21 +68,16 @@ module.exports = class PostExportActions {
         } = matter.data;
 
         let cleanedMatter = {
+            objectID: id,
             title,
             category,
-            time,
             heading,
-            tags,
+            time,
+            _tags: tags,
             url: this[_getPostUrl](category, dir)
         };
 
-        //we only need the id if the post is not a series post as series post will
-        //get indexed based of their base post in tutorials
-        if(serieslink) {
-            cleanedMatter.serieslink = serieslink;
-        } else {
-            cleanedMatter.ObjectId = id;
-        }
+        if(serieslink) cleanedMatter.serieslink = serieslink;
 
         return cleanedMatter;
     }
@@ -144,7 +139,6 @@ module.exports = class PostExportActions {
      */
     addNewPostToIndex(data) {
         this._indexedPosts[data.ObjectId] = data;
-        console.log(this._indexedPosts);
     }
 
     /**
