@@ -15,7 +15,7 @@ module.exports = class PostExportActions {
     constructor() {
         //read in our local cached posts
         this._indexedPosts = require(
-            '../../../_data/jsonexport/indexedPosts.json'
+            '../../../_cache/indexedPosts.json'
         );
     }
 
@@ -57,9 +57,17 @@ module.exports = class PostExportActions {
      * @param {string} dir Full path to the post
      */
     [_cleanFrontMatter](matter, dir) {
-        const { id, title, category, time, heading, tags } = matter.data;
+        const {
+            id,
+            title,
+            category,
+            serieslink,
+            time,
+            heading,
+            tags
+        } = matter.data;
+
         let cleanedMatter = {
-            ObjectId: id,
             title,
             category,
             time,
@@ -67,6 +75,15 @@ module.exports = class PostExportActions {
             tags,
             url: this[_getPostUrl](category, dir)
         };
+
+        //we only need the id if the post is not a series post as series post will
+        //get indexed based of their base post in tutorials
+        if(serieslink) {
+            cleanedMatter.serieslink = serieslink;
+        } else {
+            cleanedMatter.ObjectId = id;
+        }
+
         return cleanedMatter;
     }
 
@@ -101,9 +118,6 @@ module.exports = class PostExportActions {
             }).catch(err => reject(err))
         });
         return prom;
-
-
-
     }
 
     /**
@@ -116,7 +130,6 @@ module.exports = class PostExportActions {
             if(_.isEqual(this._indexedPosts[data.ObjectId], data)) {
                 return { exists: true, modified: false };
             } else {
-                console.log(this._indexedPosts[data.id]);
                 return { exists: true, modified: true };
             }
         } else {
@@ -130,7 +143,7 @@ module.exports = class PostExportActions {
      * @param {*} data 
      */
     addNewPostToIndex(data) {
-        this._indexedPosts[data.url] = data;
+        this._indexedPosts[data.ObjectId] = data;
         console.log(this._indexedPosts);
     }
 
