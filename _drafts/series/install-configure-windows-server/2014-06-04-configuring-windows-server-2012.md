@@ -1,5 +1,6 @@
 ---
 layout: blogpost
+id: 23
 title: Configuring Windows Server 2012
 category: series
 scripts: |

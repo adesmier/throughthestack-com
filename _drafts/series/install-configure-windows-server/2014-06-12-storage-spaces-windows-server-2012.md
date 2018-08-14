@@ -1,5 +1,6 @@
 ---
 layout: blogpost
+id: 93
 title: Configuring Storage and Storage Spaces in Windows Server 2012
 category: series
 scripts: |

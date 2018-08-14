@@ -1,5 +1,6 @@
 ---
 layout: blogpost
+id: 34
 title: Installing Windows Server 2012
 category: series
 scripts: |
