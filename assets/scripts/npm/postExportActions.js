@@ -13,7 +13,11 @@ const _cleanFrontMatter    = Symbol('_cleanFrontMatter');
 
 module.exports = class PostExportActions {
     constructor() {
-        //read in our local cached posts
+        /**
+         * Read in our local cached posts. NOTE: May need to move this to a
+         * node stream once it starts to grow
+         */
+        this.cachePath = '_cache/indexedPosts.json';
         this._indexedPosts = require(
             '../../../_cache/indexedPosts.json'
         );
@@ -121,8 +125,8 @@ module.exports = class PostExportActions {
      * @param {bject} data The cleaned data of the post
      */
     isPostIndexed(data) {
-        if(this._indexedPosts[data.ObjectId]) {
-            if(_.isEqual(this._indexedPosts[data.ObjectId], data)) {
+        if(this._indexedPosts[data.objectID]) {
+            if(_.isEqual(this._indexedPosts[data.objectID], data)) {
                 return { exists: true, modified: false };
             } else {
                 return { exists: true, modified: true };
@@ -138,13 +142,21 @@ module.exports = class PostExportActions {
      * @param {*} data 
      */
     addNewPostToIndex(data) {
-        this._indexedPosts[data.ObjectId] = data;
+        this._indexedPosts[data.objectID] = data;
     }
 
     /**
-     * Writes out the updated index into _data/jsonexport/indexPosts.json
+     * Writes out the updated index into _cache/indexPosts.json
      */
     writeOutIndex() {
+        const cacheString = JSON.stringify(this._indexedPosts, null, 4);
+        const output = fs.createWriteStream(this.cachePath, { flags: 'w' });
 
+        output.write(cacheString, () => {
+            console.log('Cache updated')
+        });
+        output.on('finish', () => {
+            output.end();
+        });
     }
 }
