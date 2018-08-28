@@ -19,7 +19,7 @@ module.exports = class PostExportActions {
          */
         this.cachePath = '_cache/indexedPosts.json';
         this._indexedPosts = require(
-            '../../../_cache/indexedPosts.json'
+            '../../../../_cache/indexedPosts.json'
         );
     }
 

@@ -1,6 +1,6 @@
 const path              = require('path');
-const PostExportActions = require('./postExportActions');
-const AlgoliaActions    = require('./algoliaActions');
+const PostExportActions = require('./modules/postExportActions');
+const AlgoliaActions    = require('./modules/algoliaActions');
 
 //ignore series dir as these will be bundled with the related post in the
 //tutorial dir
