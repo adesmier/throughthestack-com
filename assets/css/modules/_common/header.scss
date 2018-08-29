@@ -3,7 +3,6 @@
     z-index: 100;
     width: 100%;
     top: 0;
-    //margin-bottom: 100px;
 }
 
 #index__header-components{
@@ -24,7 +23,9 @@
     border-bottom: 1px solid #d4d4d4;
     .index__header-icon{
         font-size: 120%;
+        transition: color 0.3s ease-in-out;
         &:hover {
+            transition: color 0.3s ease-in-out;
             color: $accentColour;
         }
     }
@@ -34,8 +35,12 @@
     font-family: $logoFontStyle;
     font-size: 130%;
     letter-spacing: 0.5px;
-    a:hover {
-        color: $accentColour;
+    a {
+        transition: color 0.3s ease-in-out;
+        &:hover {
+            transition: color 0.3s ease-in-out;
+            color: $accentColour;
+        }
     }
 }
 
@@ -82,7 +87,7 @@
     flex-direction: column;
     div{
         flex: 1;
-        font-size: 130%;
+        font-size: 150%;
     }
     ul{
         display: flex;
@@ -98,14 +103,14 @@
         &.index__header-nav-items-bottom{
             align-self: flex-start;
         }
-        a{
-            transition: all 0.3s;
-            &:hover{
-                border: 1px solid $accentColour;
-                border-radius: 2px;
-                padding: 3px 7px;
-                color: $accentColour;
-                transition: all 0.3s;
+        span {
+            padding: 5px 10px;
+            transition: all 0.3s ease-in-out;
+            &:hover {
+                transition: all 0.3s ease-in-out;
+                background-color: $accentColour;
+                border-radius: 3px;
+                color: #333;
             }
         }
     }
