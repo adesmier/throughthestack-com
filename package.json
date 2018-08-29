@@ -45,6 +45,7 @@
     "url": "https://github.com/adesmier/throughthestack-com.git"
   },
   "dependencies": {
+    "prop-types": "^15.6.2",
     "react": "16.4.2",
     "react-dom": "16.4.2"
   }
