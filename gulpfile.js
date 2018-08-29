@@ -44,10 +44,6 @@ var messages = {
 };
 
 var jsFiles = {
-    'home.js': [
-        'assets/scripts/src/home/postTextLimit.js',
-        'assets/scripts/src/home/renderSeriesPosts.js'
-    ],
     'tutorials.js': [
         'assets/scripts/src/tutorials/detectBrowserWidth.js',
         'assets/scripts/src/tutorials/detectScrollToChapter.js'
