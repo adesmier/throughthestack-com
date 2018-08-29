@@ -4,6 +4,7 @@ author: Anthony Desmier
 author_email: contact@throughthestack.com
 url: https://www.throughthestack.com
 permalink: /blog/:categories/:title/
+vendor_react: react16.4.2.js
 
 # not sure if this is needed??
 include: 
@@ -56,3 +57,4 @@ exclude:
   - assets/css/main.scss
   - assets/fonts/font-awesome
   - assets/scripts/src
+  - javascript
