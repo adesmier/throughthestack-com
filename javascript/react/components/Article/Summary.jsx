@@ -13,7 +13,7 @@ const Summary = props => {
                 <h3 className="article-title"><strong><em>{postData.title}</em></strong></h3>
                 <div className="article-meta">
                     <i className="fa fa-calendar-o" aria-hidden="true"></i>
-                    <span className="article-meta-data" href="#">Put Date Here</span>
+                    <span className="article-meta-data" href="#">{postData.date}</span>
                     <i className="fa fa-clock-o" aria-hidden="true"></i>
                     <span className="article-meta-data" href="#">{postData.time} read</span>
                 </div>
