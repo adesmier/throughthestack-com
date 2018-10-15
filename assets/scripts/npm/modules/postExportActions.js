@@ -1,14 +1,16 @@
-const fs           = require('fs');
-const _            = require('lodash');
-const matter       = require('gray-matter');
+const fs     = require('fs');
+const _      = require('lodash');
+const matter = require('gray-matter');
+const moment = require('moment');
 
 /**
  * Declare private methods as a Symbol object
  * https://medium.com/@davidrhyswhite/private-members-in-es6-db1ccd6128a5
  */
-const _readPost            = Symbol('_readPost');
-const _getPostUrl          = Symbol('_getPostUrl');
-const _cleanFrontMatter    = Symbol('_cleanFrontMatter');
+const _readPost         = Symbol('_readPost');
+const _getPostUrl       = Symbol('_getPostUrl');
+const _getPostDate      = Symbol('_getPostDate');
+const _cleanFrontMatter = Symbol('_cleanFrontMatter');
 
 
 module.exports = class PostExportActions {
@@ -47,10 +49,28 @@ module.exports = class PostExportActions {
      * @param {string} dir Full path to the post
      */
     [_getPostUrl](category, dir) {
+        // let date = dir.match(/[0-9]{4}-[0-9]{2}-[0-9]{2}/g);
         let dateRemoved = dir.replace(/.*[0-9]{4}-[0-9]{2}-[0-9]{2}-/g, '');
         let postSlug = dateRemoved.replace(/.md$/g, '');
         let url = `/blog/${category}/${postSlug}`;
         return url;
+    }
+
+    /**
+     * Generates the formatted date of the post
+     * @private
+     * @param {string} dir Full path to the post
+     */
+    [_getPostDate](dir) {
+        const dateStr = dir.match(/[0-9]{4}-[0-9]{2}-[0-9]{2}/g);
+
+        if(!dateStr) return '2018-01-01'; //return static date if no match found
+
+        const date = moment(dateStr, 'YYYY-MM-DD');
+        const day = date.format('DD');
+        const month = date.format('MMM');
+        const year = date.format('YYYY');
+        return `${day} ${month} ${year}`;
     }
 
     /**
@@ -68,6 +88,8 @@ module.exports = class PostExportActions {
             serieslink,
             time,
             heading,
+            image,
+            thumbnail,
             tags
         } = matter.data;
 
@@ -76,6 +98,9 @@ module.exports = class PostExportActions {
             title,
             category,
             heading,
+            image,
+            thumbnail,
+            date: this[_getPostDate](dir),
             time,
             _tags: tags,
             url: this[_getPostUrl](category, dir)
