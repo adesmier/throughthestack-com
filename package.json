@@ -13,7 +13,7 @@
   "author": "Anthony Desmier",
   "devDependencies": {
     "algoliasearch": "3.30.0",
-    "babel-core": "^6.26.3",
+    "babel-core": "6.26.3",
     "babel-preset-es2015": "6.24.1",
     "babel-preset-react": "6.24.1",
     "babel-preset-stage-2": "6.24.1",
@@ -34,8 +34,9 @@
     "gulp-sass": "3.1.0",
     "gulp-uglify": "3.0.0",
     "gulp-util": "3.0.8",
-    "http-server": "^0.11.1",
+    "http-server": "0.11.1",
     "lodash": "4.17.10",
+    "moment": "2.22.2",
     "uglifyify": "5.0.1",
     "vinyl-buffer": "1.0.1",
     "vinyl-source-stream": "2.0.0"
@@ -45,7 +46,7 @@
     "url": "https://github.com/adesmier/throughthestack-com.git"
   },
   "dependencies": {
-    "prop-types": "^15.6.2",
+    "prop-types": "15.6.2",
     "react": "16.4.2",
     "react-dom": "16.4.2"
   }
