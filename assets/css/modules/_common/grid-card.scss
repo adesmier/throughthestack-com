@@ -63,7 +63,7 @@ Stylings for cards that will be displayed 2-3 per row.
 Used on Blog page and related/recent posts sections
 */
 .multi-width-card{
-    flex: 33%;
+    // flex: 33%;
     display: flex; //article content with the card will be column flexed
     flex-direction: column;
 }
@@ -76,6 +76,14 @@ Used on Blog page and related/recent posts sections
     &:nth-child(3n-1){ //https://codepen.io/tuxsudo/pen/VYERQJ
         margin-left: 12px;
         margin-right: 12px;
+    }
+}
+
+.blog__blog-post-flexgrid-wrapper{
+    .article-tags{
+        a {
+            margin-right: 5px;
+        }
     }
 }
 
