@@ -50,7 +50,8 @@ var jsFiles = {
     ],
     'common.js': [
         'assets/scripts/src/plugins/classModifier.js',
-        'assets/scripts/src/plugins/scrollToElement.js'
+        'assets/scripts/src/plugins/scrollToElement.js',
+        'assets/scripts/src/plugins/updateNavPreview.js'
     ]
 };
 
