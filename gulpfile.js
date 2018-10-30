@@ -16,10 +16,27 @@ var del         = require('del');
 var critical    = require('critical').stream;
 var log         = require('gulp-util').log;
 var logColour   = require('gulp-util').colors;
+var fs          = require('fs');
+
+//transpiling and bundling react code
+var browserify  = require('browserify');
+var vsource     = require('vinyl-source-stream');
+var buffer      = require('vinyl-buffer'); //to uglify files from a vinyl source https://stackoverflow.com/questions/24992980/how-to-uglify-output-with-browserify-in-gulp
+var collapse    = require('bundle-collapser/plugin'); //for building production react module
 
 
 /******************************************************************************/
 
+//to absract module version numbers
+var package = JSON.parse(fs.readFileSync('./package.json'));
+
+//external dependencies not to bundle while developing, but include in application deployment
+var dependencies = [
+	'react',
+  	'react-dom'
+];
+var reactVersion = package.dependencies.react;
+var reactVendorOutput = 'react' + reactVersion + '.js';
 
 var messages = {
     jekyllBuild: 'DEV MODE: Building Jekyll Site',
@@ -27,10 +44,6 @@ var messages = {
 };
 
 var jsFiles = {
-    'home.js': [
-        'assets/scripts/src/home/postTextLimit.js',
-        'assets/scripts/src/home/renderSeriesPosts.js'
-    ],
     'tutorials.js': [
         'assets/scripts/src/tutorials/detectBrowserWidth.js',
         'assets/scripts/src/tutorials/detectScrollToChapter.js'
@@ -87,7 +100,10 @@ gulp.task('set-jekyll-env-prod', function(){
  /**
  * All pre-build tasks can be run by calling the pre-build task
  */
-gulp.task('pre-build');
+gulp.task('pre-build', function() {
+    //remove the vendor folder before a production build
+    return del.sync(['assets/scripts/vendor']);
+});
 
 
 /**
@@ -143,12 +159,71 @@ gulp.task('scripts', function(){
 });
 
 /**
+ * Compile and bundle React code
+ */
+gulp.task('build-react', ['build-vendor-react'],  function(){
+
+    var env = process.env.NODE_ENV === 'production' ? true : false;
+	var appBundler = browserify({
+        entries: './javascript/react/index.jsx',
+        extensions: ['.jsx'],
+    	debug: true
+  	});
+
+  	if(!env){
+  		//make the dependencies external in dev environment so they dont get bundled by the app bundler
+  		dependencies.forEach(function(dep){
+  			appBundler.external(dep);
+  		});
+  	}
+    if(env){
+        //for production bundle all vendor react and custom react together and optimize
+        //https://facebook.github.io/react/docs/optimizing-performance.html#browserify
+        appBundler
+            .transform('envify', {'global': true})
+            .transform('uglifyify', {'global': true})
+    }
+    
+    return appBundler
+        .transform('babelify', {presets: ['es2015', 'stage-2', 'react']})
+        .bundle()
+        .pipe(vsource('react-app.js'))
+        .pipe(gulpif(env, buffer()))
+        .pipe(gulpif(env, uglify())) //only minify in production
+        .pipe(gulpif(env, rename('react-app.min.js')))
+        .pipe(gulpif(!env, gulp.dest('_site/assets/scripts/bundles')))
+        .pipe(gulpif(!env, browserSync.reload({stream:true})))
+        .pipe(gulp.dest('assets/scripts/bundles'));
+
+});
+
+/**
+ * Compile and bundle React vendor modules for dev environment
+ */
+gulp.task('build-vendor-react',  function(){
+    
+    var env = process.env.NODE_ENV === 'production' ? true : false;
+
+    if(!env && !fs.existsSync('./assets/scripts/vendor/' + reactVendorOutput)){
+        var vendorBundler = browserify({require: dependencies, debug: true});
+        return vendorBundler
+            .bundle()
+            .pipe(vsource(reactVendorOutput))
+            .pipe(gulp.dest('assets/scripts/vendor'));
+    } else {
+        return;
+    }
+
+});
+
+/**
  * Build the Jekyll Site. Sass and scripts tasks are not dependant on
  * each other but jekyll-build requires these to have finished
  * so put these tasks within []
  */
 gulp.task('jekyll-build', ['pre-build',
                            'sass',
+                           'build-react',
                            'scripts'], function (done) {
     browserSync.notify(messages.jekyllBuild);
     return cp.spawn('bundle', ['exec',
@@ -185,7 +260,8 @@ gulp.task('jekyll-rebuild', function () {
  */
 gulp.task('watch', ['browser-sync'], function () {
     gulp.watch('assets/css/**', ['sass']);
-    gulp.watch('assets/scripts/**', ['scripts']);
+    gulp.watch('javascript/react/**', ['build-react']);
+    gulp.watch('assets/scripts/src/**', ['scripts']);
     gulp.watch(['*.html',
                 '_layouts/**',
                 '_includes/**',
@@ -281,7 +357,8 @@ gulp.task('critical-css', ['jekyll-build'], function (){
  * task to run when building on Netlify (runs all tasks
  * apart from browser-sync)
  */
-gulp.task('netlify-deploy', ['set-node-env-prod',
+gulp.task('netlify-deploy', ['pre-build',
+                             'set-node-env-prod',
                              'set-jekyll-env-prod',
                              'sass',
                              'jekyll-build',

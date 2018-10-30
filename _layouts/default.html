@@ -73,13 +73,22 @@ layout: compress
 
         {% comment %} SCRIPTS SECTION --- COMMON SCRIPTS {% endcomment %}
 
-            {% include _common/scripts.html %}
+        {% include _common/scripts.html %}
 
         {% comment %} SCRIPTS SECTION --- PER-PAGE SCRIPTS {% endcomment %}
 
-            {% if page.scripts %}
-                {{ page.scripts }}
+        {% if page.scripts %}
+            {{ page.scripts }}
+        {% endif %}
+
+        {% if page.react == true %}
+            {% if jekyll.environment == 'production' %}
+                <script type="text/javascript" src="/assets/scripts/bundles/react-app.min.js"></script>
+            {% elsif jekyll.environment == 'development' %}
+                <script type="text/javascript" src="/assets/scripts/vendor/{{ site.vendor_react }}"></script>
+                <script type="text/javascript" src="/assets/scripts/bundles/react-app.js"></script>
             {% endif %}
+        {% endif %}
 
     </body>
 </html>
