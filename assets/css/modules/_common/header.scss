@@ -11,8 +11,25 @@
     align-items: center;
     height: 55px;
     padding: 0 20px;
-    div[id=index__header-icon-menu-div]{
+}
+
+.index__header-icon-menu-wrapper{
+    display: flex;
+    justify-content: space-between;
+    width: 70px;
+    .fa-search.index__header-icon{
+        font-size: 110%;
+    }
+    .index__header-icon{
+        font-size: 120%;
         cursor: pointer;
+        transition: color 0.3s ease-in-out;
+        &:hover {
+            transition: color 0.3s ease-in-out;
+            color: $accentColour;
+        }
+    }
+    #index__header-icon-menu-btn{
         transition: transform 0.3s;
     }
 }
@@ -21,14 +38,6 @@
     background-color: #fff;
     transition: background-color 0.3s;
     border-bottom: 1px solid #d4d4d4;
-    .index__header-icon{
-        font-size: 120%;
-        transition: color 0.3s ease-in-out;
-        &:hover {
-            transition: color 0.3s ease-in-out;
-            color: $accentColour;
-        }
-    }
 }
 
 #index__header-title{
@@ -82,48 +91,100 @@
     background-color: #333;
     color: #fff;
     overflow: hidden;
-    position: relative;
+}
+
+#index__header-nav-display-wrapper{
+    height: 80px;
     display: flex;
-    flex-direction: column;
-    div{
-        flex: 1;
-        font-size: 150%;
-    }
-    ul{
+
+    #index__header-nav-icon-btns{
+        flex: 1 0 50%;
         display: flex;
-        height: 100%;
-        list-style: none;
-    }
-    li{
-        flex: 1;
-        text-align: center;
-        &.index__header-nav-items-top{
-            align-self: center;
-        }
-        &.index__header-nav-items-bottom{
-            align-self: flex-start;
-        }
-        span {
-            padding: 5px 10px;
-            transition: all 0.3s ease-in-out;
+        align-items: center;
+        justify-content: flex-end;
+        i{
+            font-size: 160%;
+            margin-right: 40px;
+            cursor: pointer;
+            transition: all 0.3s;
             &:hover {
-                transition: all 0.3s ease-in-out;
-                background-color: $accentColour;
-                border-radius: 3px;
-                color: #333;
+                color: $accentColour;
+                transform: translate3d(0, -3px, 0);
+                transition: all 0.3s;
             }
         }
     }
-    span.index__header-nav-stack-search{
-        position: absolute;
-        bottom: 25px;
-        left: 0;
-        right: 0;
-        font-size: 90%;
-        font-weight: bold;
-        text-align: center;
+
+    #index__header-nav-preview-pane{
+        flex: 1 0 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        p{
+            font-size: 80%;
+        }
+
+        &.fadeText{
+            animation: fadein 1s;
+        }
+        @keyframes fadein {
+            from{
+                opacity: 0;
+            }
+            to{
+                opacity: 1;
+            }
+        }
     }
 }
+
+    
+
+
+
+    // overflow: hidden;
+    // position: relative;
+    // display: flex;
+    // flex-direction: column;
+    // div{
+    //     flex: 1;
+    //     font-size: 150%;
+    // }
+    // ul{
+    //     display: flex;
+    //     height: 100%;
+    //     list-style: none;
+    // }
+    // li{
+    //     flex: 1;
+    //     text-align: center;
+    //     &.index__header-nav-items-top{
+    //         align-self: center;
+    //     }
+    //     &.index__header-nav-items-bottom{
+    //         align-self: flex-start;
+    //     }
+    //     span {
+    //         padding: 5px 10px;
+    //         transition: all 0.3s ease-in-out;
+    //         &:hover {
+    //             transition: all 0.3s ease-in-out;
+    //             background-color: $accentColour;
+    //             border-radius: 3px;
+    //             color: #333;
+    //         }
+    //     }
+    // }
+    // span.index__header-nav-stack-search{
+    //     position: absolute;
+    //     bottom: 25px;
+    //     left: 0;
+    //     right: 0;
+    //     font-size: 90%;
+    //     font-weight: bold;
+    //     text-align: center;
+    // }
+
 
 //ON CLICK CLASSES
 

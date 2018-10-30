@@ -1,22 +1,26 @@
 <header id="index__page-header">
     <div id="index__header-components" class="index__header-components">
-        <div>
+        <div class="index__header-icon-menu-wrapper">
             <i class="fa fa-user-circle-o index__header-icon"></i>
         </div>
         <div id="index__header-title" class="index__header-title">
             <a href="/">Through the Stack</a>
         </div>
-        <div id="index__header-icon-menu-div" onclick="
-                            toggleClass(this.id, 'index__header-menu-icon-open');
-                            toggleClass('index__header-components', 'index__header-components-menu-open');
-                            toggleClass('index__header-categories', 'index__header-categories-open');
-                            toggleClass('index__main-page-content', 'header-open-blur-main');
-                            toggleClass('index__main-page-overlay', 'index__main-page-overlay-visible');
-                            toggleClass('index__header-navigation', 'index__header-menu-open')">
-            <i class="fa fa-server index__header-icon"></i>
+        <div class="index__header-icon-menu-wrapper">
+            <i class="fa fa-search index__header-icon"></i>
+            <div id="index__header-icon-menu-btn" onclick=
+                    "toggleClass(this.id, 'index__header-menu-icon-open');
+                    toggleClass('index__header-components', 'index__header-components-menu-open');
+                    toggleClass('index__header-categories', 'index__header-categories-open');
+                    toggleClass('index__main-page-content', 'header-open-blur-main');
+                    toggleClass('index__main-page-overlay', 'index__main-page-overlay-visible');
+                    toggleClass('index__header-navigation', 'index__header-menu-open')"
+            >
+                <i class="fa fa-server index__header-icon"></i>
+            </div>
         </div>
     </div>
-    <nav id="index__header-navigation" class="index__header-navigation">
+    <!-- <nav id="index__header-navigation" class="index__header-navigation">
         <div>
             <ul>
                 <li class="index__header-nav-items-top"><a href="/"><span>Home</span></a></li>
@@ -31,7 +35,41 @@
             </ul>
         </div>
         <span class="index__header-nav-stack-search">Select an area of the Tech Stack</span>
+    </nav> -->
+
+    <nav id="index__header-navigation" class="index__header-navigation">
+        <div id="index__header-nav-display-wrapper">
+
+            <div id="index__header-nav-icon-btns" onmouseleave="menuPreviewModifier(0)">
+                <i
+                    class="fa fa-home index__header-icon"
+                    onmouseenter="menuPreviewModifier(1)"
+                ></i>
+                <i
+                    class="fa fa-question-circle-o index__header-icon"
+                    onmouseenter="menuPreviewModifier(2)"
+                ></i>
+                <i
+                    class="fa fa-book index__header-icon"
+                    onmouseenter="menuPreviewModifier(3)"
+                ></i>
+                <i
+                    class="fa fa-laptop index__header-icon"
+                    onmouseenter="menuPreviewModifier(4)"
+                ></i>
+                <i
+                    class="fa fa-graduation-cap index__header-icon"
+                    onmouseenter="menuPreviewModifier(5)"
+                ></i>
+            </div>
+
+            <div id="index__header-nav-preview-pane">
+                <p>Select an icon to see menu</p>
+            </div>
+
+        </div>
     </nav>
+
     <div id="index__header-categories">
         <div class="header-category">
             <i class="fa fa-desktop"></i>
