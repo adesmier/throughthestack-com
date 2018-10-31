@@ -7,7 +7,7 @@
             <a href="/">Through the Stack</a>
         </div>
         <div class="index__header-icon-menu-wrapper">
-            <i class="fa fa-search index__header-icon"></i>
+            <i class="fa fa-search index__header-icon" onclick="renderSearchComponent()"></i>
             <div id="index__header-icon-menu-btn" onclick=
                     "toggleClass(this.id, 'index__header-menu-icon-open');
                     toggleClass('index__header-components', 'index__header-components-menu-open');
@@ -20,53 +20,41 @@
             </div>
         </div>
     </div>
-    <!-- <nav id="index__header-navigation" class="index__header-navigation">
-        <div>
-            <ul>
-                <li class="index__header-nav-items-top"><a href="/"><span>Home</span></a></li>
-                <li class="index__header-nav-items-top"><a href="/about"><span>About</span></a></li>
-                <li class="index__header-nav-items-top"><a href="/blog"><span>Blog</span></a></li>
-            </ul>
-        </div>
-        <div>
-            <ul>
-                <li class="index__header-nav-items-bottom"><a href="/demos"><span>Demos</span></a></li>
-                <li class="index__header-nav-items-bottom"><a href="/projects"><span>Projects</span></a></li>
-            </ul>
-        </div>
-        <span class="index__header-nav-stack-search">Select an area of the Tech Stack</span>
-    </nav> -->
-
     <nav id="index__header-navigation" class="index__header-navigation">
         <div id="index__header-nav-display-wrapper">
-
             <div id="index__header-nav-icon-btns" onmouseleave="menuPreviewModifier(0)">
-                <i
-                    class="fa fa-home index__header-icon"
-                    onmouseenter="menuPreviewModifier(1)"
-                ></i>
-                <i
-                    class="fa fa-question-circle-o index__header-icon"
-                    onmouseenter="menuPreviewModifier(2)"
-                ></i>
-                <i
-                    class="fa fa-book index__header-icon"
-                    onmouseenter="menuPreviewModifier(3)"
-                ></i>
-                <i
-                    class="fa fa-laptop index__header-icon"
-                    onmouseenter="menuPreviewModifier(4)"
-                ></i>
-                <i
-                    class="fa fa-graduation-cap index__header-icon"
-                    onmouseenter="menuPreviewModifier(5)"
-                ></i>
+                <a href="/">
+                    <i class="fa fa-home index__header-icon"
+                       onmouseenter="menuPreviewModifier(1)"
+                    ></i>
+                </a>
+                <a href="/about">
+                    <i class="fa fa-question-circle-o index__header-icon"
+                       onmouseenter="menuPreviewModifier(2)"
+                    ></i>
+                </a>
+                <a href="/blog">
+                    <i class="fa fa-book index__header-icon"
+                       onmouseenter="menuPreviewModifier(3)"
+                    ></i>
+                </a>
+                <a href="/demosprojects">
+                    <i class="fa fa-laptop index__header-icon"
+                       onmouseenter="menuPreviewModifier(4)"
+                    ></i>
+                </a>
+                <a href="http://www.adesmier.me">
+                    <i class="fa fa-graduation-cap index__header-icon"
+                       onmouseenter="menuPreviewModifier(5)"
+                    ></i>
+                </a>
             </div>
-
             <div id="index__header-nav-preview-pane">
-                <p>Select an icon to see menu</p>
+                <p>Choose where to go by selecting an icon...</p>
             </div>
-
+        </div>
+        <div id="index__header-nav-choose-tech-stack">
+            Or view posts about an area of the web development stack
         </div>
     </nav>
 
