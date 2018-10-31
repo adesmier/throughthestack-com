@@ -58,6 +58,8 @@ layout: compress
     </head>
     <body>
 
+        <div id="index__react-search-component"></div>
+
         <!-- <div id="full-page-container"> -->
 
         {% include _common/header.html %}
@@ -71,6 +73,15 @@ layout: compress
 
         <!-- </div> -->
 
+        {% comment %} SCRIPTS SECTION --- REACT SCRIPTS {% endcomment %}
+
+        {% if jekyll.environment == 'production' %}
+            <script type="text/javascript" src="/assets/scripts/bundles/react-app.min.js"></script>
+        {% elsif jekyll.environment == 'development' %}
+            <script type="text/javascript" src="/assets/scripts/vendor/{{ site.vendor_react }}"></script>
+            <script type="text/javascript" src="/assets/scripts/bundles/react-app.js"></script>
+        {% endif %}
+
         {% comment %} SCRIPTS SECTION --- COMMON SCRIPTS {% endcomment %}
 
         {% include _common/scripts.html %}
@@ -79,15 +90,6 @@ layout: compress
 
         {% if page.scripts %}
             {{ page.scripts }}
-        {% endif %}
-
-        {% if page.react == true %}
-            {% if jekyll.environment == 'production' %}
-                <script type="text/javascript" src="/assets/scripts/bundles/react-app.min.js"></script>
-            {% elsif jekyll.environment == 'development' %}
-                <script type="text/javascript" src="/assets/scripts/vendor/{{ site.vendor_react }}"></script>
-                <script type="text/javascript" src="/assets/scripts/bundles/react-app.js"></script>
-            {% endif %}
         {% endif %}
 
     </body>
