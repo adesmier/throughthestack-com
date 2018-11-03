@@ -1,7 +1,7 @@
 import React   from 'react';
 
-import Article from '../../components/Article/Article';
-import Tags    from '../../components/Article/Tags';
+import Article from '../components/Article/Article';
+import Tags    from '../components/Article/Tags';
 
 
 export default class Blog extends React.Component {
