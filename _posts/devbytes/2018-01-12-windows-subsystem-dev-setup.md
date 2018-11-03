@@ -3,8 +3,8 @@ layout: blogpost
 id: 3
 title: My Windows Subsystem for Linux Development Setup
 category: devbytes
-image: assets/images/posts/devbytes/devbytes-wsl.jpg
-thumbnail: assets/images/posts/devbytes/devbytes-wsl-thumb.jpg
+image: /assets/images/posts/devbytes/devbytes-wsl.jpg
+thumbnail: /assets/images/posts/devbytes/devbytes-wsl-thumb.jpg
 time: 5 min
 heading: With the Windows Subsystem for Linux now becoming a full feature in Windows 10, you'll really be able to harness the power of having a full version of Linux running behind the scenes to provide compilation and tooling support for your development projects.
 tags: [windows, wsl, build, tooling]

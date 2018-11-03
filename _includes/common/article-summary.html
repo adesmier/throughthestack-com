@@ -13,9 +13,9 @@
             onclick="{% if post.serieslink %}return renderSeriesPosts(){% endif %}"
         >
             {% if include.thumbnailType == 'article-thumbnail' %}
-                <figure class="{{ include.thumbnailType }}" style="background-image:url(/{{ post.thumbnail }})"></figure>
+                <figure class="{{ include.thumbnailType }}" style="background-image:url({{ post.thumbnail }})"></figure>
             {% else %}
-                <figure class="{{ include.thumbnailType }}" style="background-image:url(/{{ post.image }})"></figure>
+                <figure class="{{ include.thumbnailType }}" style="background-image:url({{ post.image }})"></figure>
             {% endif %}
         </a>
 

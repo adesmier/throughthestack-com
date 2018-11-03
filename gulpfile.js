@@ -49,10 +49,10 @@ var jsFiles = {
         'assets/scripts/src/tutorials/detectScrollToChapter.js'
     ],
     'common.js': [
-        'assets/scripts/src/plugins/classModifier.js',
-        'assets/scripts/src/plugins/scrollToElement.js',
-        'assets/scripts/src/plugins/updateNavPreview.js',
-        'assets/scripts/src/plugins/searchComponent.js'
+        'assets/scripts/src/common/classModifier.js',
+        'assets/scripts/src/common/scrollToElement.js',
+        'assets/scripts/src/common/updateNavPreview.js',
+        'assets/scripts/src/common/searchComponent.js'
     ]
 };
 

@@ -52,7 +52,7 @@ layout: compress
 
         <!-- Google Analyitics Code -START- -->
         {% if jekyll.environment == 'production' %}
-            {% include _common/analytics.html %}
+            {% include common/analytics.html %}
         {% endif %}
         <!-- Google Analyitics Code -END- -->
     </head>
@@ -62,14 +62,14 @@ layout: compress
 
         <!-- <div id="full-page-container"> -->
 
-        {% include _common/header.html %}
+        {% include common/header.html %}
 
         <div id="index__main-page-overlay" class="index__main-page-overlay-hidden"></div>
         <main id="index__main-page-content">
             {{ content }}
         </main>
 
-        {% include _common/footer.html %}
+        {% include common/footer.html %}
 
         <!-- </div> -->
 
@@ -84,7 +84,7 @@ layout: compress
 
         {% comment %} SCRIPTS SECTION --- COMMON SCRIPTS {% endcomment %}
 
-        {% include _common/scripts.html %}
+        {% include common/scripts.html %}
 
         {% comment %} SCRIPTS SECTION --- PER-PAGE SCRIPTS {% endcomment %}
 

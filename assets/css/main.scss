@@ -9,13 +9,13 @@
 //CUSTOM IMPORTS
 
 /*******GLOBALS*******/
-@import "modules/_common/globals";
-@import "modules/_common/code-highlighter";
-@import "modules/_common/grid-card";
-@import "modules/_common/article-summary";
-@import "modules/_common/header";
-@import "modules/_common/footer";
-@import "modules/_common/holding-page";
+@import "modules/common/globals";
+@import "modules/common/code-highlighter";
+@import "modules/common/grid-card";
+@import "modules/common/article-summary";
+@import "modules/common/header";
+@import "modules/common/footer";
+@import "modules/common/holding-page";
 
 /*******HOME PAGE*******/
 @import "modules/home/latest-posts";
@@ -30,9 +30,9 @@
 
 //MEDIA QUERIES
 
-@import "modules/_media-queries/mq_globals";
-@import "modules/_media-queries/mq_header";
-@import "modules/_media-queries/mq_tutorials";
-@import "modules/_media-queries/mq_blog-post-grid";
+@import "modules/media-queries/mq_globals";
+@import "modules/media-queries/mq_header";
+@import "modules/media-queries/mq_tutorials";
+@import "modules/media-queries/mq_blog-post-grid";
 
 
