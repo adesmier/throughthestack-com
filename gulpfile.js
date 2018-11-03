@@ -45,12 +45,12 @@ var messages = {
 
 var jsFiles = {
     'tutorials.js': [
+        'assets/scripts/src/tutorials/scrollToElement.js',
         'assets/scripts/src/tutorials/detectBrowserWidth.js',
         'assets/scripts/src/tutorials/detectScrollToChapter.js'
     ],
     'common.js': [
         'assets/scripts/src/common/classModifier.js',
-        'assets/scripts/src/common/scrollToElement.js',
         'assets/scripts/src/common/updateNavPreview.js',
         'assets/scripts/src/common/searchComponent.js'
     ]
