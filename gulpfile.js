@@ -187,7 +187,10 @@ gulp.task('build-react', ['build-vendor-react'],  function(){
     }
     
     return appBundler
-        .transform('babelify', {presets: ['es2015', 'stage-2', 'react']})
+        .transform('babelify', {
+            presets: ['es2015', 'stage-2', 'react'],
+            plugins: ['transform-runtime', 'transform-async-to-generator']
+        })
         .bundle()
         .pipe(vsource('react-app.js'))
         .pipe(gulpif(env, buffer()))
