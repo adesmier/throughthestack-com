@@ -5,8 +5,8 @@
      * header.html file
      */
     w.renderSearchComponent = function(){
-        ReactDOM.render(
-            React.createElement(window.searchComponent, {}),
+        w.searchComponentNode = Preact.render(
+            Preact.h(window.searchComponent, {}),
             d.getElementById('index__react-search-component')
         );
     }
