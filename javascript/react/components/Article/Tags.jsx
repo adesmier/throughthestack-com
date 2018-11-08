@@ -1,5 +1,5 @@
-import React  from 'react';
-import PropTypes from 'prop-types';
+import Preact from 'preact';
+// import PropTypes from 'prop-types';
 
 
 const Tags = props => {
@@ -23,9 +23,9 @@ const Tags = props => {
     );
 }
 
-Tags.propTypes = {
-    tags: PropTypes.array.isRequired
-}
+// Tags.propTypes = {
+//     tags: PropTypes.array.isRequired
+// }
 
 
 export default Tags;

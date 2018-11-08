@@ -1,10 +1,9 @@
-import React   from 'react';
-import { unmountComponentAtNode } from 'react-dom';
+import Preact from 'preact';
 
 const AlgoliaActions = require('../../algoliasearch/modules/algoliaActions');
 
 
-export default class Search extends React.Component {
+export default class Search extends Preact.Component {
 
     state = { closing: false, results: null }
 
@@ -32,6 +31,7 @@ export default class Search extends React.Component {
     }
 
     componentWillUnmount() {
+        console.log('unmount called');
         this.searchEl.removeEventListener('animationend', this.handleSearchClosing);
     }
 
@@ -40,7 +40,11 @@ export default class Search extends React.Component {
 
     handleSearchClosing = e => {
         const evtName = e.animationName;
-        if(evtName === 'searchClosing') unmountComponentAtNode(this.searchEl);
+        if(evtName === 'searchClosing') {
+            //unmountComponentAtNode() not available in Preact
+            //https://github.com/developit/preact/issues/1151
+            Preact.render(null, this.searchEl, window.searchComponentNode);
+        }
     }
 
     close = () => {

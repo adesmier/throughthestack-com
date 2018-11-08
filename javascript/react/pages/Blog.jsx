@@ -1,10 +1,10 @@
-import React   from 'react';
+import Preact from 'preact';
 
 import Article from '../components/Article/Article';
 import Tags    from '../components/Article/Tags';
 
 
-export default class Blog extends React.Component {
+export default class Blog extends Preact.Component {
 
     state = {
         posts: [
@@ -62,8 +62,8 @@ export default class Blog extends React.Component {
     }
 
 
-    render() {
-        const { posts } = this.state;
+    render(props, { posts }) {
+        // const { posts } = this.state;
 
         const renderedPosts = posts.map(post => {
             return (

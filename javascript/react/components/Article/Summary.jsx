@@ -1,5 +1,5 @@
-import React  from 'react';
-import PropTypes from 'prop-types';
+import Preact from 'preact';
+// import PropTypes from 'prop-types';
 
 
 const Summary = props => {
@@ -27,10 +27,10 @@ const Summary = props => {
     );
 }
 
-Summary.propTypes = {
-    postData:     PropTypes.object.isRequired,
-    isOnBlogPage: PropTypes.bool.isRequired
-}
+// Summary.propTypes = {
+//     postData:     PropTypes.object.isRequired,
+//     isOnBlogPage: PropTypes.bool.isRequired
+// }
 
 
 export default Summary;
