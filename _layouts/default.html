@@ -76,10 +76,10 @@ layout: compress
         {% comment %} SCRIPTS SECTION --- REACT SCRIPTS {% endcomment %}
 
         {% if jekyll.environment == 'production' %}
-            <script type="text/javascript" src="/assets/scripts/bundles/react-app.min.js"></script>
+            <script type="text/javascript" src="/assets/scripts/bundles/app.min.js"></script>
         {% elsif jekyll.environment == 'development' %}
-            <script type="text/javascript" src="/assets/scripts/vendor/{{ site.vendor_react }}"></script>
-            <script type="text/javascript" src="/assets/scripts/bundles/react-app.js"></script>
+            <script type="text/javascript" src="/assets/scripts/vendor/{{ site.vendor_preact }}"></script>
+            <script type="text/javascript" src="/assets/scripts/bundles/app.js"></script>
         {% endif %}
 
         {% comment %} SCRIPTS SECTION --- COMMON SCRIPTS {% endcomment %}
