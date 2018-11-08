@@ -18,11 +18,11 @@ var log         = require('gulp-util').log;
 var logColour   = require('gulp-util').colors;
 var fs          = require('fs');
 
-//transpiling and bundling react code
+//transpiling and bundling react (preact) code
 var browserify  = require('browserify');
 var vsource     = require('vinyl-source-stream');
 var buffer      = require('vinyl-buffer'); //to uglify files from a vinyl source https://stackoverflow.com/questions/24992980/how-to-uglify-output-with-browserify-in-gulp
-var collapse    = require('bundle-collapser/plugin'); //for building production react module
+var collapse    = require('bundle-collapser/plugin'); //for building production react module (NOT USED ANYMORE?)
 
 
 /******************************************************************************/
@@ -31,12 +31,10 @@ var collapse    = require('bundle-collapser/plugin'); //for building production 
 var package = JSON.parse(fs.readFileSync('./package.json'));
 
 //external dependencies not to bundle while developing, but include in application deployment
-var dependencies = [
-	'react',
-  	'react-dom'
-];
-var reactVersion = package.dependencies.react;
-var reactVendorOutput = 'react' + reactVersion + '.js';
+var dependencies = ['preact'];
+
+var preactVersion = package.dependencies.preact;
+var preactVendorOutput = 'preact' + preactVersion + '.js';
 
 var messages = {
     jekyllBuild: 'DEV MODE: Building Jekyll Site',
@@ -163,7 +161,7 @@ gulp.task('scripts', function(){
 /**
  * Compile and bundle React code
  */
-gulp.task('build-react', ['build-vendor-react'],  function(){
+gulp.task('build-preact', ['build-vendor-preact'],  function(){
 
     var env = process.env.NODE_ENV === 'production' ? true : false;
 	var appBundler = browserify({
@@ -179,7 +177,7 @@ gulp.task('build-react', ['build-vendor-react'],  function(){
   		});
   	}
     if(env){
-        //for production bundle all vendor react and custom react together and optimize
+        //for production bundle all vendor react (preact) and custom react together and optimize
         //https://facebook.github.io/react/docs/optimizing-performance.html#browserify
         appBundler
             .transform('envify', {'global': true})
@@ -189,13 +187,18 @@ gulp.task('build-react', ['build-vendor-react'],  function(){
     return appBundler
         .transform('babelify', {
             presets: ['es2015', 'stage-2', 'react'],
-            plugins: ['transform-runtime', 'transform-async-to-generator']
+            plugins: [
+                //preact uses h() as JSX pragma https://preactjs.com/guide/switching-to-preact#1-install-preact
+                ['transform-react-jsx', {'pragma': 'Preact.h'}],
+                'transform-runtime',
+                'transform-async-to-generator'
+            ]
         })
         .bundle()
-        .pipe(vsource('react-app.js'))
+        .pipe(vsource('app.js'))
         .pipe(gulpif(env, buffer()))
         .pipe(gulpif(env, uglify())) //only minify in production
-        .pipe(gulpif(env, rename('react-app.min.js')))
+        .pipe(gulpif(env, rename('app.min.js')))
         .pipe(gulpif(!env, gulp.dest('_site/assets/scripts/bundles')))
         .pipe(gulpif(!env, browserSync.reload({stream:true})))
         .pipe(gulp.dest('assets/scripts/bundles'));
@@ -205,15 +208,15 @@ gulp.task('build-react', ['build-vendor-react'],  function(){
 /**
  * Compile and bundle React vendor modules for dev environment
  */
-gulp.task('build-vendor-react',  function(){
+gulp.task('build-vendor-preact',  function(){
     
     var env = process.env.NODE_ENV === 'production' ? true : false;
 
-    if(!env && !fs.existsSync('./assets/scripts/vendor/' + reactVendorOutput)){
+    if(!env && !fs.existsSync('./assets/scripts/vendor/' + preactVendorOutput)){
         var vendorBundler = browserify({require: dependencies, debug: true});
         return vendorBundler
             .bundle()
-            .pipe(vsource(reactVendorOutput))
+            .pipe(vsource(preactVendorOutput))
             .pipe(gulp.dest('assets/scripts/vendor'));
     } else {
         return;
@@ -228,7 +231,7 @@ gulp.task('build-vendor-react',  function(){
  */
 gulp.task('jekyll-build', ['pre-build',
                            'sass',
-                           'build-react',
+                           'build-preact',
                            'scripts'], function (done) {
     browserSync.notify(messages.jekyllBuild);
     return cp.spawn('bundle', ['exec',
@@ -265,7 +268,7 @@ gulp.task('jekyll-rebuild', function () {
  */
 gulp.task('watch', ['browser-sync'], function () {
     gulp.watch('assets/css/**', ['sass']);
-    gulp.watch('javascript/react/**', ['build-react']);
+    gulp.watch('javascript/react/**', ['build-preact']);
     gulp.watch('assets/scripts/src/**', ['scripts']);
     gulp.watch(['*.html',
                 '_layouts/**',
