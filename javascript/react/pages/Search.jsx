@@ -20,10 +20,10 @@ export default class Search extends React.Component {
 
 
 
-        const algoliaActions = new AlgoliaActions('posts', true);
+        const algoliaActions = new AlgoliaActions('sort_by_date_', true);
 
         try {
-            let results = await algoliaActions.searchIndex('esorivnaeoicnrev');
+            let results = await algoliaActions.searchIndex('');
             this.setState({ results });
         } catch(e) {
             console.error(e);
