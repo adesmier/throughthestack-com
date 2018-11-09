@@ -8,7 +8,8 @@
     "prod": "./node_modules/gulp/bin/gulp.js netlify-deploy",
     "prod-server": "./node_modules/http-server/bin/http-server ./_site",
     "clean": "./node_modules/gulp/bin/gulp.js clean",
-    "algolia": "node ./javascript/algoliasearch/pushSearchData.js"
+    "algolia": "node ./javascript/algoliasearch/pushSearchData.js",
+    "algolia-clean": ""
   },
   "author": "Anthony Desmier",
   "devDependencies": {
