@@ -12,7 +12,14 @@ const postCategories = [
 let cacheNeedsUpdate = false;
 
 const postActions    = new PostExportActions();
-const algoliaActions = new AlgoliaActions('posts');
+let algoliaActions;
+
+try {
+    algoliaActions = new AlgoliaActions('posts');
+} catch(e) {
+    console.error('AlgoliaActions module errored with message:', e.message);
+    process.exit(1);
+}
 
 
 //fulfill each promise in postCategories at the same time and wait till both
