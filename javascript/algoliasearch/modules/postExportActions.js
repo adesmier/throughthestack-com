@@ -20,9 +20,7 @@ module.exports = class PostExportActions {
          * node stream once it starts to grow
          */
         this.cachePath = '_cache/indexedPosts.json';
-        this._indexedPosts = require(
-            '../../../_cache/indexedPosts.json'
-        );
+        this._indexedPosts = require('../../../_cache/indexedPosts.json');
     }
 
     // ------ PRIVATE METHODS ------
@@ -67,10 +65,11 @@ module.exports = class PostExportActions {
         if(!dateStr) return '2018-01-01'; //return static date if no match found
 
         const date = moment(dateStr, 'YYYY-MM-DD');
+        const unix = date.unix();
         const day = date.format('DD');
         const month = date.format('MMM');
         const year = date.format('YYYY');
-        return `${day} ${month} ${year}`;
+        return { unix, friendly: `${day} ${month} ${year}` };
     }
 
     /**
@@ -93,6 +92,8 @@ module.exports = class PostExportActions {
             tags
         } = matter.data;
 
+        const dates = this[_getPostDate](dir);
+
         let cleanedMatter = {
             objectID: id,
             title,
@@ -100,7 +101,8 @@ module.exports = class PostExportActions {
             heading,
             image,
             thumbnail,
-            date: this[_getPostDate](dir),
+            unix_date: dates.unix,
+            friendly_date: dates.friendly,
             time,
             _tags: tags,
             url: this[_getPostUrl](category, dir)

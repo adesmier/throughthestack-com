@@ -15,7 +15,7 @@ const postActions    = new PostExportActions();
 let algoliaActions;
 
 try {
-    algoliaActions = new AlgoliaActions('posts');
+    algoliaActions = new AlgoliaActions('test_posts');
 } catch(e) {
     console.error('AlgoliaActions module errored with message:', e.message);
     process.exit(1);
