@@ -169,7 +169,7 @@ gulp.task('build-react', ['build-vendor-react'],  function(){
 	var appBundler = browserify({
         entries: './javascript/react/index.jsx',
         extensions: ['.jsx'],
-    	debug: true
+    	debug: env ? false : true
   	});
 
   	if(!env){
@@ -210,7 +210,7 @@ gulp.task('build-vendor-react',  function(){
     var env = process.env.NODE_ENV === 'production' ? true : false;
 
     if(!env && !fs.existsSync('./assets/scripts/vendor/' + reactVendorOutput)){
-        var vendorBundler = browserify({require: dependencies, debug: true});
+        var vendorBundler = browserify({require: dependencies, debug: env ? false : true});
         return vendorBundler
             .bundle()
             .pipe(vsource(reactVendorOutput))
