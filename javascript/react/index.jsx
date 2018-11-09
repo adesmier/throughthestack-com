@@ -13,4 +13,3 @@ window.searchComponent = require('./pages/Search').default;
 //load the blog post grid
 const blogGridEl = document.getElementById('blog__react-root');
 if(blogGridEl) ReactDOM.render(<Blog />, blogGridEl);
-
