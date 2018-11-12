@@ -86,16 +86,15 @@ and blog page */
 }
 
 .article-tags{
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
     padding: 0 0 3px 5px;
     i {
         font-size: 70%;
         margin-right: 5px;
         color: $articleMetaTagColour;
     }
-
-    // a {
-    //     margin-right: 5px;
-    // }
 
     .tag-name{
         font-size: 65%;

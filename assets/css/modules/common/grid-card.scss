@@ -5,7 +5,7 @@
 
 .grid-card{
     height: auto;
-    padding: 10px 15px;
+    padding: 10px 15px 7px 15px;
     background-color: #fff;
     border-radius: 4px;
     box-shadow: 0 2px 1px 0 #d6d6d6;
@@ -83,6 +83,7 @@ Used on Blog page and related/recent posts sections
     .article-tags{
         a {
             margin-right: 5px;
+            margin-bottom: 5px;
         }
     }
 }
