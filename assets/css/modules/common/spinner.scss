@@ -1,0 +1,240 @@
+.loading-spinner {
+    $tiny-font-size:   10px;
+    $small-font-size:  11px;
+    $medium-font-size: 14px;
+    $large-font-size:  18px;
+
+    $tiny-size:  10px;
+    $small-size: 12px;
+    $medium-size: 50px;
+    $large-size:  70px;
+
+    $border-radius: 500rem;
+    $border-line-width: 2px;
+
+    $text-distance: $medium-font-size;
+
+    $default-size: $large-size;
+
+    $bg-shape-rgba: rgba(0, 0, 0, .1);
+    $spinning-shape-rgb: rgb(170, 170, 170) transparent transparent;
+
+    display: block;
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    color: rgba(0, 0, 0, .8);
+    margin: 0;
+    line-height: 1;
+
+    text-align: center;
+    font-weight: 100;
+    transform: translateX(-50%) translateY(-50%);
+
+    &.css-loader-text,
+    &.css-loader-inline-text {
+        width: auto !important;
+        height: auto !important;
+        text-align: center;
+        font-style: normal;
+    }
+
+    &::before /* Background Shape */ {
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+
+        border-radius: $border-radius;
+
+        border-width: $border-line-width;
+        border-style: solid;
+        border-color: $bg-shape-rgba;
+    }
+
+
+    &::after /* Spinning Shape */ {
+        border-width: $border-line-width;
+        border-radius: 500rem;
+        border-style: solid;
+        box-sizing: inherit;
+        top: 0;
+        left: 50%;
+        content: '';
+        position: absolute;
+        margin: 0 0 0 #{-$default-size/2 - $border-line-width};
+
+        width: 100%;
+        height: 100%;
+
+
+        border-color: $spinning-shape-rgb;
+        border-style: solid;
+        border-width: $border-line-width;
+
+        animation: oaloader-rotate .7s linear;
+        animation-iteration-count: infinite;
+
+        border-radius: $border-radius;
+        box-shadow: 0 0 0 1px transparent;
+    }
+
+    @mixin loader-size($size, $font-size) {
+        font-size: $font-size;
+        width: $size;
+        height: $size;
+
+        &::before,
+        &::after {
+            width: $size;
+            height: $size;
+            margin: 0 0 0 #{-$size/2 - $border-line-width};
+        }
+
+        &.css-loader-text {
+            min-width: $size;
+            padding-top: ($size + $font-size);
+        }
+
+        &.css-loader-inline-text {
+            min-width: $size;
+            position: relative;
+            vertical-align: middle;
+            margin: 0;
+            line-height: $size + (2 * $border-line-width);
+            display: inline-block;
+            transform: none;
+
+            &::before,
+            &::after {
+                display: inline-block;
+                float: left;
+                vertical-align: middle;
+                left: -$size * 1.5;
+            }
+        }
+    }
+
+    //      __    __  ___  __
+    //     /__` |  / |__  /__`
+    //     .__/ | /_ |___ .__/
+    //
+
+    // Default: medium!
+    @include loader-size($medium-size, $medium-font-size);
+
+    &.tiny {
+        @include loader-size($tiny-size, $tiny-font-size);
+    }
+
+    &.small {
+        @include loader-size($small-size, $small-font-size);
+    }
+
+    &.medium {
+        // DEFAULT NO NEED
+        // @include loader-size($medium-size, $medium-font-size);
+
+        body.chrome & {
+            // Fix for a blurry font-size, !pixel-perfect in Chrome
+            transform: translateX(-50.9%) translateY(-50%);
+        }
+    }
+
+    &.large {
+        @include loader-size($large-size, $large-font-size);
+    }
+
+    //      __   __        __   __   __
+    //     /  ` /  \ |    /  \ |__) /__`
+    //     \__, \__/ |___ \__/ |  \ .__/
+    //
+
+    &.blue {
+        &::after {
+            border-color: rgb(0, 71, 255) transparent transparent;
+        }
+    }
+
+    &.orange {
+        &::after {
+            border-color: rgb(255, 108, 5) transparent transparent;
+        }
+    }
+
+    &.red {
+        &::after {
+            border-color: rgb(159, 15, 15) transparent transparent;
+        }
+    }
+
+    &.darkBlue {
+        &::before{
+            border-color: #3a3a3a;
+        }
+        &::after {
+            border-color: #99BFEB transparent transparent;
+        }
+    }
+    &.lock-animation {
+        &::after,
+        &::before {
+            animation: none !important;
+        }
+    }
+
+    &.pulse {
+        &::before {
+            border-color: rgba(0, 0, 0, .2);
+            animation:oaloader-pulse .7s linear;
+            animation-iteration-count:infinite;
+        }
+
+        &::after {
+            content: none;
+            animation: none;
+        }
+
+        &.orange {
+            &::before {
+                border-color: rgb(255, 108, 5);
+            }
+        }
+    }
+
+    //      __             __   ___                           ___    __
+    //     |__) |  | |    /__` |__      /\  |\ | |  |\/|  /\   |  | /  \ |\ |
+    //     |    \__/ |___ .__/ |___    /~~\ | \| |  |  | /~~\  |  | \__/ | \|
+    //
+
+    $scale-from: 1;
+    $scale-to: 1.07;
+
+    @keyframes oaloader-rotate {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+           transform: rotate(360deg);
+        }
+    }
+
+    @keyframes oaloader-pulse {
+        0% {
+            transform: scale($scale-from);
+        }
+
+        50% {
+           transform: scale($scale-to);
+        }
+
+        100% {
+            transform: scale($scale-from);
+        }
+    }
+}
