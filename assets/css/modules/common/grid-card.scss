@@ -80,6 +80,7 @@ Used on Blog page and related/recent posts sections
 }
 
 .blog__blog-post-flexgrid-wrapper{
+    box-sizing: border-box;
     .article-tags{
         a {
             margin-right: 5px;
