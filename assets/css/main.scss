@@ -10,6 +10,7 @@
 
 /*******GLOBALS*******/
 @import "modules/common/globals";
+@import "modules/common/spinner";
 @import "modules/common/code-highlighter";
 @import "modules/common/grid-card";
 @import "modules/common/article-summary";
@@ -24,6 +25,8 @@
 
 /*******POSTS*******/
 @import "modules/posts/tutorials";
+
+@import "modules/blog/blog-post-grid";
 
 /*******SEARCH COMPONENT*******/
 @import "modules/search/search-component";
