@@ -6,8 +6,11 @@ const AlgoliaActions    = require('./modules/algoliaActions');
 //tutorial dir
 const postsDir       = path.join(__dirname, '../../_posts');
 const postCategories = [
-    'devbytes',
-    'tutorials'
+    'backend',
+    'buildtestconfig',
+    'clouddatabase',
+    'frontend',
+    'networkhardware'
 ];
 let cacheNeedsUpdate = false;
 
