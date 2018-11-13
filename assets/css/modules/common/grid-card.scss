@@ -70,10 +70,6 @@ Used on Blog page and related/recent posts sections
 
 
 
-//Blog page only!
-// .blog__blog-post-flexgrid-wrapper.grid-card{
-//     padding: 10px 15px 7px 15px;
-// }
 .blog__blog-post-flexgrid-wrapper.multi-width-card{
     flex: 0 0 32%;
     justify-content: space-between; //drops article tags to bottom of card
@@ -98,11 +94,6 @@ Used on Blog page and related/recent posts sections
     justify-content: center;
     margin-top: 10px;
 }
-
-// #post-header-wrapper.grid-card,
-// #post-content-wrapper.grid-card{
-//     padding: 10px 15px 7px 15px;
-// }
 
 //post page only!
 #post__related-recent-posts-wrapper > .multi-width-card{
