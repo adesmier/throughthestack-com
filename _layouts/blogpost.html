@@ -2,8 +2,12 @@
 layout: default
 ---
 
-{% if page.type == 'tutorials' %}
-    {% assign tutorials = true %}
+{% if page.type == 'tutorial' %}
+    {% assign tutorial = true %}
+{% endif %}
+
+{% if page.type == 'devbyte' %}
+    {% assign devbyte = true %}
 {% endif %}
 
 <!-- nolink class added to prevent link generation for http text. See 
@@ -15,13 +19,9 @@ layout: default
     <article id="post-section-wrapper-content">
 
         <!-- POST HEADER IMAGE SECTION AND HEADING TEXT -->
-        <div id="post-header-wrapper" class="grid-card full-width-card ribbon-card">
+        <div id="post-header-wrapper" class="grid-card full-width-card">
 
-            {% if page.type == 'devbytes' %}
-                <!-- <div class="corner-ribbon ribbon-top-left"><span>DevBytes</span></div> -->
-            {% endif %}
-
-            {% if tutorials == true %}
+            {% if tutorial == true %}
                 <div id="post-image">
                     <img src="{{ page.image }}" alt="post header image" />
                 </div>
@@ -48,12 +48,32 @@ layout: default
                 </ul>
                 <p>{{ page.heading | markdownify }}</p>
             </div>
+
+            {% if devbyte == true %}
+                <div id="post__devbyte-code-links" class="post-demo-link">
+                    {% if page.demo %}
+                        <a href="{{ page.demo }}" target="_blank" rel="noopener noreferrer">
+                            <button class="fa fa-code"><span>Demo</span></button>
+                        </a>
+                    {% endif %}
+                    {% if page.github %}
+                        <a href="{{ page.github }}" target="_blank" rel="noopener noreferrer">
+                            <button class="fa fa-github"><span>Code</span></button>
+                        </a>
+                    {% endif %}
+                    {% if page.codepen %}
+                        <a href="{{ page.codepen }}" target="_blank" rel="noopener noreferrer">
+                            <button class="fa fa-codepen"><span>Pen</span></button>
+                        </a>
+                    {% endif %}
+                </div>
+            {% endif %}
         </div>
 
         <hr />
 
         <!-- POST INTRO TEXT SECTION -->
-        {% if tutorials == true %}
+        {% if tutorial == true %}
             <div id="post-intro-wrapper" class="grid-card full-width-card">
                 <div class="post-intro-links">
                     <a href="#Sections">
@@ -77,9 +97,9 @@ layout: default
         {% endif %}
 
         <!-- MAIN CONTENT OF THE POST -->
-        <div class="post-content-wrapper grid-card full-width-card">
+        <div id="post-content-wrapper" class="grid-card full-width-card">
 
-            {% if tutorials == true %}
+            {% if tutorial == true %}
                 {% assign sectionOffset = 1 %}
             {% else %}
                 {% assign sectionOffset = 0 %}
@@ -168,7 +188,7 @@ layout: default
 
     </article>
 
-    {% if tutorials == true %}
+    {% if tutorial == true %}
         <aside id="post-section-wrapper-chapters">
             <div id="aside-chapters-container">
                 {% include blog/chapter-selection.html
@@ -189,7 +209,7 @@ layout: default
                             {% endif %}
                             {% if page.codepen %}
                                 <a href="{{ page.codepen }}" target="_blank" rel="noopener noreferrer">
-                                    <button class="fa fa-github"><span>Pen</span></button>
+                                    <button class="fa fa-codepen"><span>Pen</span></button>
                                 </a>
                             {% endif %}
                         </div>
