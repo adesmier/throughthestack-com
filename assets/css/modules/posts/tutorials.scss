@@ -62,6 +62,7 @@
 
 #post-header-wrapper{
     //margin-top: 110px; //make lower than the header
+    box-sizing: border-box;
 
     #post-image{
         img{
@@ -197,6 +198,11 @@
     }
     display: flex;
     justify-content: space-evenly;
+}
+
+#post__devbyte-code-links.post-demo-link {
+    width: 50%;
+    margin: 0 auto;
 }
 
 #post-intro-text,
@@ -404,7 +410,8 @@ Class added/removed via jQuery textLimit.js file
 //     z-index: 1;
 // }
 
-.post-content-wrapper{
+#post-content-wrapper{
+    box-sizing: border-box;
     padding-bottom: 15px;
 }
 

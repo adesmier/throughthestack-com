@@ -68,7 +68,12 @@ Used on Blog page and related/recent posts sections
     flex-direction: column;
 }
 
+
+
 //Blog page only!
+// .blog__blog-post-flexgrid-wrapper.grid-card{
+//     padding: 10px 15px 7px 15px;
+// }
 .blog__blog-post-flexgrid-wrapper.multi-width-card{
     flex: 0 0 32%;
     justify-content: space-between; //drops article tags to bottom of card
@@ -86,11 +91,18 @@ Used on Blog page and related/recent posts sections
         margin-bottom: 5px;
     }
 }
+
+
 //post page only!
 #post-header-wrapper .article-tags {
     justify-content: center;
     margin-top: 10px;
 }
+
+// #post-header-wrapper.grid-card,
+// #post-content-wrapper.grid-card{
+//     padding: 10px 15px 7px 15px;
+// }
 
 //post page only!
 #post__related-recent-posts-wrapper > .multi-width-card{
@@ -161,51 +173,51 @@ Used on post pages where grid card will contain content as a fixed header
 //     }
 // }
 
-.ribbon-card{
-    position: relative;
-}
-.corner-ribbon{
-    width: 150px;
-    height: 150px;
-    overflow: hidden;
-    position: absolute;
-    &:before,
-    &:after{
-        position: absolute;
-        z-index: -1;
-        content: '';
-        display: block;
-        border: 5px solid #2980b9;
-    }
-    span{
-        position: absolute;
-        display: block;
-        width: 225px;
-        padding: 5px 10px 5px 0;
-        background-color: #3498db;
-        text-align: center;
-        font-size: 75%;
-    }
-}
-.ribbon-top-left{
-    top: -10px;
-    left: -10px;
-    &:before,
-    &:after{
-        border-top-color: transparent;
-        border-left-color: transparent;
-    }
-    &:before{
-        top: 0;
-        right: 29px;
-    }
-    &:after{
-        bottom: 29px;
-        left: 0;
-    }
-    span{
-        right: -20px;
-        top: 30px;
-        transform: rotate(-45deg);
-    }
-}
+// .ribbon-card{
+//     position: relative;
+// }
+// .corner-ribbon{
+//     width: 150px;
+//     height: 150px;
+//     overflow: hidden;
+//     position: absolute;
+//     &:before,
+//     &:after{
+//         position: absolute;
+//         z-index: -1;
+//         content: '';
+//         display: block;
+//         border: 5px solid #2980b9;
+//     }
+//     span{
+//         position: absolute;
+//         display: block;
+//         width: 225px;
+//         padding: 5px 10px 5px 0;
+//         background-color: #3498db;
+//         text-align: center;
+//         font-size: 75%;
+//     }
+// }
+// .ribbon-top-left{
+//     top: -10px;
+//     left: -10px;
+//     &:before,
+//     &:after{
+//         border-top-color: transparent;
+//         border-left-color: transparent;
+//     }
+//     &:before{
+//         top: 0;
+//         right: 29px;
+//     }
+//     &:after{
+//         bottom: 29px;
+//         left: 0;
+//     }
+//     span{
+//         right: -20px;
+//         top: 30px;
+//         transform: rotate(-45deg);
+//     }
+// }
