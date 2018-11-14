@@ -1,5 +1,7 @@
-import React  from 'react';
-import PropTypes from 'prop-types';
+import React              from 'react';
+import PropTypes          from 'prop-types';
+
+import CategoryIconOverlay from '../../components/Article/CategoryIconOverlay';
 
 
 const CoverImage = props => {
@@ -23,6 +25,7 @@ const CoverImage = props => {
                 }
                 style={backgroundStyle}
             >
+                <CategoryIconOverlay category={postData.category} />
             </figure>
         </a>
     );
