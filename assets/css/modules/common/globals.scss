@@ -16,6 +16,7 @@ $noticeWarnBorderAlpha: rgba(243, 156, 18, 0.4);
 
 //**********global site colours**********
 $mainFontColour: #333;
+$mainBackgroundColour: #f9f9f9;
 $accentColour: rgb(91, 176, 228);
 $articleMetaTagColour: #a8a8a8;
 
@@ -46,7 +47,7 @@ $mainFontSize: 20px;
 body{
 	font-family: $mainFontStyle;
 	font-size: $mainFontSize;
-	background-color: #f9f9f9;
+	background-color: $mainBackgroundColour;
     color: $mainFontColour;
 }
 
