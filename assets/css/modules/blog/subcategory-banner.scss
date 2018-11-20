@@ -1,0 +1,44 @@
+.sub-category-wrapper{
+    position: relative;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    height: 120px;
+
+    h2{
+        position: absolute;
+    }
+
+    img{
+        border-radius: 4px;
+        margin: -5px 0 0 -5px;
+        display: block;
+        width: calc(100% + 10px);
+        opacity: 0.9;
+        transition: opacity 0.3s, transform 0.3s;
+        backface-visibility: hidden;
+
+        &:hover{
+            opacity: 0.6;
+        }
+
+        &.down{
+            transform: translate3d(0px, 3px, 0);
+        }
+        &.left{
+            transform: translate3d(-3px, 0px, 0);
+        }
+        &.up{
+            transform: translate3d(0px, -3px, 0);
+        }
+        &.right{
+            transform: translate3d(3px, 0px, 0);
+        }
+    }
+
+    figcaption{
+        position: absolute;
+    }
+
+
+}
