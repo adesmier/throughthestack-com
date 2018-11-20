@@ -1,7 +1,8 @@
-import React   from 'react';
+import React             from 'react';
 
-import Article from '../components/Article/Article';
-import Tags    from '../components/Article/Tags';
+import SubCategoryBanner from '../components/SubCategoryBanner';
+import Article           from '../components/Article/Article';
+import Tags              from '../components/Article/Tags';
 
 const AlgoliaActions = require('../../algoliasearch/modules/algoliaActions');
 
@@ -47,20 +48,28 @@ export default class Blog extends React.Component {
         });
 
         return (
-            <section
-                id="blog__blog-post-section-wrapper"
-                className="row section multi-card-flex-container"
-            >
-            {
-                renderedPosts.length === 0 ? (
-                    <div className="loading-spinner"></div>
-                ) : (
-                    <React.Fragment>
-                        {renderedPosts}
-                    </React.Fragment>
-                )
-            }
-            </section>
+            <React.Fragment>
+                <section
+                    className="blog__blog-post-section-wrapper row section multi-card-flex-container"
+                >
+                    <SubCategoryBanner />
+                    <SubCategoryBanner />
+                    <SubCategoryBanner />
+                </section>
+                <section
+                    className="blog__blog-post-section-wrapper row section multi-card-flex-container"
+                >
+                {
+                    renderedPosts.length === 0 ? (
+                        <div className="loading-spinner"></div>
+                    ) : (
+                        <React.Fragment>
+                            {renderedPosts}
+                        </React.Fragment>
+                    )
+                }
+                </section>
+            </React.Fragment>
         );
     }
 
