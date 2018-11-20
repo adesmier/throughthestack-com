@@ -117,7 +117,7 @@ Used on Blog page and related/recent posts sections
 }
 
 //Blog page only!
-#blog__blog-post-section-wrapper.multi-card-flex-container{
+.blog__blog-post-section-wrapper.multi-card-flex-container{
     padding-left: 20px; //hack to center cards due to 'justify-content: center' centering last row
     padding-right: 5px;
 }
