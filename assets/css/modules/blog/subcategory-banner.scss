@@ -5,8 +5,19 @@
     overflow: hidden;
     height: 120px;
 
-    h2{
-        position: absolute;
+    figure{
+        &:hover figcaption{
+            bottom: 12px;
+            right: 12px;
+            opacity: 1;
+            transition: all 0.3s;
+        }
+
+        &:hover figcaption:before{
+            transform: scale3d(0.45, 0.45, 1);
+            box-shadow: 0 0 0 1200px rgba(255, 255, 255, 0.3);
+            transition: all 0.3s;
+        }
     }
 
     img{
@@ -14,13 +25,8 @@
         margin: -5px 0 0 -5px;
         display: block;
         width: calc(100% + 10px);
-        opacity: 0.9;
-        transition: opacity 0.3s, transform 0.3s;
+        transition: transform 0.3s;
         backface-visibility: hidden;
-
-        &:hover{
-            opacity: 0.6;
-        }
 
         &.down{
             transform: translate3d(0px, 3px, 0);
@@ -38,7 +44,25 @@
 
     figcaption{
         position: absolute;
-    }
+        bottom: -3px;
+        right: 0;
+        opacity: 0;
+        text-align: center;
+        transition: all 0.3s;
 
+        &::before{
+            position: absolute;
+            right: -75px;
+            bottom: -92px;
+            width: 200px;
+            height: 200px;
+            border: 3px solid #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 0 1200px rgba(255, 255, 255, 0);
+            content: '';
+            transform: scale3d(0.3, 0.3, 1);
+            transition: all 0.3s;
+        }
+    }
 
 }

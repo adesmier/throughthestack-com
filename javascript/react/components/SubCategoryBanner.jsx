@@ -72,7 +72,6 @@ export default class SubCategoryBanner extends React.Component {
                 className="blog__blog-post-flexgrid-wrapper grid-card multi-width-card sub-category-wrapper"
                 onMouseEnter={this.calculateMouseEntryPosition} onMouseLeave={this.clearImageTranslateClass}
             >
-                <h2>React</h2>
                 <figure className="">
                     <img
                         className={imageTranslateDirection}
@@ -80,8 +79,8 @@ export default class SubCategoryBanner extends React.Component {
                         alt="react"
                     />
                     <figcaption>
-                        <h3>React <span>Tutorials</span></h3>
-                        <p>The best react tutorials on the planet</p>
+                        <p>15</p>
+                        <p>articles</p>
                     </figcaption>			
                 </figure>
             </div>
