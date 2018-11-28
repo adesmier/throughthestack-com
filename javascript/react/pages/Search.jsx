@@ -1,7 +1,7 @@
 import React   from 'react';
 import { unmountComponentAtNode } from 'react-dom';
 
-import GetBlogPostSearchResultsHOC from '../components/HOCs/GetBlogPostSearchResultsHOC';
+import GetBlogPostSearchResultsHOC from '../components/hocs/GetBlogPostSearchResultsHOC';
 
 
 class Search extends React.Component {

@@ -1,7 +1,7 @@
 import React              from 'react';
 import PropTypes          from 'prop-types';
 
-import CategoryIconOverlay from '../../components/Article/CategoryIconOverlay';
+import CategoryIconOverlay from '../../components/article/CategoryIconOverlay';
 
 
 const CoverImage = props => {

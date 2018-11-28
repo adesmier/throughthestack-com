@@ -1,12 +1,12 @@
 import React             from 'react';
 
-import GetBlogPostSearchResultsHOC from '../components/HOCs/GetBlogPostSearchResultsHOC';
-import LoadingSpinnerHOC from '../components/HOCs/LoadingSpinnerHOC';
+import GetBlogPostSearchResultsHOC from '../components/hocs/GetBlogPostSearchResultsHOC';
+import LoadingSpinnerHOC from '../components/hocs/LoadingSpinnerHOC';
 
-import CSSLoadingSpinner from '../components/Primitives/CSSLoadingSpinner';
+import CSSLoadingSpinner from '../components/primitives/CSSLoadingSpinner';
 import SubCategoryBanner from '../components/SubCategoryBanner';
-import Article           from '../components/Article/Article';
-import Tags              from '../components/Article/Tags';
+import Article           from '../components/article/Article';
+import Tags              from '../components/article/Tags';
 
 
 class Blog extends React.Component {

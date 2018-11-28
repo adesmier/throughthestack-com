@@ -1,8 +1,8 @@
 import React      from 'react';
 import PropTypes  from 'prop-types';
 
-import CoverImage from '../../components/Article/CoverImage';
-import Summary    from '../../components/Article/Summary';
+import CoverImage from '../../components/article/CoverImage';
+import Summary    from '../../components/article/Summary';
 
 
 const Article = props => {

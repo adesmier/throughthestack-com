@@ -19,7 +19,8 @@ const GetBlogPostSearchResultsHOC = WrappedComponent => {
             const algoliaActions = new AlgoliaActions('sort_by_date_', true);
 
             try {
-                let recentPostResults = await algoliaActions.searchIndex('');
+                let recentPostResults = await algoliaActions.searchIndex({ query: '', page: 3 });
+                console.log('recentPostResults', recentPostResults);
                 this.setState({ posts: recentPostResults.hits });
             } catch(e) {
                 console.error(e);
