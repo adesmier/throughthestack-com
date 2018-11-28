@@ -1,34 +1,22 @@
 import React   from 'react';
 import { unmountComponentAtNode } from 'react-dom';
 
-const AlgoliaActions = require('../../algoliasearch/modules/algoliaActions');
+import GetBlogPostSearchResultsHOC from '../components/HOCs/GetBlogPostSearchResultsHOC';
 
 
-export default class Search extends React.Component {
+class Search extends React.Component {
 
-    state = { closing: false, results: null }
+    state = { closing: false }
 
 
     //--- LIFECYCLE FUNCTIONS ---
 
-    async componentDidMount() {
+    componentDidMount() {
         this.searchEl = document.getElementById('index__react-search-component');
 
         //we need to listen for end of searchClosing animation to fade out the
         //search componenet before unmount
         this.searchEl.addEventListener('animationend', this.handleSearchClosing);
-
-
-
-        const algoliaActions = new AlgoliaActions('sort_by_date_', true);
-
-        try {
-            let results = await algoliaActions.searchIndex('');
-            this.setState({ results });
-        } catch(e) {
-            console.error(e);
-        }
-
     }
 
     componentWillUnmount() {
@@ -51,9 +39,10 @@ export default class Search extends React.Component {
     //--- RENDER ---
 
     render() {
-        const { closing, results } = this.state;
+        const { closing } = this.state;
+        const { posts } = this.props;
 
-        console.log(results);
+        console.log(posts);
 
         return (
             <div id="search__search-root" className={closing ? 'searchClosing' : null}>
@@ -64,3 +53,6 @@ export default class Search extends React.Component {
     }
     
 }
+
+
+export default GetBlogPostSearchResultsHOC(Search);

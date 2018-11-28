@@ -4,10 +4,14 @@ const AlgoliaActions = require('../../../algoliasearch/modules/algoliaActions');
 
 
 const GetBlogPostSearchResultsHOC = WrappedComponent => {
-    class GetBlogPostSearchResultsHOC extends React.Component {
+    return class GetBlogPostSearchResultsHOC extends React.Component {
+
+        static displayName = 
+            `GetBlogPostSearchResultsHOC(${WrappedComponent.name || 'Component'})`;
 
         state = { posts: undefined }
 
+        
         //--- LIFECYCLE FUNCTIONS ---
 
         async componentDidMount() {
@@ -29,18 +33,12 @@ const GetBlogPostSearchResultsHOC = WrappedComponent => {
         render() {
             const { posts } = this.state;
 
-            if(!posts) {
-                return <div className="loading-spinner"></div>
-            } else {
-                return <WrappedComponent {...this.props} posts={posts} />
-            }
+            if(!posts) return null;
+
+            return <WrappedComponent {...this.props} posts={posts} />
         }
+
     }
-
-    GetBlogPostSearchResultsHOC.displayName =
-        `GetBlogPostSearchResultsHOC(${WrappedComponent.name || 'Component'})`;
-
-    return GetBlogPostSearchResultsHOC;
 }
 
 export default GetBlogPostSearchResultsHOC;
