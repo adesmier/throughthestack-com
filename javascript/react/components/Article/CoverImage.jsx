@@ -9,9 +9,9 @@ const CoverImage = props => {
     let backgroundStyle;
 
     if(isOnBlogPage) {
-        backgroundStyle = { backgroundImage: `url('${postData.image}')` };;
+        backgroundStyle = { backgroundImage: `url('${postData.image}')` };
     } else {
-        backgroundStyle = { backgroundImage: `url('${postData.thumbnail}')` };;
+        backgroundStyle = { backgroundImage: `url('${postData.thumbnail}')` };
     }
 
     return (

@@ -27,4 +27,5 @@ Article.propTypes = {
     isOnBlogPage: PropTypes.bool.isRequired
 }
 
+
 export default Article;
