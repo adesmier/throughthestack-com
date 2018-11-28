@@ -43,9 +43,12 @@ module.exports = class AlgoliaActions {
         return prom;
     }
 
-    searchIndex(searchString) {
+    searchIndex(searchObj) {
         let prom = new Promise((resolve, reject) => {
-            this.index.search(searchString, (err, content) => {
+            if(typeof searchObj !== 'object' && searchObj.constructor !== Object) {
+                reject(new Error('You must pass an object containing query parameters.'));
+            }
+            this.index.search(searchObj, (err, content) => {
                 if(err) reject(err);
                 else resolve(content);
             });
