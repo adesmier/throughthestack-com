@@ -1,29 +1,52 @@
 import React from 'react';
 
 const AlgoliaActions = require('../../../algoliasearch/modules/algoliaActions');
+//NOTE: algolia indice hardcoded for now
+const algoliaActions = new AlgoliaActions('sort_by_date_', true);
+
 
 /**
  * Takes a component and enhances it with a componentDidMount func that queries
  * the Algolia api using the passed parameters. Returns the new component with
  * the additional post data prop
  * @param {ReactComponent} WrappedComponent 
- * @param {Object} searchObj 
  */
-const GetBlogPostSearchResultsHOC = (WrappedComponent, searchObj) => {
+const GetBlogPostSearchResultsHOC = (WrappedComponent) => {
     return class GetBlogPostSearchResultsHOC extends React.Component {
 
         static displayName = 
             `GetBlogPostSearchResultsHOC(${WrappedComponent.name || 'Component'})`;
 
-        state = { posts: undefined }
+        state = { searchResults: undefined }
 
         
         //--- LIFECYCLE FUNCTIONS ---
 
         async componentDidMount() {
-            const { searchQuery, resultsPage, searchParams } = this.props;
-            //NOTE: algolia indice hardcoded for now
-            const algoliaActions = new AlgoliaActions('sort_by_date_', true);
+            console.log('hoc did mount');
+            const searchResults = await this._getSearchResults(this.props);
+            this.setState({ searchResults });
+        }
+
+        async componentDidUpdate(prevProps) {
+            const { searchQuery, resultsPage } = this.props;
+            const prevSearchQuery = prevProps.searchQuery;
+            const prevResultsPage = prevProps.resultsPage;
+
+            console.log('hoc did update');
+
+            //search query has changed so get new results from algolia
+            if(searchQuery !== prevSearchQuery || resultsPage !== prevResultsPage) {
+                const searchResults = await this._getSearchResults(this.props);
+                this.setState({ searchResults });
+            }
+        }
+
+
+        //--- FUNCTION DECLARATIONS ---
+
+        async _getSearchResults(passedProps) {
+            const { searchQuery, resultsPage, searchParams } = passedProps;
 
             let search = { query: searchQuery, page: resultsPage };
             if(searchParams) {
@@ -32,9 +55,9 @@ const GetBlogPostSearchResultsHOC = (WrappedComponent, searchObj) => {
             }
 
             try {
-                let searchResults = await algoliaActions.searchIndex(search);
+                const searchResults = await algoliaActions.searchIndex(search);
                 console.log('recentPostResults', searchResults);
-                this.setState({ posts: searchResults.hits });
+                return searchResults;
             } catch(e) {
                 console.error(e);
             }
@@ -44,11 +67,17 @@ const GetBlogPostSearchResultsHOC = (WrappedComponent, searchObj) => {
         //--- RENDER ---
 
         render() {
-            const { posts } = this.state;
+            const { searchResults } = this.state;
 
-            if(!posts) return null;
+            console.log('hoc render');
 
-            return <WrappedComponent {...this.props} posts={posts} />
+            if(!searchResults) return null;
+
+            return (
+                <WrappedComponent {...this.props}
+                    postData={searchResults}
+                />
+            );
         }
 
     }

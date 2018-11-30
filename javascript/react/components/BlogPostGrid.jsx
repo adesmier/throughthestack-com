@@ -15,7 +15,9 @@ class BlogPostGrid extends React.Component {
     static propTypes = {
         searchQuery:  PropTypes.string.isRequired,
         resultsPage:  PropTypes.number.isRequired,
-        searchParams: PropTypes.object
+        searchParams: PropTypes.object,
+        postData:     PropTypes.object,
+        loading:      PropTypes.bool
     };
 
     static defaultProps = {
@@ -23,14 +25,74 @@ class BlogPostGrid extends React.Component {
         resultsPage: 0
     };
 
+    state ={ btnLoading: false };
+
+
+    //--- LIFECYCLE FUNCTIONS ---
+
+    componentDidMount() {
+        console.log('blogpost mount');
+    }
+
+    componentDidUpdate(prevProps) {
+        console.log('blogpost did update');
+        // const { searchQuery, resultsPage, loading, postData } = this.props;
+        // const { btnLoading } = this.state;
+        // const prevSearchQuery = prevProps.searchQuery;
+        // const prevResultsPage = prevProps.resultsPage;
+        // const prevPostData = prevProps.postData;
+
+        // console.log('resultsPage', resultsPage);
+        // console.log('prevResultsPage', prevResultsPage);
+        // console.log('btnLoading', btnLoading);
+
+        // if(resultsPage === prevResultsPage && btnLoading) {
+        //     console.log('setting to false');
+        //     this.setState({ btnLoading: false });
+        // } else if(resultsPage !== prevResultsPage && !btnLoading) {
+        //     console.log('setting to true');
+        //     this.setState({ btnLoading: true });
+        // }
+
+        // if(postData.page === prevPostData.page) {
+        //     this.setState({ loading: false });
+        // }
+        
+        // if(searchQuery === prevSearchQuery && postData.page !== prevPostData.page) {
+        //     console.log('in here!!!!');
+        //     this.setState({ loading: false });
+        // }
+    }
+
+
+    //--- FUNCTION DECLARATIONS ---
+
+    renderChildBtn() {
+        const { resultsPage, postData, loading, children } = this.props;
+        const { btnLoading } = this.state;
+        const { nbPages } = postData;
+        let disabled = false;
+
+        if((resultsPage+1) === nbPages) disabled = true;
+
+        const newChildBtn = React.Children.map(children, child => {
+            return React.cloneElement(child, { disabled, loading });
+        });
+
+        return newChildBtn;
+    }
+
 
     //--- LIFECYCLE FUNCTIONS ---
 
     render() {
-        const { posts } = this.props;
+        const { postData, children } = this.props;
 
-        if(!posts) return null;
+        console.log('blog post render');
 
+        // if(!postData) return null;
+
+        const posts = postData.hits;
         const renderedPosts = posts.map(post => {
             return (
                 <div
@@ -62,6 +124,7 @@ class BlogPostGrid extends React.Component {
                         {renderedPosts}
                     </React.Fragment>
                 </section>
+                {this.renderChildBtn()}
             </React.Fragment>
         );
     }
