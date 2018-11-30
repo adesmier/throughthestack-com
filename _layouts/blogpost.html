@@ -50,7 +50,7 @@ layout: default
             </div>
 
             {% if devbyte == true %}
-                <div id="post__devbyte-code-links" class="post-demo-link">
+                <div id="post__devbyte-code-links" class="dynamic-btn-wrapper post-demo-link">
                     {% if page.demo %}
                         <a href="{{ page.demo }}" target="_blank" rel="noopener noreferrer">
                             <button class="fa fa-code"><span>Demo</span></button>
@@ -75,7 +75,7 @@ layout: default
         <!-- POST INTRO TEXT SECTION -->
         {% if tutorial == true %}
             <div id="post-intro-wrapper" class="grid-card full-width-card">
-                <div class="post-intro-links">
+                <div class="dynamic-btn-wrapper post-intro-links">
                     <a href="#Sections">
                         <button class="fa fa-arrow-down"><span>Skip Intro</span></button>
                     </a>
@@ -146,7 +146,7 @@ layout: default
                 {% endfor %}
 
                 {% if related_post_count < 3 %}
-                    <div class="related-post-links">
+                    <div class="dynamic-btn-wrapper related-post-links">
                         <a href="/blog">
                             <button class="fa fa-newspaper-o"><span>All Posts</span></button>
                         </a>
@@ -196,7 +196,7 @@ layout: default
 
                 {% if page.demo or page.github or page.codepen %}
                     <div class="grid-card">
-                        <div class="post-demo-link">
+                        <div class="dynamic-btn-wrapper post-demo-link">
                             {% if page.demo %}
                                 <a href="{{ page.demo }}" target="_blank" rel="noopener noreferrer">
                                     <button class="fa fa-code"><span>Demo</span></button>
