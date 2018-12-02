@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 
 
 const DynamicButton = props => {
-    const { disabled } = props;
+    const { loading, disabled } = props;
 
-    let styles = `dynamic-btn-wrapper ${disabled ? 'disabled' : null}`;
+    let styles = 
+        `dynamic-btn-wrapper ${loading ? 'loading' : null} 
+        ${disabled ? 'disabled' : null}`;
 
     return (
         <div className={styles}>
@@ -19,14 +21,13 @@ const DynamicButton = props => {
 DynamicButton.propTypes = {
     text:      PropTypes.string.isRequired,
     hoverIcon: PropTypes.string.isRequired,
-    disabled:  PropTypes.bool.isRequired,
     loading:   PropTypes.bool.isRequired,
+    disabled:  PropTypes.bool.isRequired,
     onClick:   PropTypes.func.isRequired
 }
 
 DynamicButton.defaultProps = {
-    disabled: false,
-    loading:  false
+    disabled: false
 }
 
 

@@ -5,6 +5,10 @@
         display: none;
     }
 
+    &.loading span{
+        color: red;
+    }
+
     button{
         position: relative;
         border: 1px solid $articleMetaTagColour;
