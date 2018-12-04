@@ -1,18 +1,30 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React             from 'react';
+import PropTypes         from 'prop-types';
+
+import CSSLoadingSpinner from './CSSLoadingSpinner';
 
 
 const DynamicButton = props => {
-    const { loading, disabled } = props;
+    const { text, hoverIcon, loading, disabled, onClick } = props;
 
-    let styles = 
-        `dynamic-btn-wrapper ${loading ? 'loading' : null} 
-        ${disabled ? 'disabled' : null}`;
+    let btnStyles = [`fa ${hoverIcon}`];
+    if(loading) btnStyles.push('loading');
+    if(disabled) btnStyles.push('disabled');
 
     return (
-        <div className={styles}>
-            <button className={`fa ${props.hoverIcon}`} onClick={props.onClick}>
-                <span>{props.text}</span>
+        <div className='dynamic-btn-wrapper'>
+            <button
+                className={btnStyles.join(' ')}
+                onClick={onClick}
+                disabled={disabled}
+            >
+            {
+                loading ? (
+                    <CSSLoadingSpinner size={'small'} />
+                ) : (
+                    <span>{text}</span>
+                )
+            }
             </button>
         </div>
     );
@@ -22,7 +34,7 @@ DynamicButton.propTypes = {
     text:      PropTypes.string.isRequired,
     hoverIcon: PropTypes.string.isRequired,
     loading:   PropTypes.bool.isRequired,
-    disabled:  PropTypes.bool.isRequired,
+    disabled:  PropTypes.bool,
     onClick:   PropTypes.func.isRequired
 }
 

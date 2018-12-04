@@ -86,7 +86,7 @@
     @mixin loader-size($size, $font-size) {
         font-size: $font-size;
         width: $size;
-        height: $size;
+        height: $size+3;
 
         &::before,
         &::after {

@@ -1,14 +1,6 @@
 .dynamic-btn-wrapper{
     text-align: center;
 
-    &.disabled{
-        display: none;
-    }
-
-    &.loading span{
-        color: red;
-    }
-
     button{
         position: relative;
         border: 1px solid $articleMetaTagColour;
@@ -18,8 +10,10 @@
         overflow: hidden;
         backface-visibility: hidden;
         cursor: pointer;
-        padding: 10px 15px;
-        border-radius: 2px;
+        // padding: 10px 15px;
+        width: 120px;
+        height: 40px;
+        border-radius: 4px;
         transition: all 0.3s;
         &:before{
             left: 0;
@@ -40,10 +34,11 @@
         backface-visibility: hidden;
     }
 
-    button:hover:before{
+    button:not(.loading):hover:before{
         top: -10%;
     }
-    button:hover > span{
+
+    button:not(.loading):hover > span{
         transform: translateY(-300%);
     }
 }
