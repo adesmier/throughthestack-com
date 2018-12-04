@@ -5,7 +5,7 @@ import React from 'react';
  * loading component.
  * https://blog.callstack.io/sweet-render-hijacking-with-react-bb2b81d8d9be
  * @param {ReactComponent} WrappedComponent 
- * @param {componentDidMount} LoadingComponent 
+ * @param {ReactComponent} LoadingComponent 
  */
 
 const LoadingSpinnerHOC = (WrappedComponent, LoadingComponent) => {
@@ -23,5 +23,6 @@ const LoadingSpinnerHOC = (WrappedComponent, LoadingComponent) => {
 
     }
 }
+
 
 export default LoadingSpinnerHOC;
