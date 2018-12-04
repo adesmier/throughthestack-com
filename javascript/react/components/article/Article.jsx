@@ -1,24 +1,31 @@
 import React      from 'react';
 import PropTypes  from 'prop-types';
 
-import CoverImage from '../../components/article/CoverImage';
-import Summary    from '../../components/article/Summary';
+import CoverImage from './CoverImage';
+import Summary    from './Summary';
+import Tags       from './Tags';
 
 
 const Article = props => {
-    const { isOnBlogPage } = props;
+    const { postData, isOnBlogPage } = props;
+    const { _tags } = postData;
 
     return (
-        <article className={isOnBlogPage ? '' : 'latest-post-preview'}>
-            <div
-                className={
-                    isOnBlogPage ? 'blog-post-inner-wrapper': 'article-inner-wrapper'
-                }
-            >
-                <CoverImage {...props} />
-                <Summary {...props} />
-            </div>
-        </article>
+        <div
+            className="blog__blog-post-flexgrid-wrapper grid-card hover multi-width-card"
+        >
+            <article className={isOnBlogPage ? '' : 'latest-post-preview'}>
+                <div
+                    className={
+                        isOnBlogPage ? 'blog-post-inner-wrapper': 'article-inner-wrapper'
+                    }
+                >
+                    <CoverImage {...props} />
+                    <Summary {...props} />
+                </div>
+            </article>
+            <Tags tags={_tags} />
+        </div>
     );
 }
 

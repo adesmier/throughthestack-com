@@ -1,23 +1,24 @@
-import React              from 'react';
-import PropTypes          from 'prop-types';
+import React               from 'react';
+import PropTypes           from 'prop-types';
 
-import CategoryIconOverlay from '../../components/article/CategoryIconOverlay';
+import CategoryIconOverlay from './CategoryIconOverlay';
 
 
 const CoverImage = props => {
     const { postData, isOnBlogPage } = props;
+    const { image, thumbnail, url, category } = postData;
     let backgroundStyle;
 
     if(isOnBlogPage) {
-        backgroundStyle = { backgroundImage: `url('${postData.image}')` };
+        backgroundStyle = { backgroundImage: `url('${image}')` };
     } else {
-        backgroundStyle = { backgroundImage: `url('${postData.thumbnail}')` };
+        backgroundStyle = { backgroundImage: `url('${thumbnail}')` };
     }
 
     return (
         <a
             className={isOnBlogPage ? '' : 'article-thumbnail-link'}
-            href={postData.url}
+            href={url}
         >
             <figure
                 className={
@@ -25,7 +26,7 @@ const CoverImage = props => {
                 }
                 style={backgroundStyle}
             >
-                <CategoryIconOverlay category={postData.category} />
+                <CategoryIconOverlay category={category} />
             </figure>
         </a>
     );
