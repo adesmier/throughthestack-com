@@ -35,10 +35,10 @@ const GetBlogPostSearchResultsHOC = (WrappedComponent, concatResults = false) =>
 
             //search query has changed so get new results from algolia
             if(searchQuery !== prevSearchQuery || resultsPage !== prevResultsPage) {
-                const searchResults = await this._getSearchResults(this.props);
+                const newSearchResults = await this._getSearchResults(this.props);
                 this.setState({
                     searchResults: concatResults
-                                    ? this._combineSearchResults(searchResults)
+                                    ? this._combineSearchResults(newSearchResults)
                                     : searchResults
                 });
             }
@@ -50,7 +50,7 @@ const GetBlogPostSearchResultsHOC = (WrappedComponent, concatResults = false) =>
         /**
          * Makes an api request to algolia to the defined index using the passed
          * search parameters
-         * @param {object} passedProps 
+         * @param {object} passedProps the props of the wrapped component 
          */
         async _getSearchResults(passedProps) {
             const { searchQuery, resultsPage, searchParams } = passedProps;
@@ -60,6 +60,8 @@ const GetBlogPostSearchResultsHOC = (WrappedComponent, concatResults = false) =>
                 //add any additional query parameters
                 search = Object.assign({}, search, searchParams);
             }
+
+            console.log('params', search);
 
             try {
                 const searchResults = await algoliaActions.searchIndex(search);
@@ -71,12 +73,20 @@ const GetBlogPostSearchResultsHOC = (WrappedComponent, concatResults = false) =>
             }
         }
 
+        /**
+         * Combines the existing search results with the new one, concatinating
+         * the hits array
+         * @param {object} newSearchResults new search results from Algolia
+         */
         _combineSearchResults(newSearchResults) {
-            const { searchResults } = this.state
+            const { searchResults } = this.state;
             const { hits } = searchResults;
             const newHits = newSearchResults.hits;
-            const combinedHits = hits.concat(newHits);
 
+            //no new posts so return existsing search results
+            if(newHits.length === 0) return searchResults;
+
+            const combinedHits = hits.concat(newHits);
             let newSearchResultsObj = Object.assign({}, newSearchResults);
             newSearchResultsObj.hits = combinedHits;
 
@@ -93,7 +103,7 @@ const GetBlogPostSearchResultsHOC = (WrappedComponent, concatResults = false) =>
 
             return (
                 <WrappedComponent {...this.props}
-                    postData={searchResults}
+                    searchResults={searchResults}
                 />
             );
         }

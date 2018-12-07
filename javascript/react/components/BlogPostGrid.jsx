@@ -17,25 +17,28 @@ class BlogPostGrid extends Component {
         loading:         PropTypes.bool.isRequired,
         resultsLoadedCb: PropTypes.func.isRequired,
         searchParams:    PropTypes.object,
-        postData:        PropTypes.object,
+        searchResults:   PropTypes.object,
     };
 
-    static defaultProps = {
-        searchQuery: '',
-        resultsPage: 0
-    };
+    static defaultProps = { searchQuery: '' };
 
 
     //--- LIFECYCLE FUNCTIONS ---
 
+    componentDidMount() {
+        const { resultsLoadedCb, searchResults } = this.props;
+        resultsLoadedCb(searchResults);
+    }
+
     componentDidUpdate(prevProps) {
-        const { resultsPage, loading, postData, resultsLoadedCb } = this.props;
+        const { resultsPage, loading, resultsLoadedCb, searchResults } = this.props;
         const prevResultsPage = prevProps.resultsPage;
 
         //we've arleady retreived new results, so after the render notify our
         //parent that the loading button styles need updating
         if(resultsPage === prevResultsPage && loading) {
-            resultsLoadedCb(postData);
+            console.log('componentDidUpdate called');
+            resultsLoadedCb(searchResults);
         }
     }
 
@@ -43,9 +46,9 @@ class BlogPostGrid extends Component {
     //--- RENDER ---
 
     render() {
-        const { postData } = this.props;
+        const { searchResults } = this.props;
 
-        const posts = postData.hits;
+        const posts = searchResults.hits;
         const renderedPosts = posts.map(post => {
             return <Article key={post.objectID} postData={post} isOnBlogPage={true} />
         });
@@ -66,7 +69,6 @@ class BlogPostGrid extends Component {
                         {renderedPosts}
                     </Fragment>
                 </section>
-                {/* {this.renderChildBtn()} */}
             </Fragment>
         );
     }
@@ -74,4 +76,7 @@ class BlogPostGrid extends Component {
 }
 
 
-export default LoadingSpinnerHOC(GetBlogPostSearchResultsHOC(BlogPostGrid, true), CSSLoadingSpinner);
+export default LoadingSpinnerHOC(
+    GetBlogPostSearchResultsHOC(BlogPostGrid, true),
+    CSSLoadingSpinner
+);
