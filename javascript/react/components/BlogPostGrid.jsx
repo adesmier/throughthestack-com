@@ -37,7 +37,7 @@ class BlogPostGrid extends Component {
         //we've arleady retreived new results, so after the render notify our
         //parent that the loading button styles need updating
         if(resultsPage === prevResultsPage && loading) {
-            console.log('componentDidUpdate called');
+            // console.log('componentDidUpdate called');
             resultsLoadedCb(searchResults);
         }
     }
