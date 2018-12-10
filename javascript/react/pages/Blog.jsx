@@ -1,5 +1,7 @@
 import { Component, Fragment } from 'react';
 
+import UrlUtils                from '../../modules/UrlUtils';
+
 import BlogPostGrid            from '../components/BlogPostGrid';
 import DynamicButton           from '../components/primitives/DynamicButton';
 
@@ -10,6 +12,7 @@ export default class Blog extends Component {
 
     state = {
         resultsPageIndex:        0,
+        paramsHash:              undefined,
         currentPage:             undefined,
         initialLoadResultsCount: undefined,
         loading:                 false,
@@ -24,36 +27,56 @@ export default class Blog extends Component {
     //will load the same number of results. can't use URL object as not supported
     //in IE11 :(
     componentDidMount() {
-        const searchParamStr = window.location.search;
+        const paramsHash = UrlUtils.getUrlParamsHash();
 
-        if(searchParamStr.startsWith('?page=')) {
-            const equalsIndex = searchParamStr.indexOf('=');
-            const currentPage = searchParamStr.substring(equalsIndex + 1);
+        if(paramsHash) {
+            if(paramsHash['page']) {
+                const currentPage = paramsHash['page'];
+                //if query value starts with 0 then just use RESULTS_PER_LOAD
+                const onlyNumsRegEx = /^[1-9]{1}[0-9]*$/g;
+                const regExResult   = onlyNumsRegEx.test(currentPage);
 
-            //if query value starts with 0 then just use RESULTS_PER_LOAD
-            const onlyNumsRegEx = /^[1-9]{1}[0-9]*$/g;
-            const regExResult   = onlyNumsRegEx.test(currentPage);
+                //current page param is not valid so set to 1
+                if(!regExResult) {
+                    let paramsCopy = Object.assign({}, paramsHash);
+                    paramsCopy['page'] = 1;
+                    const modifiedPageValue =
+                        UrlUtils.createUrlSearchParamString(paramsCopy);
+                    window.history.replaceState(null, null, modifiedPageValue);
+                }
 
-            if(regExResult) {
                 return this.setState({
-                    initialLoadResultsCount: RESULTS_PER_LOAD * currentPage,
-                    currentPage: Number(currentPage)
+                    initialLoadResultsCount: regExResult
+                                                ? RESULTS_PER_LOAD * currentPage
+                                                : RESULTS_PER_LOAD,
+                    currentPage: regExResult ? Number(currentPage) : 1,
+                    paramsHash
                 });
+            } else {
+                //no page param so set a default, keeping other existing params
+                const newUrlParamStr = UrlUtils.appendToUrlParamString('&page=1');
+                window.history.replaceState(null, null, newUrlParamStr);
             }
+        } else {
+            window.history.replaceState(null, null, '?page=1');
         }
-
-        window.history.replaceState(null, null, '?page=1');
 
         this.setState({
             initialLoadResultsCount: RESULTS_PER_LOAD,
-            currentPage: 0
+            currentPage: 1,
+            paramsHash: paramsHash || { page: '1' }
         });
     }
 
     //--- FUNCTION DECLARATIONS ---
 
     loadMoreClickHandler = () => {
-        const { resultsPageIndex, currentPage, initialLoadResultsCount } = this.state;
+        const {
+            resultsPageIndex,
+            currentPage,
+            paramsHash,
+            initialLoadResultsCount
+        } = this.state;
 
         let nextResultsIndex;
         if(initialLoadResultsCount) {
@@ -67,12 +90,17 @@ export default class Blog extends Component {
         //keep the url in sync. no need to use pushState() as the results will
         //already be loaded
         const nextPage = currentPage + 1;
-        window.history.replaceState(null, null, `?page=${nextPage}`);
+        let paramsCopy = Object.assign({}, paramsHash);
+        paramsCopy['page'] = nextPage;
+
+        const nextPageValue = UrlUtils.createUrlSearchParamString(paramsCopy);
+        window.history.replaceState(null, null, nextPageValue);
 
         this.setState({
             resultsPageIndex: nextResultsIndex,
             currentPage: nextPage,
             initialLoadResultsCount: null,
+            paramsHash: paramsCopy,
             loading: true
         });
     }
@@ -98,15 +126,18 @@ export default class Blog extends Component {
             resultsPageIndex,
             initialLoadResultsCount,
             loading,
+            paramsHash,
             noMorePostsToLoad
         } = this.state;
 
         if(typeof initialLoadResultsCount === 'undefined') return null;
 
+        const searchQuery = paramsHash['search'] || '';
+
         return (
             <Fragment>
                 <BlogPostGrid
-                    searchQuery={''}
+                    searchQuery={searchQuery}
                     searchParams={
                         initialLoadResultsCount
                         ? { hitsPerPage: initialLoadResultsCount }
