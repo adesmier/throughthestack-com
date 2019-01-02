@@ -27,7 +27,11 @@ class BlogPostGrid extends Component {
 
     componentDidMount() {
         const { resultsLoadedCb, searchResults } = this.props;
-        resultsLoadedCb(searchResults);
+
+        this.blogWrapper = document.getElementById('blog__blog-post-section-wrapper');
+        const height = this.blogWrapper.scrollHeight;
+
+        resultsLoadedCb(searchResults, height);
     }
 
     componentDidUpdate(prevProps) {
@@ -38,7 +42,8 @@ class BlogPostGrid extends Component {
         //parent that the loading button styles need updating
         if(resultsPage === prevResultsPage && loading) {
             // console.log('componentDidUpdate called');
-            resultsLoadedCb(searchResults);
+            const height = this.blogWrapper.scrollHeight;
+            resultsLoadedCb(searchResults, height);
         }
     }
 
@@ -63,6 +68,7 @@ class BlogPostGrid extends Component {
                     <SubCategoryBanner />
                 </section> */}
                 <section
+                    id="blog__blog-post-section-wrapper"
                     className="blog__blog-post-section-wrapper row section multi-card-flex-container"
                 >
                     <Fragment>

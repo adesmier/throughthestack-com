@@ -1,3 +1,9 @@
+
+#blog__blog-posts-results-container{
+    transition: height 0.5s;
+    overflow: hidden;
+}
+
 .blog__blog-post-section-wrapper{
     position: relative;
 }

@@ -3,18 +3,22 @@ import { Component, Fragment } from 'react';
 import UrlUtils                from '../../modules/UrlUtils';
 
 import BlogPostGrid            from '../components/BlogPostGrid';
+import SubCategoryBanner       from '../components/SubCategoryBanner';
 import DynamicButton           from '../components/primitives/DynamicButton';
 
-const RESULTS_PER_LOAD = 6;
+const RESULTS_PER_LOAD     = 6;
+const BUTTON_HEIGHT_OFFSET = 90;
 
 
 export default class Blog extends Component {
 
     state = {
         resultsPageIndex:        0,
+        containerHeight:         0,
         paramsHash:              undefined,
         currentPage:             undefined,
         initialLoadResultsCount: undefined,
+        initialResultsLoaded:    false,
         loading:                 false,
         noMorePostsToLoad:       false
     };
@@ -68,6 +72,7 @@ export default class Blog extends Component {
         });
     }
 
+
     //--- FUNCTION DECLARATIONS ---
 
     loadMoreClickHandler = () => {
@@ -105,7 +110,7 @@ export default class Blog extends Component {
         });
     }
 
-    resultsLoadedHandler = searchResults => {
+    resultsLoadedHandler = (searchResults, blogWrapperHeight) => {
         const { resultsPageIndex } = this.state;
         const { nbHits, nbPages, hitsPerPage } = searchResults;
         let noMorePostsToLoad = false;
@@ -115,7 +120,33 @@ export default class Blog extends Component {
         //we've reached the last page of results
         if((resultsPageIndex + 1) >= nbPages) noMorePostsToLoad = true;
 
-        this.setState({ loading: false, noMorePostsToLoad });
+        this.setState({
+            containerHeight:      blogWrapperHeight + BUTTON_HEIGHT_OFFSET,
+            loading:              false,
+            initialResultsLoaded: true,
+            noMorePostsToLoad
+        });
+    }
+
+    renderLoadMoreButton() {
+        const {
+            initialResultsLoaded,
+            noMorePostsToLoad,
+            loading
+        } = this.state;
+
+        if(initialResultsLoaded && !noMorePostsToLoad) {
+            return (
+                <DynamicButton
+                    text={'Load More'}
+                    hoverIcon={'fa-arrow-down'}
+                    loading={loading}
+                    onClick={this.loadMoreClickHandler}
+                />
+            )
+        } else {
+            return null;
+        }
     }
 
 
@@ -124,10 +155,10 @@ export default class Blog extends Component {
     render() {
         const {
             resultsPageIndex,
+            containerHeight,
             initialLoadResultsCount,
             loading,
-            paramsHash,
-            noMorePostsToLoad
+            paramsHash
         } = this.state;
 
         if(typeof initialLoadResultsCount === 'undefined') return null;
@@ -135,7 +166,10 @@ export default class Blog extends Component {
         const searchQuery = paramsHash['search'] || '';
 
         return (
-            <Fragment>
+            <div
+                id="blog__blog-posts-results-container"
+                style={{ height: containerHeight }}
+            >
                 <BlogPostGrid
                     searchQuery={searchQuery}
                     searchParams={
@@ -147,17 +181,8 @@ export default class Blog extends Component {
                     loading={loading}
                     resultsLoadedCb={this.resultsLoadedHandler}
                 />
-                {
-                    noMorePostsToLoad ? null : (
-                        <DynamicButton
-                            text={'Load More'}
-                            hoverIcon={'fa-arrow-down'}
-                            loading={loading}
-                            onClick={this.loadMoreClickHandler}
-                        />
-                    )
-                }
-            </Fragment>
+                {this.renderLoadMoreButton()}
+            </div>
         );
     }
 }
