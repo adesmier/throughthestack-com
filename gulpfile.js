@@ -1,7 +1,6 @@
 /*
  * REQUIRES
  */
-var _           = require('lodash');
 var gulp        = require('gulp');
 var sass        = require('gulp-sass');
 var cleanCss    = require('gulp-clean-css');
@@ -43,18 +42,17 @@ var messages = {
     jekyllReBuild: 'DEV MODE: Jekyll Re-build triggered'
 };
 
-var jsFiles = {
-    'tutorials.js': [
-        'assets/scripts/src/tutorials/scrollToElement.js',
-        'assets/scripts/src/tutorials/detectBrowserWidth.js',
-        'assets/scripts/src/tutorials/detectScrollToChapter.js'
-    ],
-    'common.js': [
-        'assets/scripts/src/common/classModifier.js',
-        'assets/scripts/src/common/updateNavPreview.js',
-        'assets/scripts/src/common/searchComponent.js'
-    ]
-};
+var jsFiles_common = [
+    'assets/scripts/src/common/classModifier.js',
+    'assets/scripts/src/common/updateNavPreview.js',
+    'assets/scripts/src/common/searchComponent.js'
+];
+
+var jsFiles_tutorials = [
+    'assets/scripts/src/tutorials/scrollToElement.js',
+    'assets/scripts/src/tutorials/detectBrowserWidth.js',
+    'assets/scripts/src/tutorials/detectScrollToChapter.js'
+];
 
 
 /******************************************************************************/
@@ -157,7 +155,8 @@ gulp.task('sass', function (){
  * Concatenation of javascript files. Only common files for now
  */
 gulp.task('scripts', function(){
-    _.each(jsFiles, concatJSFiles);
+    concatJSFiles(jsFiles_common, 'common.js');
+    concatJSFiles(jsFiles_tutorials, 'tutorials.js');
 });
 
 /**
