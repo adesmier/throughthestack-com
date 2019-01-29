@@ -1,12 +1,12 @@
-import { Component, Fragment }     from 'react';
-import PropTypes                   from 'prop-types';
+import React, { Component, Fragment } from 'react';
+import PropTypes                      from 'prop-types';
 
-import GetBlogPostSearchResultsHOC from '../components/hocs/GetBlogPostSearchResultsHOC';
-import LoadingSpinnerHOC           from '../components/hocs/LoadingSpinnerHOC';
+import GetBlogPostSearchResultsHOC    from '../components/hocs/GetBlogPostSearchResultsHOC';
+import LoadingSpinnerHOC              from '../components/hocs/LoadingSpinnerHOC';
 
-import CSSLoadingSpinner           from '../components/primitives/CSSLoadingSpinner';
-import SubCategoryBanner           from '../components/SubCategoryBanner';
-import Article                     from '../components/article/Article';
+import CSSLoadingSpinner              from '../components/primitives/CSSLoadingSpinner';
+import SubCategoryBanner              from '../components/SubCategoryBanner';
+import Article                        from '../components/article/Article';
 
 
 class BlogPostGrid extends Component {
@@ -22,14 +22,15 @@ class BlogPostGrid extends Component {
 
     static defaultProps = { searchQuery: '' };
 
+    sectionWrapper = React.createRef();
+
 
     //--- LIFECYCLE FUNCTIONS ---
 
     componentDidMount() {
         const { resultsLoadedCb, searchResults } = this.props;
 
-        this.blogWrapper = document.getElementById('blog__blog-post-section-wrapper');
-        const height = this.blogWrapper.scrollHeight;
+        const height = this.sectionWrapper.current.scrollHeight;
 
         resultsLoadedCb(searchResults, height);
     }
@@ -41,8 +42,7 @@ class BlogPostGrid extends Component {
         //we've arleady retreived new results, so after the render notify our
         //parent that the loading button styles need updating
         if(resultsPage === prevResultsPage && loading) {
-            // console.log('componentDidUpdate called');
-            const height = this.blogWrapper.scrollHeight;
+            const height = this.sectionWrapper.current.scrollHeight;
             resultsLoadedCb(searchResults, height);
         }
     }
@@ -69,6 +69,7 @@ class BlogPostGrid extends Component {
                 </section> */}
                 <section
                     id="blog__blog-post-section-wrapper"
+                    ref={this.sectionWrapper}
                     className="blog__blog-post-section-wrapper row section multi-card-flex-container"
                 >
                     <Fragment>
