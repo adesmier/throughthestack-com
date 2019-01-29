@@ -7,20 +7,21 @@ import SubCategoryBanner       from '../components/SubCategoryBanner';
 import DynamicButton           from '../components/primitives/DynamicButton';
 
 const RESULTS_PER_LOAD     = 6;
-const BUTTON_HEIGHT_OFFSET = 90;
+const BUTTON_HEIGHT_OFFSET = 120;
 
 
 export default class Blog extends Component {
 
     state = {
-        resultsPageIndex:        0,
-        containerHeight:         0,
-        paramsHash:              undefined,
-        currentPage:             undefined,
-        initialLoadResultsCount: undefined,
-        initialResultsLoaded:    false,
-        loading:                 false,
-        noMorePostsToLoad:       false
+        resultsPageIndex:         0,
+        containerHeight:          0,
+        paramsHash:               undefined,
+        currentPage:              undefined,
+        initialNumOfResultsToGet: undefined,
+        initialResultsLoaded:     false,
+        loading:                  false,
+        allPostsLoaded:           false,
+        windowResized:            false
     };
 
 
@@ -31,6 +32,9 @@ export default class Blog extends Component {
     //will load the same number of results. can't use URL object as not supported
     //in IE11 :(
     componentDidMount() {
+        //reset height of blog container to auto on resize
+        window.addEventListener('resize', this.resizeHandler);
+
         const paramsHash = UrlUtils.getUrlParamsHash();
 
         if(paramsHash) {
@@ -50,7 +54,7 @@ export default class Blog extends Component {
                 }
 
                 return this.setState({
-                    initialLoadResultsCount: regExResult
+                    initialNumOfResultsToGet: regExResult
                                                 ? RESULTS_PER_LOAD * currentPage
                                                 : RESULTS_PER_LOAD,
                     currentPage: regExResult ? Number(currentPage) : 1,
@@ -66,27 +70,37 @@ export default class Blog extends Component {
         }
 
         this.setState({
-            initialLoadResultsCount: RESULTS_PER_LOAD,
+            initialNumOfResultsToGet: RESULTS_PER_LOAD,
             currentPage: 1,
             paramsHash: paramsHash || { page: '1' }
         });
     }
 
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.resizeHandler);
+    }
+
 
     //--- FUNCTION DECLARATIONS ---
+
+    resizeHandler = () => {
+        const { windowResized } = this.state;
+
+        if(!windowResized) this.setState({ windowResized: true });
+    }
 
     loadMoreClickHandler = () => {
         const {
             resultsPageIndex,
             currentPage,
             paramsHash,
-            initialLoadResultsCount
+            initialNumOfResultsToGet
         } = this.state;
 
         let nextResultsIndex;
-        if(initialLoadResultsCount) {
+        if(initialNumOfResultsToGet) {
             //after initial load we'll only get our set number of results
-            nextResultsIndex = initialLoadResultsCount / RESULTS_PER_LOAD;
+            nextResultsIndex = initialNumOfResultsToGet / RESULTS_PER_LOAD;
         } else {
             //so now just increment results index as normal
             nextResultsIndex = resultsPageIndex + 1;
@@ -102,40 +116,41 @@ export default class Blog extends Component {
         window.history.replaceState(null, null, nextPageValue);
 
         this.setState({
-            resultsPageIndex: nextResultsIndex,
-            currentPage: nextPage,
-            initialLoadResultsCount: null,
-            paramsHash: paramsCopy,
-            loading: true
+            resultsPageIndex:         nextResultsIndex,
+            currentPage:              nextPage,
+            initialNumOfResultsToGet: null,
+            paramsHash:               paramsCopy,
+            loading:                  true,
+            windowResized:            false,
         });
     }
 
     resultsLoadedHandler = (searchResults, blogWrapperHeight) => {
         const { resultsPageIndex } = this.state;
         const { nbHits, nbPages, hitsPerPage } = searchResults;
-        let noMorePostsToLoad = false;
+        let allPostsLoaded = false;
 
         //we've got all results on first search
-        if(hitsPerPage >= nbHits) noMorePostsToLoad = true;
+        if(hitsPerPage >= nbHits) allPostsLoaded = true;
         //we've reached the last page of results
-        if((resultsPageIndex + 1) >= nbPages) noMorePostsToLoad = true;
+        if((resultsPageIndex + 1) >= nbPages) allPostsLoaded = true;
 
         this.setState({
             containerHeight:      blogWrapperHeight + BUTTON_HEIGHT_OFFSET,
             loading:              false,
             initialResultsLoaded: true,
-            noMorePostsToLoad
+            allPostsLoaded
         });
     }
 
     renderLoadMoreButton() {
         const {
             initialResultsLoaded,
-            noMorePostsToLoad,
+            allPostsLoaded,
             loading
         } = this.state;
 
-        if(initialResultsLoaded && !noMorePostsToLoad) {
+        if(initialResultsLoaded && !allPostsLoaded) {
             return (
                 <DynamicButton
                     text={'Load More'}
@@ -156,25 +171,26 @@ export default class Blog extends Component {
         const {
             resultsPageIndex,
             containerHeight,
-            initialLoadResultsCount,
+            initialNumOfResultsToGet,
             loading,
-            paramsHash
+            paramsHash,
+            windowResized
         } = this.state;
 
-        if(typeof initialLoadResultsCount === 'undefined') return null;
+        if(typeof initialNumOfResultsToGet === 'undefined') return null;
 
         const searchQuery = paramsHash['search'] || '';
 
         return (
             <div
                 id="blog__blog-posts-results-container"
-                style={{ height: containerHeight }}
+                style={windowResized ? null : { height: containerHeight }}
             >
                 <BlogPostGrid
                     searchQuery={searchQuery}
                     searchParams={
-                        initialLoadResultsCount
-                        ? { hitsPerPage: initialLoadResultsCount }
+                        initialNumOfResultsToGet
+                        ? { hitsPerPage: initialNumOfResultsToGet }
                         : null
                     }
                     resultsPage={resultsPageIndex}
