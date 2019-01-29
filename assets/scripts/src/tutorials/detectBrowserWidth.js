@@ -4,6 +4,7 @@
     var childGridCard = contentsWrapper.getElementsByClassName('grid-card')[0];
     var resizeActive;
 
+    //hacky version of _.debounce()
     w.addEventListener('resize', function(){
 
         w.clearTimeout(resizeActive);
@@ -21,7 +22,7 @@
             } else if(currentWidth > 1100 && childGridCard.classList.contains('invert-colours')){
                 childGridCard.classList.remove('invert-colours');
             }
-            
+
         }, 100);
 
     });
