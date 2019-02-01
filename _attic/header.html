@@ -1,45 +1,83 @@
-<header id="index__page-header" class="row">
-	<div class="col span-1-of-3">
-		<div id="logo">
-			<p><a href="/">Development</a></p>
-			<div id="twitter-header-link">
-                <h4><a href="https://twitter.com/adweb_dev" target="_blank">@reactDev</a></h4>
-                <!-- <h4><a href="#">Photography</a></h4>
-                <h4><a href="#">Blog</a></h4> -->
+<header id="index__page-header">
+    <div id="index__header-components" class="index__header-components">
+        <div class="index__header-icon-menu-wrapper">
+            <i class="fa fa-user-circle-o index__header-icon"></i>
+        </div>
+        <div id="index__header-title" class="index__header-title">
+            <a href="/blog/?page=1">Through the Stack</a>
+        </div>
+        <div class="index__header-icon-menu-wrapper">
+            <i class="fa fa-search index__header-icon" onclick="renderSearchComponent()"></i>
+            <div id="index__header-icon-menu-btn" onclick=
+                    "toggleClass(this.id, 'index__header-menu-icon-open');
+                    toggleClass('index__header-components', 'index__header-components-menu-open');
+                    toggleClass('index__header-categories', 'index__header-categories-open');
+                    toggleClass('index__main-page-content', 'header-open-blur-main');
+                    toggleClass('index__main-page-overlay', 'index__main-page-overlay-visible');
+                    toggleClass('index__header-navigation', 'index__header-menu-open')"
+            >
+                <i class="fa fa-server index__header-icon"></i>
             </div>
-		</div>
-	</div>
-	<!-- <nav class="col span-2-of-3">
-		<ul id="header-main-nav">
+        </div>
+    </div>
+    <nav id="index__header-navigation" class="index__header-navigation">
+        <div id="index__header-nav-display-wrapper">
+            <div id="index__header-nav-icon-btns" onmouseleave="menuPreviewModifier(0)">
+                <a href="/">
+                    <i class="fa fa-home index__header-icon"
+                       onmouseenter="menuPreviewModifier(1)"
+                    ></i>
+                </a>
+                <a href="/about">
+                    <i class="fa fa-question-circle-o index__header-icon"
+                       onmouseenter="menuPreviewModifier(2)"
+                    ></i>
+                </a>
+                <a href="/blog">
+                    <i class="fa fa-book index__header-icon"
+                       onmouseenter="menuPreviewModifier(3)"
+                    ></i>
+                </a>
+                <a href="/demosprojects">
+                    <i class="fa fa-laptop index__header-icon"
+                       onmouseenter="menuPreviewModifier(4)"
+                    ></i>
+                </a>
+                <a href="http://www.adesmier.me">
+                    <i class="fa fa-graduation-cap index__header-icon"
+                       onmouseenter="menuPreviewModifier(5)"
+                    ></i>
+                </a>
+            </div>
+            <div id="index__header-nav-preview-pane">
+                <p>Choose where to go by selecting an icon...</p>
+            </div>
+        </div>
+        <div id="index__header-nav-choose-tech-stack">
+            Or view posts about an area of the web development stack
+        </div>
+    </nav>
 
-			<li class="header-main-nav-item
-				{% if page.url == '/' %} header-main-nav-item--current
-				{% endif %}"><a href="/">Home</a></li>
-
-			<li class="header-main-nav-item
-				{% if page.url contains '/about' %} header-main-nav-item--current
-				{% endif %}"><a href="/about">About</a></li>
-
-
-			<li class="header-main-nav-item
-				{% if page.url contains '/blog' %} header-main-nav-item--current
-				{% endif %}"><a href="/blog">Blog</a></li>
-
-
-			<li class="header-main-nav-item
-				{% if page.url contains '/portfolio' %} header-main-nav-item--current
-				{% endif %}"><a href="/portfolio">Portfolio</a></li>
-
-
-			<li class="header-main-nav-item
-				{% if page.url contains '/projects' %} header-main-nav-item--current
-				{% endif %}"><a href="/projects">Projects</a></li>
-
-
-			<li class="header-main-nav-item
-				{% if page.url contains '/contact' %} header-main-nav-item--current
-				{% endif %}"><a href="/contact">Contact</a></li>
-
-		</ul>
-	</nav> -->
+    <div id="index__header-categories">
+        <div class="header-category">
+            <i class="fa fa-desktop"></i>
+            <span>Frontend</span>
+        </div>
+        <div class="header-category">
+            <i class="fa fa-server"></i>
+            <span>Backend</span>
+        </div>
+        <div class="header-category">
+            <i class="fa fa-cogs"></i>
+            <span>Build, Test &amp; Config</span>
+        </div>
+        <div class="header-category">
+            <i class="fa fa-database"></i>
+            <span>Cloud &amp; Database</span>
+        </div>
+        <div class="header-category">
+            <i class="fa fa-hdd-o"></i>
+            <span>Network &amp; Hardware</span>
+        </div>
+    </div>
 </header>
