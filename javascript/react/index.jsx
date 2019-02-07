@@ -12,7 +12,7 @@ window.ReactDOM = ReactDOM;
 window.searchComponent = require('./pages/Search').default;
 
 
-//load the blog post grid
+//site header
 const siteHeaderEl = document.getElementById('site-header__react-root');
 if(siteHeaderEl) ReactDOM.render(<Header />, siteHeaderEl);
 

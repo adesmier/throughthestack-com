@@ -1,18 +1,49 @@
-import React, { Component, Fragment } from 'react';
+import { Component, Fragment } from 'react';
 
+const START_RAF_OFFSET  = 200;
+const SKEW_LAYER_HEIGHT = 450;
+const SKEW_FIXED_HEIGHT = 50;
+const TITLE_FIXED_YPOS  = -100;
 
 
 export default class Header extends Component {
 
-    header = React.createRef();
-    title  = React.createRef();
+    state = {
+        requestAF:        undefined,
+        headerFixed:      false,
+        skewLayerHeight:  SKEW_LAYER_HEIGHT,
+        skewLayerDeg:     10,
+        titleTranslatePx: 0
+    }
 
-    request = undefined;
 
     //--- LIFECYCLE FUNCTIONS ---
 
     componentDidMount() {
         window.addEventListener('scroll', this.scrollHandler);
+
+        const scrollYOffset = window.pageYOffset;
+
+        let skewLayerHeight; let skewLayerDeg; let titleTranslatePx;
+        let headerFixed = false;
+
+        if(scrollYOffset <= START_RAF_OFFSET) {
+            [skewLayerHeight, skewLayerDeg, titleTranslatePx]
+                = this._calculateSkewTranslate(scrollYOffset);
+        } else {
+            //fix header and remove skew
+            headerFixed       = true,
+            skewLayerHeight   = SKEW_FIXED_HEIGHT,
+            skewLayerDeg      = 0,
+            titleTranslatePx  = TITLE_FIXED_YPOS
+        }
+
+        this.setState({
+            headerFixed,
+            skewLayerHeight,
+            skewLayerDeg,
+            titleTranslatePx
+        });
     }
 
     componentWillUnmount() {
@@ -23,53 +54,88 @@ export default class Header extends Component {
     //--- FUNCTION DECLARATIONS ---
 
     scrollHandler = () => {
-        var scrollYOffset = window.pageYOffset;
+        const { requestAF } = this.state;
+        const scrollYOffset = window.pageYOffset;
+
+        let newRequestAF = undefined; let headerFixed = false;
+        let skewLayerHeight; let skewLayerDeg; let titleTranslatePx;
+
+        if(requestAF) window.cancelAnimationFrame(requestAF);
     
-        if(scrollYOffset <= 200) {
-            if(this.header.current.classList.contains('fixed')) {
-                this.header.current.classList.remove('fixed');
-            }
-    
-            if(this.request) window.cancelAnimationFrame(this.request);
-    
-            this.request = window.requestAnimationFrame(this.reqCb);
-        } else {
-            this.header.current.style.transform = 'skewY(0deg)';
-            if(!this.header.current.classList.contains('fixed')) {
-                this.header.current.classList.add('fixed');
-            }
+        if(scrollYOffset <= START_RAF_OFFSET) {
+
+            newRequestAF = window.requestAnimationFrame(() => {
+                [skewLayerHeight, skewLayerDeg, titleTranslatePx]
+                    = this._calculateSkewTranslate(scrollYOffset);
+
+                this.setState({
+                    headerFixed,
+                    skewLayerHeight,
+                    skewLayerDeg,
+                    titleTranslatePx,
+                });
+            });
             
+        } else {
+            headerFixed = true; skewLayerHeight = SKEW_FIXED_HEIGHT;
+            skewLayerDeg = 0; titleTranslatePx = TITLE_FIXED_YPOS;
+
+            this.setState({
+                headerFixed,
+                skewLayerHeight,
+                skewLayerDeg,
+                titleTranslatePx,
+            });
         }
+
+        this.setState({ requestAF: newRequestAF });
     }
 
-    reqCb = () => {
-        var maxDegress = 10;
-        var newDegrees = maxDegress - (scrollYOffset / 20);
-        var newHeight = 450 - (scrollYOffset);
+    _calculateSkewTranslate = scrollYOffset => {
+        const maxDegress = 10;
+        const newDegrees = maxDegress - (scrollYOffset / 20);
+        const newHeight  = SKEW_LAYER_HEIGHT - (scrollYOffset);
+        const newYPos    = (scrollYOffset / 2) * -1;
 
-        this.header.current.style.height = newHeight + 'px';
-        this.header.current.style.transform = 'skewY(' + newDegrees + 'deg)';
-
-
-        this.title.current.style.transform = 'translateY(-' + (scrollYOffset/2) + 'px)';
+        return [newHeight, newDegrees, newYPos];
     }
 
+
+    //--- RENDER ---
 
     render() {
+        const {
+            headerFixed, skewLayerHeight, skewLayerDeg, titleTranslatePx
+        } = this.state;
+
+        let skewClasses = ['site-header__skew-top-layer'];
+        if(headerFixed) skewClasses.push('site-header__skew-fixed');
+
         return (
             <Fragment>
-                <div id="header" className="header" ref={this.header}>
-                    <div id="skew" className="skew"></div>
-                    <div id="title" ref={this.title}>
-                        <div className="title-openasset">OpenAsset</div>
-                        <div className="title-image">Image</div>
-                        <div className="title-management">Management</div>
+                <div>
+                    <div
+                        className={skewClasses.join(' ')}
+                        style={{
+                            height: skewLayerHeight,
+                            transform: `skewY(${skewLayerDeg}deg)`
+                        }}
+                    >
+                    </div>
+                    <div
+                        className="site-header__title"
+                        style={{
+                            transform: `translateY(${titleTranslatePx}px)`
+                        }}
+                    >
+                        <div>OpenAsset</div>
+                        <div>Image</div>
+                        <div>Management</div>
                     </div>
                 </div>
-                <div id="background" className="background"></div>
+                <div className="site-header__skew-background"></div>
             </Fragment>
         )
     }
-
 
 }
