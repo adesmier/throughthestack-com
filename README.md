@@ -1,5 +1,5 @@
-Through The Stack - Hacking the Stack one Byte at a Time
-========================================================
+Through The Stack
+=================
 ## Overview
 My tech blog site focusing on quick tips and tutorials for all elements of the Web Development Stack
 

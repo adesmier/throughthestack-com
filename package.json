@@ -1,7 +1,7 @@
 {
   "name": "throughthestack.com",
   "version": "0.0.1",
-  "description": "My tech blog site focusing on quick tips and tutorials for all elements of the Web Development Stack",
+  "description": "Tips and tutorials for all elements of the Web Development Stack",
   "main": "gulpfile.js",
   "scripts": {
     "dev": "./node_modules/gulp/bin/gulp.js",
