@@ -12,7 +12,7 @@ class Search extends React.Component {
     //--- LIFECYCLE FUNCTIONS ---
 
     componentDidMount() {
-        this.searchEl = document.getElementById('index__react-search-component');
+        this.searchEl = document.getElementById('site-search__react-root');
 
         //we need to listen for end of searchClosing animation to fade out the
         //search componenet before unmount

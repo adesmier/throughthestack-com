@@ -7,7 +7,7 @@
     w.renderSearchComponent = function(){
         ReactDOM.render(
             React.createElement(window.searchComponent, {}),
-            d.getElementById('index__react-search-component')
+            d.getElementById('site-search__react-root')
         );
     }
 
