@@ -1,33 +1,25 @@
 /* COLOUR VARIABLES */
 
+$mainFontColour: #333;
+$mainBackgroundColour: #f9f9f9;
+
+$accentColour: rgb(91, 176, 228);
+$articleMetaTagColour: #a8a8a8;
+
 //colours for blockquote and notice tips on blog posts
-// $noticeTip: rgba(52, 152, 219, 0.1);
-// $noticeTipBorder: rgb(74, 139, 181);
-// $noticeTipBorderAlpha: rgba(41, 128, 185, 0.4);
 $noticeTip: rgba(26, 188, 156, 0.1);
 $noticeTipBorder: rgb(73, 194, 170);
 $noticeTipBorderAlpha: rgba(22, 160, 133, 0.4);
 $noticeWarn: rgba(241, 196, 15, 0.1);
 $noticeWarnBorder: rgb(241, 182, 88);
 $noticeWarnBorderAlpha: rgba(243, 156, 18, 0.4);
-//$noticeError: rgba(231, 76, 60, 0.3);
-//$noticeErrorBorder: rgb(192, 57, 43);
-//$noticeErrorBorderAlpha: rgba(192, 57, 43, 0.4);
+// $noticeTip: rgba(52, 152, 219, 0.1);
+// $noticeTipBorder: rgb(74, 139, 181);
+// $noticeTipBorderAlpha: rgba(41, 128, 185, 0.4);
+// $noticeError: rgba(231, 76, 60, 0.3);
+// $noticeErrorBorder: rgb(192, 57, 43);
+// $noticeErrorBorderAlpha: rgba(192, 57, 43, 0.4);
 
-//**********global site colours**********
-$mainFontColour: #333;
-$mainBackgroundColour: #f9f9f9;
-$accentColour: rgb(91, 176, 228);
-$articleMetaTagColour: #a8a8a8;
-
-
-
-//MAIN MENU ITEMS
-// $menuItemActive: $mainFontColour;
-// $menItemNonActive: #b5b5b5;
-// $menuItemHover: #696969;
-
-/********************/
 
 /* FONT VARIABLES */
 
@@ -35,14 +27,8 @@ $mainFontStyle: 'Karla', sans-serif;
 $logoFontStyle: 'Patua One', cursive;
 $mainFontSize: 20px;
 
-/******************/
-
 
 /* FULL ELEMENT SELECTORS */
-
-// *{
-//     box-sizing: border-box;
-// }
 
 body{
 	font-family: $mainFontStyle;
@@ -53,6 +39,7 @@ body{
 
 main{
     margin-top: 100px;
+    min-height: 100vh;
 }
 
 h1{
@@ -92,35 +79,17 @@ button{
     }
 }
 
-main {
-    min-height: 100vh;
-}
-
 .row{
 	max-width: 1140px;
 }
 
-/*  MAIN CONTENT OVERLAY WHEN HEADER IS OPEN  ============================================= */
+//change colour of highlighted text
+::selection {
+    background: $accentColour; /* WebKit/Blink Browsers */
+}
 
-// #index__main-page-overlay{
-//     position: fixed;
-//     width: 100%;
-//     height: 100%;
-//     top: 0;
-//     left: 0;
-//     right: 0;
-//     bottom: 0;
-//     background-color: rgba(0,0,0,0.7);
-//     z-index: 50; //header set to index 100
-// }
-// #index__main-page-overlay.index__main-page-overlay-hidden{
-//     display: none;
-// }
-// #index__main-page-overlay.index__main-page-overlay-visible{
-//     display: block;
-// }
 
-/*  SECTIONS  ============================================================================= */
+/* SECTIONS */
 
 .section {
 	clear: both;
@@ -131,11 +100,4 @@ main {
 /* CLEAR FLOATS CLASS */
 .clear-float{
     clear: both;
-}
-
-/**************************/
-
-//change colour of highlighted text
-::selection {
-  background: $accentColour; /* WebKit/Blink Browsers */
 }
