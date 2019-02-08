@@ -4,7 +4,7 @@
 @import "vendor/_grid";
 @import "vendor/_rouge-styles";
 @import "../fonts/font-awesome/css/font-awesome";
-//@import "vendor/_highlight-monokai";
+
 
 //CUSTOM IMPORTS
 
@@ -12,7 +12,6 @@
 @import "modules/common/globals";
 @import "modules/common/spinner";
 @import "modules/common/dynamic-button";
-@import "modules/common/code-highlighter";
 @import "modules/common/grid-card";
 @import "modules/common/article-summary";
 @import "modules/common/header";
@@ -26,6 +25,9 @@
 //@import "modules/home/projects-about";
 
 /*******POSTS*******/
+@import "modules/posts/code-highlighter";
+
+
 @import "modules/posts/tutorials";
 
 @import "modules/blog/blog-post-grid";
