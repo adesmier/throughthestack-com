@@ -19,21 +19,22 @@
 @import "modules/common/holding-page";
 
 /*******HOME PAGE*******/
-@import "modules/home/latest-posts";
+// @import "modules/home/latest-posts";
 //@import "modules/home/twitter-nuggets";
 //@import "modules/home/projects-about";
 
-/*******POSTS*******/
-@import "modules/posts/code-highlighter";
-
-
-@import "modules/posts/tutorials";
-
+/*******BLOG PAGE*******/
 @import "modules/blog/blog-post-grid";
 @import "modules/blog/subcategory-banner";
 
+/*******POSTS*******/
+@import "modules/posts/tutorials";
+@import "modules/posts/code-highlighter";
+
+
 /*******SEARCH COMPONENT*******/
 @import "modules/search/search-component";
+
 
 //MEDIA QUERIES
 
@@ -41,5 +42,3 @@
 @import "modules/media-queries/mq_header";
 @import "modules/media-queries/mq_tutorials";
 @import "modules/media-queries/mq_blog-post-grid";
-
-
