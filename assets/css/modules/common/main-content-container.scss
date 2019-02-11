@@ -16,6 +16,12 @@
     background-color: rgba(63, 166, 180, 0.4);
     box-shadow: 0px 0px 5px 3px #b2b2b2;
     backface-visibility: hidden;
+
+    &.loading-state {
+        background: linear-gradient(125deg,#3fa6b4 -80%,#ffffff 50%,#3fa6b4 120%);
+        background-size: 400% 400%;
+        animation: loading-effect 2.5s ease infinite;
+    }
 }
 
 #main-content__skew-background-2 {
@@ -29,6 +35,28 @@
     background: linear-gradient(25deg,#3fa6b4 -600%,#ffffff 50%,#3fa6b4 600%);
     box-shadow: 0px 0px 5px 3px #b2b2b2;
     backface-visibility: hidden;
+
+    &.loading-state {
+        background: linear-gradient(25deg,#3fa6b4 -80%,#ffffff 50%,#3fa6b4 120%);
+        background-size: 400% 400%;
+        animation: loading-effect 2.5s ease infinite;
+    }
+
+    #main-content__spinner {
+        transform:  skewY(10deg);
+    }
+}
+
+@keyframes loading-effect {
+    0% {
+        background-position:0% 50%
+    }
+    50% {
+        background-position:100% 50%
+    }
+    100% {
+        background-position:0% 50%
+    }
 }
 
 #main-content__content {
