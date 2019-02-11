@@ -78,17 +78,3 @@ button{
 ::selection {
     background: $accentColour; /* WebKit/Blink Browsers */
 }
-
-
-/* SECTIONS */
-
-.section {
-	clear: both;
-	padding: 0px;
-	margin: 20px auto 0 auto;
-}
-
-/* CLEAR FLOATS CLASS */
-.clear-float{
-    clear: both;
-}
