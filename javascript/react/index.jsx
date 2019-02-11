@@ -1,8 +1,9 @@
-import React      from "react";
-import ReactDOM   from 'react-dom';
+import React    from "react";
+import ReactDOM from 'react-dom';
 
-import Header       from './components/Header';
-import Blog       from './pages/Blog';
+import Header   from './components/sections/Header';
+import Blog     from './pages/Blog';
+
 
 //expose react api globally in order to call react comps from legacy js
 window.React    = React;

@@ -1,4 +1,4 @@
-import { Component, Fragment } from 'react';
+import { PureComponent, Fragment } from 'react';
 
 const START_RAF_OFFSET  = 200;
 const SKEW_LAYER_HEIGHT = 450;
@@ -6,7 +6,7 @@ const SKEW_FIXED_HEIGHT = 50;
 const TITLE_FIXED_YPOS  = -100;
 
 
-export default class Header extends Component {
+export default class Header extends PureComponent {
 
     state = {
         requestAF:        undefined,
