@@ -87,11 +87,6 @@ layout: default
                     <div id="post-intro-text">{{ section[1] | markdownify }}</div>
                 {% endfor %}
 
-                <!-- <hr />
-
-                <div id="post-intro-dropdown-container" class="sticky-element">
-                
-                </div> -->
             </div>
             <a class="link-anchor" name="Sections"></a>
         {% endif %}
@@ -173,18 +168,6 @@ layout: default
 
             </div>
         </aside>
-
-
-        {% if jekyll.environment == 'production' %}
-            <!-- DISQUS COMMENT SECTION -->
-            <div class="grid-card full-width-card">
-
-                {% if page.comments %}
-                    {% include common/disqus.html %}
-                {% endif %}
-
-            </div>
-        {% endif %}
 
     </article>
 
