@@ -43,8 +43,6 @@ var messages = {
 };
 
 var jsFiles_common = [
-    'assets/scripts/src/common/classModifier.js',
-    'assets/scripts/src/common/updateNavPreview.js',
     'assets/scripts/src/common/searchComponent.js'
 ];
 
