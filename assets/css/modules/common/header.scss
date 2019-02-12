@@ -4,24 +4,31 @@
     top: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: rgba(0, 0, 0, 0.85);
     transform-origin: right;
     backface-visibility: hidden;
 }
 
 .site-header__skew-fixed {
     position: fixed;
+    background-color: rgba(0, 0, 0, 0.95);
 }
 
 .site-header__title {
-    color: #3fa6b43d;
-    font-size: 70px;
+    font-family: MarvinVisions;
+    color: #3fa6b4;
+    font-size: 92px;
     text-align: right;
     line-height: 60px;
     position: absolute;
-    top: 70px;
+    top: 100px;
     right: 20px;
     z-index: 4;
+
+    span {
+        margin-left: 1px;
+        text-shadow: -5px 0 10px rgba(34,51,68,.4)
+    }
 }
 
 .site-header__skew-background {
@@ -39,4 +46,31 @@
     transform-origin: left;
     backface-visibility: hidden;
     box-shadow: 0px 0px 5px 3px #b2b2b2;
+}
+
+.site-header__login-icon,
+.site-header__search-icon-wrapper {
+    z-index: 4;
+    color: lighten(#3fa6b4, 10%);
+    font-size: 30px;
+    margin: 9px;
+    cursor: pointer;
+    transition: color 0.2s linear;
+
+    &:hover {
+        color: lighten(#3fa6b4, 20%);
+        transition: color 0.2s linear;
+    }
+}
+
+.site-header__login-icon {
+    position: fixed;
+}
+
+.site-header__search-icon-wrapper {
+    position: absolute;
+    right: 2px;
+    bottom: 398px;
+    transform-origin: right;
+    backface-visibility: hidden;
 }
