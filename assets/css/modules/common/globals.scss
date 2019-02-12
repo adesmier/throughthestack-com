@@ -23,6 +23,11 @@ $noticeWarnBorderAlpha: rgba(243, 156, 18, 0.4);
 
 /* FONT VARIABLES */
 
+@font-face {
+    font-family: "MarvinVisions";
+    src: url('../fonts/MarvinVisionsBig-Bold.woff') format('woff');
+}
+
 $mainFontStyle: 'Karla', sans-serif;
 $logoFontStyle: 'Patua One', cursive;
 $mainFontSize: 20px;
