@@ -24,7 +24,8 @@ $noticeWarnBorderAlpha: rgba(243, 156, 18, 0.4);
 /* FONT VARIABLES */
 
 @font-face {
-    font-family: "MarvinVisions";
+    font-family: 'MarvinVisions';
+    src: url('../fonts/MarvinVisionsBig-Bold.woff2') format('woff2');
     src: url('../fonts/MarvinVisionsBig-Bold.woff') format('woff');
 }
 
