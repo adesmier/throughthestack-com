@@ -6,6 +6,11 @@ const START_RAF_OFFSET  = 200;
 const SKEW_LAYER_HEIGHT = 450;
 const SKEW_FIXED_HEIGHT = 50;
 const TITLE_FIXED_YPOS  = -100;
+const MAX_SKEW_DEGREES  = 10;
+
+const SEARCH_ICON_BOTTOM_OFFSET  = 398;
+const CALCULATE_ICON_STYLES_INIT = 9;
+const BOTTOM_OFFSET_MULTIPLIER   = 4;
 
 
 export default class Header extends PureComponent {
@@ -94,12 +99,33 @@ export default class Header extends PureComponent {
     }
 
     _calculateSkewTranslate = scrollYOffset => {
-        const maxDegress = 10;
-        const newDegrees = maxDegress - (scrollYOffset / 20);
+        const newDegrees = MAX_SKEW_DEGREES - (scrollYOffset / 20);
         const newHeight  = SKEW_LAYER_HEIGHT - (scrollYOffset);
         const newYPos    = (scrollYOffset / 2) * -1;
 
-        return [newHeight, newDegrees, newYPos];
+        return [
+            newHeight,
+            Number.parseFloat(newDegrees).toFixed(1),
+            Number.parseFloat(newYPos).toFixed(1)
+        ];
+    }
+
+    //skewLayerDeg runs from 10 to 0 so can use this for styles calculation
+    _calculateSearchIconStyles() {
+        const { skewLayerDeg } = this.state;
+        let opacity; let bottom;
+
+        if(skewLayerDeg <= CALCULATE_ICON_STYLES_INIT) {
+            const opacityFloat =
+                (CALCULATE_ICON_STYLES_INIT - skewLayerDeg) / CALCULATE_ICON_STYLES_INIT;
+            opacity = opacityFloat.toFixed(2);
+            bottom  = Math.trunc(skewLayerDeg) * BOTTOM_OFFSET_MULTIPLIER;
+        } else {
+            opacity = 1;
+            bottom  = SEARCH_ICON_BOTTOM_OFFSET;
+        }
+
+        return [opacity, bottom];
     }
 
     renderSiteTitle() {
@@ -132,6 +158,8 @@ export default class Header extends PureComponent {
             headerFixed, skewLayerHeight, skewLayerDeg, titleTranslatePx
         } = this.state;
 
+        const [opacity, bottom] = this._calculateSearchIconStyles();
+
         let skewClasses = ['site-header__skew-top-layer'];
         if(headerFixed) skewClasses.push('site-header__skew-fixed');
 
@@ -147,7 +175,11 @@ export default class Header extends PureComponent {
                     >
                         <div
                             className="site-header__search-icon-wrapper"
-                            style={{transform: `skewY(-${skewLayerDeg}deg)`}}
+                            style={{
+                                transform: `skewY(-${skewLayerDeg}deg)`,
+                                opacity,
+                                bottom
+                            }}
                         >
                             <FontAwesomeBtn
                                 faIcon={'fa-search'}
