@@ -16,20 +16,34 @@
     transition: background-color 0.3s linear;
 }
 
-.site-header__title {
-    font-family: MarvinVisions;
+.site-header__title-wrapper {
     color: #3fa6b4;
-    font-size: 92px;
     text-align: right;
     line-height: 60px;
     position: absolute;
-    top: 100px;
+    top: 60px;
     right: 20px;
+    width: 600px;
     z-index: 4;
 
-    span {
-        margin-left: 1px;
-        text-shadow: -5px 0 10px rgba(34,51,68,.4)
+    .site-header__title-main {
+        font-family: MarvinVisions;
+        font-size: 92px;
+        margin-top: 30px;
+        padding-left: 220px;
+    }
+
+    .site-header__title-post {
+        font-family: $logoFontStyle;
+        font-size: 62px;
+    }
+
+    .site-header__title-main,
+    .site-header__title-post {
+        span {
+            margin-left: 1px;
+            text-shadow: -5px 0 10px rgba(34,51,68,.4)
+        }
     }
 }
 

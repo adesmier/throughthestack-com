@@ -15,7 +15,12 @@ window.searchComponent = require('./pages/Search').default;
 
 //site header
 const siteHeaderEl = document.getElementById('site-header__react-root');
-if(siteHeaderEl) ReactDOM.render(<Header />, siteHeaderEl);
+const pageTitleEl  = document.getElementById('page-title');
+
+if(siteHeaderEl) ReactDOM.render(
+    <Header pageTitle={pageTitleEl.innerHTML} />,
+    siteHeaderEl
+);
 
 //load the blog post grid
 const blogGridEl = document.getElementById('blog__react-root');

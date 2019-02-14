@@ -1,5 +1,7 @@
 import { PureComponent, Fragment } from 'react';
+import PropTypes                   from 'prop-types';
 
+import Title          from '../header/HeaderTitle';
 import FontAwesomeBtn from '../buttons/FontAwesomeBtn';
 
 const START_RAF_OFFSET  = 200;
@@ -14,6 +16,10 @@ const BOTTOM_OFFSET_MULTIPLIER   = 4;
 
 
 export default class Header extends PureComponent {
+
+    static propTypes = {
+        pageTitle: PropTypes.string.isRequired
+    }
 
     state = {
         requestAF:        undefined,
@@ -128,32 +134,11 @@ export default class Header extends PureComponent {
         return [opacity, bottom];
     }
 
-    renderSiteTitle() {
-        return (
-            <Fragment>
-                <span>t</span>
-                <span>h</span>
-                <span>r</span>
-                <span>o</span>
-                <span>u</span>
-                <span>g</span>
-                <span>h</span><br />
-                <span>t</span>
-                <span>h</span>
-                <span>e</span><br />
-                <span>s</span>
-                <span>t</span>
-                <span>a</span>
-                <span>c</span>
-                <span>k</span>
-            </Fragment>
-        );
-    }
-
 
     //--- RENDER ---
 
     render() {
+        const { pageTitle } = this.props;
         const {
             headerFixed, skewLayerHeight, skewLayerDeg, titleTranslatePx
         } = this.state;
@@ -194,12 +179,12 @@ export default class Header extends PureComponent {
                         onClick={() => {console.log('click')}}
                     />
                     <div
-                        className="site-header__title"
+                        className="site-header__title-wrapper"
                         style={{
                             transform: `translateY(${titleTranslatePx}px)`
                         }}
                     >
-                        {this.renderSiteTitle()}
+                        <Title titleText={pageTitle} />
                     </div>
                 </div>
                 <div className="site-header__skew-background"></div>
