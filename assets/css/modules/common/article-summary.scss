@@ -70,19 +70,18 @@ and blog page */
 
 .article-title{
     padding-top: 5px;
-    padding-bottom: 5px;
 }
 
 .article-meta{
+    margin: 2px 0 7px 0;
+    font-size: 65%;
+    color: $articleMetaTagColour;
     i {
         margin-right: 5px;
     }
     span:first-of-type {
         margin-right: 10px;
     }
-    margin: 2px 0 5px 0;
-    font-size: 70%;
-    color: $articleMetaTagColour;
 }
 
 .article-tags{
@@ -100,7 +99,7 @@ and blog page */
         font-size: 65%;
         border: 1px solid $articleMetaTagColour;
         border-radius: 3px;
-        padding: 1px 5px;
+        padding: 1px 5px 0px 5px;
         transition: background-color 0.3s;
         color: $articleMetaTagColour;
         transition: color 0.3s;
@@ -120,6 +119,7 @@ and blog page */
     margin-top: 6px;
     margin-left: 6px;
     font-size: 65%;
+    font-style: italic;
     border-radius: 12px;
     i {
         font-size: 90%;

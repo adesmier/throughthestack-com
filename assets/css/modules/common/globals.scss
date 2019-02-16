@@ -29,9 +29,12 @@ $noticeWarnBorderAlpha: rgba(243, 156, 18, 0.4);
     src: url('../fonts/MarvinVisionsBig-Bold.woff') format('woff');
 }
 
-$mainFontStyle: 'Karla', sans-serif;
-$logoFontStyle: 'Patua One', cursive;
+$mainFontStyle: 'Vollkorn', serif;
 $mainFontSize: 20px;
+
+// $mainFontStyle: 'Karla', sans-serif;
+// $logoFontStyle: 'Patua One', cursive;
+// $mainFontSize: 20px;
 
 
 /* FULL ELEMENT SELECTORS */
@@ -39,7 +42,7 @@ $mainFontSize: 20px;
 body{
 	font-family: $mainFontStyle;
 	font-size: $mainFontSize;
-	background-color: $mainBackgroundColour;
+	// background-color: $mainBackgroundColour;
     color: $mainFontColour;
 }
 
@@ -53,7 +56,8 @@ h2,h3{
 }
 
 a{
-	text-decoration: none;
+    text-decoration: none;
+    letter-spacing: 0.1px;
     &:link{
         color: currentColor;
     }

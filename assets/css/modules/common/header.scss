@@ -34,14 +34,17 @@
     }
 
     .site-header__title-post {
-        font-family: $logoFontStyle;
-        font-size: 62px;
+        font-family: $mainFontStyle;
+        // font-family: MarvinVisions;
+        font-size: 50px;
+        font-style: italic;
+        font-weight: 600;
+        letter-spacing: -3.5px;
     }
 
     .site-header__title-main,
     .site-header__title-post {
         span {
-            margin-left: 1px;
             text-shadow: -5px 0 10px rgba(34,51,68,.4)
         }
     }
@@ -69,7 +72,6 @@
     z-index: 4;
     color: lighten(#3fa6b4, 10%);
     font-size: 30px;
-    margin: 9px;
     cursor: pointer;
     transition: color 0.2s linear;
 
@@ -81,11 +83,14 @@
 
 .site-header__login-icon {
     position: fixed;
+    margin: 9px;
 }
 
 .site-header__search-icon-wrapper {
     position: absolute;
     right: 2px;
+    margin-right: 7px;
+    margin-bottom: 4px;
     transform-origin: right;
     backface-visibility: hidden;
 }
