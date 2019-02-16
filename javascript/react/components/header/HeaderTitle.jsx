@@ -1,22 +1,25 @@
 import React      from 'react';
 import PropTypes  from 'prop-types';
 
+const ROOT_PAGE_TITLE = 'Through the Stack';
+
 
 const HeaderTitle = props => {
-    const { titleText, fontType } = props;
+    const { pageTitle, pageSubtitle } = props;
 
-    const titleLength = titleText.length;
+    const titleLength = pageTitle.length;
     let titleSpans = [];
 
     for(let i = 0; i < titleLength; i++) {
-        if(titleText.charAt(i) === ' ') {
+        if(pageTitle.charAt(i) === ' ') {
             titleSpans.push(<span key={i}> </span>);
         } else {
-            titleSpans.push(<span key={i}>{titleText.charAt(i)}</span>);
+            titleSpans.push(<span key={i}>{pageTitle.charAt(i)}</span>);
         }
     }
 
-    const fontClass = fontType === 'MarvinVisions' ? (
+    //MarvinVisions font only used on root pages
+    const fontClass = pageTitle === ROOT_PAGE_TITLE ? (
         'site-header__title-main'
     ) : ('site-header__title-post');
 
@@ -28,12 +31,8 @@ const HeaderTitle = props => {
 }
 
 HeaderTitle.propTypes = {
-    titleText: PropTypes.string.isRequired,
-    fontType:  PropTypes.oneOf(['MarvinVisions', 'Patua'])
-}
-
-HeaderTitle.defaultProps = {
-    fontType: 'MarvinVisions'
+    pageTitle:    PropTypes.string.isRequired,
+    pageSubtitle: PropTypes.string,
 }
 
 

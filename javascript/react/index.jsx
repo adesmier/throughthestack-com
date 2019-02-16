@@ -18,7 +18,10 @@ const siteHeaderEl = document.getElementById('site-header__react-root');
 const pageTitleEl  = document.getElementById('page-title');
 
 if(siteHeaderEl) ReactDOM.render(
-    <Header pageTitle={pageTitleEl.innerHTML} />,
+    <Header
+        pageTitle={pageTitleEl.dataset.title}
+        pageSubtitle={pageTitleEl.dataset.subtitle}
+    />,
     siteHeaderEl
 );
 

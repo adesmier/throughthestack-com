@@ -2,6 +2,13 @@
 layout: compress
 ---
 
+{% if page.header_title %}
+    {% assign pageTitle = page.header_title %}
+{% else %}
+    {% assign pageTitle = page.title %}
+{% endif %}
+
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -13,7 +20,7 @@ layout: compress
         <link rel="manifest" href="/manifest.json">
         <link rel="shortcut icon" href="/assets/img/favicon.ico">
 
-        <title id="page-title">{{ page.title }}</title>
+        <title id="page-title" data-title="{{ pageTitle }}" data-subtitle="{{ page.header_subtitle }}">{{ page.title }}</title>
 
         <meta property="og:title" content="{{ page.title }}">
         <meta name="twitter:title" content="{{ page.title }}">
@@ -42,9 +49,8 @@ layout: compress
         {% endif %}
 
         <!-- Online Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Karla:400,700|Patua+One" rel="stylesheet">
-
-        <!-- <link href="https://fonts.googleapis.com/css?family=Rokkitt:300,500,800" rel="stylesheet"> -->
+        <!-- <link href="https://fonts.googleapis.com/css?family=Karla:400,700|Patua+One" rel="stylesheet"> -->
+        <link href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700,900i" rel="stylesheet">
 
         <!-- JSON-LD -START- -->
         {% if jekyll.environment == 'production' %}

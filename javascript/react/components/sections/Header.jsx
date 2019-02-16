@@ -18,7 +18,8 @@ const BOTTOM_OFFSET_MULTIPLIER   = 4;
 export default class Header extends PureComponent {
 
     static propTypes = {
-        pageTitle: PropTypes.string.isRequired
+        pageTitle:    PropTypes.string.isRequired,
+        pageSubtitle: PropTypes.string,
     }
 
     state = {
@@ -138,7 +139,6 @@ export default class Header extends PureComponent {
     //--- RENDER ---
 
     render() {
-        const { pageTitle } = this.props;
         const {
             headerFixed, skewLayerHeight, skewLayerDeg, titleTranslatePx
         } = this.state;
@@ -184,7 +184,7 @@ export default class Header extends PureComponent {
                             transform: `translateY(${titleTranslatePx}px)`
                         }}
                     >
-                        <Title titleText={pageTitle} />
+                        <Title {...this.props} />
                     </div>
                 </div>
                 <div className="site-header__skew-background"></div>
