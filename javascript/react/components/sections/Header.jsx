@@ -1,8 +1,11 @@
-import { PureComponent, Fragment } from 'react';
-import PropTypes                   from 'prop-types';
+import { PureComponent, Fragment }    from 'react';
+import PropTypes                      from 'prop-types';
 
-import Title          from '../header/HeaderTitle';
-import FontAwesomeBtn from '../buttons/FontAwesomeBtn';
+import UrlUtils                       from '../../../modules/UrlUtils';
+
+import FontAwesomeBtn                 from '../buttons/FontAwesomeBtn';
+import HeaderTitle                    from '../header/HeaderTitle';
+import EnhancedHeaderTitleForBlogPost from '../header/EnhancedHeaderTitleForBlogPost';
 
 const START_RAF_OFFSET  = 200;
 const SKEW_LAYER_HEIGHT = 450;
@@ -18,8 +21,7 @@ const BOTTOM_OFFSET_MULTIPLIER   = 4;
 export default class Header extends PureComponent {
 
     static propTypes = {
-        pageTitle:    PropTypes.string.isRequired,
-        pageSubtitle: PropTypes.string,
+        pageType: PropTypes.string.isRequired,
     }
 
     state = {
@@ -105,6 +107,30 @@ export default class Header extends PureComponent {
         this.setState({ requestAF: newRequestAF });
     }
 
+    renderTitle() {
+        const { pageType } = this.props;
+
+        //pageType is currently only set for post pages
+        switch(pageType) {
+            case 'blogpost':
+                const postTitle = UrlUtils.getPostTitleFromUrl();
+                return (
+                    <EnhancedHeaderTitleForBlogPost
+                        searchQuery={postTitle}
+                        resultsPage={0}
+                        className={'site-header__title-post'}
+                    />
+                )
+            default:
+                const pageBreadcrumbs = UrlUtils.getPageBreadcrumbs();
+                return (
+                    <HeaderTitle {...pageBreadcrumbs}
+                        className={'site-header__title-main'}
+                    />
+                )
+        }
+    }
+
     _calculateSkewTranslate = scrollYOffset => {
         const newDegrees = MAX_SKEW_DEGREES - (scrollYOffset / 20);
         const newHeight  = SKEW_LAYER_HEIGHT - (scrollYOffset);
@@ -184,7 +210,7 @@ export default class Header extends PureComponent {
                             transform: `translateY(${titleTranslatePx}px)`
                         }}
                     >
-                        <Title {...this.props} />
+                        {this.renderTitle()}
                     </div>
                 </div>
                 <div className="site-header__skew-background"></div>

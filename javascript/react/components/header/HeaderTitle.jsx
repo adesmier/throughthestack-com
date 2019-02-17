@@ -1,11 +1,9 @@
 import React      from 'react';
 import PropTypes  from 'prop-types';
 
-const ROOT_PAGE_TITLE = 'Through the Stack';
-
 
 const HeaderTitle = props => {
-    const { pageTitle, pageSubtitle } = props;
+    const { pageTitle, pageSubtitle, className } = props;
 
     const titleLength = pageTitle.length;
     let titleSpans = [];
@@ -18,21 +16,20 @@ const HeaderTitle = props => {
         }
     }
 
-    //MarvinVisions font only used on root pages
-    const fontClass = pageTitle === ROOT_PAGE_TITLE ? (
-        'site-header__title-main'
-    ) : ('site-header__title-post');
-
     return (
-        <div className={fontClass}>
-            {titleSpans}
-        </div>
+        <React.Fragment>
+            <div className={className}>
+                {titleSpans}
+            </div>
+            <div>{pageSubtitle}</div>
+        </React.Fragment>
     )
 }
 
 HeaderTitle.propTypes = {
     pageTitle:    PropTypes.string.isRequired,
     pageSubtitle: PropTypes.string,
+    className:    PropTypes.string,
 }
 
 
