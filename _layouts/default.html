@@ -2,12 +2,6 @@
 layout: compress
 ---
 
-{% if page.header_title %}
-    {% assign pageTitle = page.header_title %}
-{% else %}
-    {% assign pageTitle = page.title %}
-{% endif %}
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +14,7 @@ layout: compress
         <link rel="manifest" href="/manifest.json">
         <link rel="shortcut icon" href="/assets/img/favicon.ico">
 
-        <title id="page-title" data-title="{{ pageTitle }}" data-subtitle="{{ page.header_subtitle }}">{{ page.title }}</title>
+        <title id="page-title" data-pagetype="{{ layout.pagetype }}">{{ page.title }}</title>
 
         <meta property="og:title" content="{{ page.title }}">
         <meta name="twitter:title" content="{{ page.title }}">
