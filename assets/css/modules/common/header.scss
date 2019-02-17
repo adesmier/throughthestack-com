@@ -22,31 +22,33 @@
     line-height: 60px;
     position: absolute;
     top: 60px;
-    right: 20px;
+    right: 25px;
     width: 600px;
     z-index: 4;
 
-    .site-header__title-main {
-        font-family: MarvinVisions;
-        font-size: 92px;
-        margin-top: 30px;
-        padding-left: 220px;
-    }
-
-    .site-header__title-post {
-        font-family: $mainFontStyle;
-        // font-family: MarvinVisions;
-        font-size: 50px;
-        font-style: italic;
-        font-weight: 600;
-        letter-spacing: -3.5px;
-    }
-
     .site-header__title-main,
     .site-header__title-post {
+        font-style: italic;
+        font-weight: 600;
+
         span {
             text-shadow: -5px 0 10px rgba(34,51,68,.4)
         }
+    }
+
+    .site-header__title-main {
+        text-transform: uppercase;
+        font-size: 92px;
+        margin-top: 30px;
+        margin-right: 10px;
+        padding-left: 180px;
+        letter-spacing: -9px;
+        word-spacing: 20px;
+    }
+
+    .site-header__title-post {
+        font-size: 50px;
+        letter-spacing: -3.5px;
     }
 }
 
