@@ -1,10 +1,10 @@
-const path              = require('path');
-const PostExportActions = require('./modules/postExportActions');
-const AlgoliaActions    = require('./modules/algoliaActions');
+const path               = require('path');
+const PostIndexingUtils  = require('../../../../javascript/modules/PostIndexingUtils');
+const AlgoliaSearchUtils = require('../../../../javascript/modules/AlgoliaSearchUtils');
 
 //ignore series dir as these will be bundled with the related post in the
 //tutorial dir
-const postsDir       = path.join(__dirname, '../../_posts');
+const postsDir       = path.join(__dirname, '../../../../_posts');
 const postCategories = [
     'backend',
     'buildtestconfig',
@@ -14,13 +14,13 @@ const postCategories = [
 ];
 let cacheNeedsUpdate = false;
 
-const postActions    = new PostExportActions();
-let algoliaActions;
+const postActions = new PostIndexingUtils();
+let algoliaSearch;
 
 try {
-    algoliaActions = new AlgoliaActions('test_posts');
+    algoliaSearch = new AlgoliaSearchUtils('test_posts');
 } catch(e) {
-    console.error('AlgoliaActions module errored with message:', e.message);
+    console.error('algoliaSearch module errored with message:', e.message);
     process.exit(1);
 }
 
@@ -56,7 +56,7 @@ const startExport = async () => {
                 if(indexed.exists && indexed.modified) {
                     //the post has been modified so update the algolia index
                     console.log('Post exists but is modified:', matter.title);
-                    const updateIndex = await algoliaActions.updateExistingObjects(
+                    const updateIndex = await algoliaSearch.updateExistingObjects(
                         [matter]
                     );
                     console.log(updateIndex);
@@ -66,7 +66,7 @@ const startExport = async () => {
                 } else if(!indexed.exists) {
                     //the post has yet to be indexed
                     console.log('Post does not exist:', matter.title);
-                    const newIndex = await algoliaActions.addNewObjects(
+                    const newIndex = await algoliaSearch.addNewObjects(
                         [matter]
                     );
                     console.log(newIndex);

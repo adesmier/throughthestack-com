@@ -1,7 +1,7 @@
 const algoliasearch = require('algoliasearch');
 
 
-module.exports = class AlgoliaActions {
+module.exports = class AlgoliaSearchUtils {
     constructor(index, searchOnly = false) {
         const appId = 'J62GWLVE45'; let apiKey;
 

@@ -13,14 +13,14 @@ const _getPostDate      = Symbol('_getPostDate');
 const _cleanFrontMatter = Symbol('_cleanFrontMatter');
 
 
-module.exports = class PostExportActions {
+module.exports = class PostIndexingUtils {
     constructor() {
         /**
          * Read in our local cached posts. NOTE: May need to move this to a
          * node stream once it starts to grow
          */
         this.cachePath = '_cache/indexedPosts.json';
-        this._indexedPosts = require('../../../_cache/indexedPosts.json');
+        this._indexedPosts = require('../../_cache/indexedPosts.json');
     }
 
     // ------ PRIVATE METHODS ------

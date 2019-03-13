@@ -1,8 +1,8 @@
 import React from 'react';
 
-const AlgoliaActions = require('../../../algoliasearch/modules/algoliaActions');
+const AlgoliaSearchUtils = require('../../../modules/AlgoliaSearchUtils');
 //NOTE: algolia indice hardcoded for now
-const algoliaActions = new AlgoliaActions('sort_by_date_', true);
+const algoliaSearch = new AlgoliaSearchUtils('sort_by_date_', true);
 
 
 /**
@@ -64,7 +64,7 @@ const GetBlogPostSearchResultsHOC = (WrappedComponent, concatResults = false) =>
             console.log('params', search);
 
             try {
-                const searchResults = await algoliaActions.searchIndex(search);
+                const searchResults = await algoliaSearch.searchIndex(search);
                 console.log('recentPostResults', searchResults);
                 return searchResults;
             } catch(e) {

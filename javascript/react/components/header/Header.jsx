@@ -4,8 +4,8 @@ import PropTypes                      from 'prop-types';
 import UrlUtils                       from '../../../modules/UrlUtils';
 
 import FontAwesomeBtn                 from '../buttons/FontAwesomeBtn';
-import HeaderTitle                    from '../header/HeaderTitle';
-import EnhancedHeaderTitleForBlogPost from '../header/EnhancedHeaderTitleForBlogPost';
+import HeaderTitle                    from './HeaderTitle';
+import EnhancedHeaderTitleForBlogPost from './EnhancedHeaderTitleForBlogPost';
 
 const START_RAF_OFFSET  = 200;
 const SKEW_LAYER_HEIGHT = 450;

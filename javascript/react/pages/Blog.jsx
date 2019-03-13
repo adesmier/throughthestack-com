@@ -2,8 +2,8 @@ import { Component, Fragment } from 'react';
 
 import UrlUtils                from '../../modules/UrlUtils';
 
-import BlogPostGrid            from '../components/BlogPostGrid';
-import SubCategoryBanner       from '../components/SubCategoryBanner';
+import BlogPostGrid            from '../components/blog/BlogPostGrid';
+import SubCategoryBanner       from '../components/blog/SubCategoryBanner';
 import DynamicButton           from '../components/primitives/DynamicButton';
 
 const RESULTS_PER_LOAD     = 6;

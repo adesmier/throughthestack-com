@@ -1,7 +1,7 @@
 import React    from "react";
 import ReactDOM from 'react-dom';
 
-import Header   from './components/sections/Header';
+import Header   from './components/header/Header';
 import Blog     from './pages/Blog';
 
 

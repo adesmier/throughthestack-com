@@ -1,12 +1,12 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes                      from 'prop-types';
 
-import GetBlogPostSearchResultsHOC    from '../components/hocs/GetBlogPostSearchResultsHOC';
-import LoadingSpinnerHOC              from '../components/hocs/LoadingSpinnerHOC';
+import GetBlogPostSearchResultsHOC    from '../hocs/GetBlogPostSearchResultsHOC';
+import LoadingSpinnerHOC              from '../hocs/LoadingSpinnerHOC';
 
-import CSSLoadingSpinner              from '../components/primitives/CSSLoadingSpinner';
-import SubCategoryBanner              from '../components/SubCategoryBanner';
-import Article                        from '../components/article/Article';
+import CSSLoadingSpinner              from '../primitives/CSSLoadingSpinner';
+import SubCategoryBanner              from './SubCategoryBanner';
+import Article                        from '../article/Article';
 
 
 class BlogPostGrid extends Component {
