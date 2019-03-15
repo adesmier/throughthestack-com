@@ -4,12 +4,15 @@
 /************************************************/
 
 .grid-card{
+    position: relative;
     height: auto;
     padding: 10px 15px 7px 15px;
-    background-color: #fff;
+    // background-color: #fff;
+    background: linear-gradient(25deg,#3fa6b4 -700%,#ffffff 50%,#3fa6b4 700%);
     border-radius: 4px;
-    box-shadow: 0 2px 1px 0 #d6d6d6;
+    box-shadow: 1px 1px 1px#d6d6d6;
     transition: all 0.3s;
+    overflow: hidden;
 
     h2 i{
         margin-right: 5px;
@@ -18,8 +21,8 @@
     }
     h1,h2{
         font-family: $mainFontStyle;
-        font-weight: 500;
-        font-size: 110%;
+        font-weight: 600;
+        font-size: 120%;
         color: $mainFontColour;
     }
     h3{
@@ -37,6 +40,15 @@
         font-weight: 300;
         font-size: 78%;
     }
+
+    // styles to show faded icon in the lower right corner of the card
+    // .fa-windows {
+    //     position: absolute;
+    //     right: -20px;
+    //     bottom: -40px;
+    //     font-size: 220px;
+    //     color: rgba(171, 171, 171, 0.1);
+    // }
 }
 
 /*
@@ -44,8 +56,8 @@ Make the grid card hover on mouse over
 */
 .grid-card.hover{
     &:hover{
-        box-shadow: 0 3px 6px 0.5px #d6d6d6;
-        transform: translate3d(0, -3px, 0);
+        box-shadow: 2px 2px 3px 0px #d6d6d6;
+        transform: translate3d(0, -1px, 0);
         transition: all 0.3s;
     }
 }
@@ -74,10 +86,10 @@ Used on Blog page and related/recent posts sections
     flex: 0 0 32%;
     justify-content: space-between; //drops article tags to bottom of card
     box-sizing: border-box;
-    margin: 6px 0;
+    margin: 9px 0;
     &:nth-child(3n-1){ //https://codepen.io/tuxsudo/pen/VYERQJ
-        margin-left: 12px;
-        margin-right: 12px;
+        margin-left: 19px;
+        margin-right: 19px;
     }
 }
 

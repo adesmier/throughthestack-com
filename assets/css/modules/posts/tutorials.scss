@@ -20,6 +20,7 @@
 
 #post-section-wrapper-content{
     flex: 4;
+    margin-top: 10px;
 }
 
 #post-section-wrapper-chapters{
@@ -59,35 +60,35 @@
 
 #post-header-wrapper{
     //margin-top: 110px; //make lower than the header
+    position: relative;
     box-sizing: border-box;
 
-    #post-image{
-        img{
-            display: block;
-            margin: 0 auto;
-            padding-top: 10px;
-            padding-bottom: 15px;
-            width: 80%;
-        }
+    // #post-image{
+    //     img{
+    //         display: block;
+    //         margin: 0 auto;
+    //         padding-top: 10px;
+    //         padding-bottom: 15px;
+    //         width: 80%;
+    //     }
 
-    }
+    // }
 
-    #post-meta{
-        text-align: center;
+    // #post-meta{
+    //     text-align: center;
 
-        #post-title{
-            font-size: 200%;
-        }
+    //     #post-title{
+    //         font-size: 200%;
+    //     }
 
-    }
+    // }
 
     #post-heading{
-        margin: 10px auto 15px auto;
-        width: 85%;
-        padding-left: 10px;
-        border-left: 4px solid $mainFontColour;
-        border-top-left-radius: 8px;
-        border-bottom-left-radius: 8px;
+        margin: 10px auto 70px auto;
+        width: 80%;
+        // border-left: 4px solid $mainFontColour;
+        // border-top-left-radius: 8px;
+        // border-bottom-left-radius: 8px;
 
         ul{
             list-style: none;
@@ -104,10 +105,25 @@
 
         p{
             font-size: 90%;
+            font-weight: 700;
+            padding-bottom: 15px;
             a{
                 font-weight: bold;
             }
         }
+    }
+
+    #post-heading-icon {
+        position: absolute;
+        right: 130px;
+        bottom: -55px;
+        font-size: 700%;
+        color: rgba(68, 68, 68, 0.2);
+    }
+
+    #post-heading-border {
+        width: 75%;
+        border-bottom: 3px solid $accentColour;
     }
 }
 
@@ -122,18 +138,17 @@
 
 .post-section-heading{
     margin-top: 10px;
-    margin-bottom: 5px;
+    margin-bottom: 2px;
     text-align: center;
-    font-size: 120% !important;
 }
 
 #post-intro-text,
 .post-content-text{
-    p, ul, ol{
+    h3, p, ul, ol{
         width: 90%;
         line-height: 25px;
         margin: 0 auto;
-        font-size: 90%;
+        font-size: 89%;
         strong{
             font-weight: bold;
         }
@@ -145,12 +160,14 @@
         padding: 5px 0 5px 40px;
     }
     a{
-        border-bottom: 1px solid $accentColour;
-        box-shadow: 0 -2px $accentColour inset;
-        transition: background 0.3s;
+        display: inline-block;
+        height: 25px;
+        box-shadow: 0 -3px $accentColour inset;
+        transition: all 0.3s;
         &:hover{
-            background-color: $accentColour;
-            transition: background 0.3s;
+            background-color: #6cd6e4;
+            box-shadow: 0 -3px #6cd6e4 inset;
+            transition: all 0.3s;
         }
     }
     .notice-update p,
@@ -171,10 +188,12 @@
         background-color: $noticeTip;
         border-left: 4px solid $noticeTipBorder;
         a{
-            border-bottom: 1px solid $noticeTipBorderAlpha;
-            box-shadow: 0 -4px 0 $noticeTipBorderAlpha inset;
+            display: inline-block;
+            height: 25px;
+            box-shadow: 0 -3px 0 $noticeTipBorderAlpha inset;
             &:hover{
                 background-color: $noticeTipBorderAlpha;
+                box-shadow: 0 -3px 0 $noticeTipBorderAlpha inset;
             }
         }
     }
@@ -193,10 +212,12 @@
         background-color: $noticeWarn;
         border-left: 4px solid $noticeWarnBorder;
         a{
-            border-bottom: 1px solid $noticeWarnBorderAlpha;
-            box-shadow: 0 -4px 0 $noticeWarnBorderAlpha inset;
+            display: inline-block;
+            height: 25px;
+            box-shadow: 0 -3px 0 $noticeWarnBorderAlpha inset;
             &:hover{
                 background-color: $noticeWarnBorderAlpha;
+                box-shadow: 0 -3px 0 $noticeTipBorderAlpha inset;
             }
         }
     }

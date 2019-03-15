@@ -6,7 +6,8 @@
     width: 100%;
     background-color: rgba(0, 0, 0, 0.85);
     transform-origin: right;
-    backface-visibility: hidden;
+    // backface-visibility: hidden;
+    box-shadow: 1px 1px 1px transparent;
     transition: background-color 0.3s linear;
 }
 
@@ -30,9 +31,10 @@
     .site-header__title-post {
         font-style: italic;
         font-weight: 600;
+        // color: transparent;
 
         span {
-            text-shadow: -5px 0 10px rgba(34,51,68,.4)
+            text-shadow: -5px 0 10px rgba(34, 51, 68, 0.4);
         }
     }
 
@@ -66,7 +68,9 @@
     transform: skewY(-10.5deg);
     transform-origin: left;
     backface-visibility: hidden;
-    box-shadow: 0px 0px 5px 3px #b2b2b2;
+    box-shadow: 1px 1px 1px #b2b2b2;
+    // box-shadow: 1px 1px 1px transparent;
+    // box-shadow: 0px 0px 5px 3px #b2b2b2;
 }
 
 .site-header__login-icon,
