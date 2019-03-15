@@ -25,7 +25,7 @@ sections:
         </div>
         ```
 
-        This will output all your posts in date order based on the date in filename of the markdown file. However, by adding an additional yaml front matter variable like *post_weight* you can assign a number to this and tell your liquid template to order by weight first and then date.<br /><br />
+        This will output all your posts in date order based on the date in filename of the markdown file. However, by adding an additional yaml front matter variable like *post_weight* you can assign a number to this and tell your liquid template to order by weight first and then date.<br />
 
     Modified Post Loop: |
         Here I've added an additional for loop and some logic to first assign all posts with a *credits_weight* value to an array and then all remaining posts to another array in date order. The contents of these will then be outputted to the HTML document:
@@ -78,7 +78,7 @@ sections:
         </section>
         ```
 
-        This will output all the posts in order of the weight variable, from high to low and then display all remaining credits in date order. I used this on a [portfolio website](https://www.ianarber.com/credits) to display the persons film credits - each credit being a different post. Lets dig into this liquid code a bit more...<br /><br />
+        This will output all the posts in order of the weight variable, from high to low and then display all remaining credits in date order. I used this on a [portfolio website](https://www.ianarber.com/credits) to display the persons film credits - each credit being a different post. Lets dig into this liquid code a bit more...<br />
 
     Looping: |
         The basics of this is that there are two loops: one for the posts with a weight value (line 5) and one for ones without (line 15). Both will loop through ```site.category.credits``` but there's a conditional statement at the beginning of each loop to check if the weight variable exists (line 6) or if it does not exists (line 16). If the check is true, then the post is added to it's respected array: *creditsArray*, or *creditsArrayNoWeight*
@@ -117,5 +117,5 @@ sections:
 
         >*Google Analytics:* You could use the Google Analytics API for this. Once it's setup for your site you could retrieve the values as part of your sites pre-build process and then insert them into the markdown files. It's an interesting concept that requires a bit more investigating.
 
-        <br />*Note:* I haven't tested this at scale yet as the websites I've used it one only contain a small number of posts. As your posts count grows your site build time will increase if you're looping through all posts on your site. It would be worth testing this approach when using the `--incremental` build switch.
+        <br />*NB:* I haven't tested this at scale yet as the websites I've used it one only contain a small number of posts. As your posts count grows your site build time will increase if you're looping through all posts on your site. It would be worth testing this approach when using the `--incremental` build switch.
 ---

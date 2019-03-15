@@ -24,7 +24,7 @@ sections:
 
         Contentful would then send a notification to [Codeship](https://codeship.com/), a continuous integration platform, whenever content was added or edited. Codeship would grab the new data, re-build the site and upload it to BitBucket, leaving the final stage for Aerobatic to host the site.<br /><br />
 
-        Anyway, that's the setup - onwards with the tutorial!
+        Anyway, that's the setup - onwards with the tutorial!<br /><br />
 
     Prerequisites: |
         This tutorial works on the assumption that you are familiar with Jekyll and it’s file structure and have a working Jekyll site utilising markdown files for posts in the *_posts* folder. You also have your code checked into a BitBucket repo. There are some great tutorials over at [Jekyll Tips](http://jekyll.tips/) for further information on Jekyll, although I will be putting together my own 'Getting Started with Jekyll' tutorial.
@@ -237,7 +237,7 @@ sections:
 
         If all went as expected your site will be pushed to production and you can click the link next to the production indicator to view your site. Aerobatic uses a network of content delivery servers to deploy your site so you can guarantee the best performance no matter where in the world you access your site.<br /><br />
 
-        >**Auto-Jekyll Builds:** Aerobatic is actually capable of performing [automated Jekyll builds](https://www.aerobatic.com/blog/automated-continuous-deployment-of-jekyll-sites) However, at the moment this doesn't allow for a pre-build step which we need to run the ruby script. Therefore, the Codeship approach allows for this extra build step to take place
+        >***Auto-Jekyll Builds:*** Aerobatic is actually capable of performing [automated Jekyll builds](https://www.aerobatic.com/blog/automated-continuous-deployment-of-jekyll-sites) However, at the moment this doesn't allow for a pre-build step which we need to run the ruby script. Therefore, the Codeship approach allows for this extra build step to take place
 
     Webhooks in Contentful: |
         So now our site should be live and kicking! We've currently got our deploy pipeline setup so that when we check in a file to our master branch this will trigger a re-build of our site and deploy the updated files. This works when we make changes to the codebase such as css or script changes. But what if the user updates or adds a post in Contentful? There's nothing setup yet that will notify Codeship to pull the new files. This is where webhooks come in...<br /><br />

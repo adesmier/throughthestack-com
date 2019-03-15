@@ -16,7 +16,7 @@
             "codeship",
             "aerobatic"
         ],
-        "url": "/blog/frontend/create-cms-jekyll-using-contentful-codeship"
+        "url": "/blog/frontend/create-a-cms-for-jekyll-using-contentful-and-codeship"
     },
     "2": {
         "objectID": 2,
@@ -38,7 +38,7 @@
     },
     "3": {
         "objectID": 3,
-        "title": "My Windows Subsystem for Linux Development Setup",
+        "title": "My Windows Subsystem Development Setup",
         "category": "buildtestconfig",
         "type": "devbyte",
         "heading": "With the Windows Subsystem for Linux now becoming a full feature in Windows 10, you'll really be able to harness the power of having a full version of Linux running behind the scenes to provide compilation and tooling support for your development projects.",
@@ -53,7 +53,7 @@
             "build",
             "tooling"
         ],
-        "url": "/blog/buildtestconfig/windows-subsystem-dev-setup"
+        "url": "/blog/buildtestconfig/my-windows-subsystem-development-setup"
     },
     "5": {
         "objectID": 5,
