@@ -20,7 +20,7 @@ const Article = props => {
                         isOnBlogPage ? 'blog-post-inner-wrapper': 'article-inner-wrapper'
                     }
                 >
-                    <CoverImage {...props} />
+                    {/* <CoverImage {...props} /> */}
                     <Summary {...props} />
                 </div>
             </article>

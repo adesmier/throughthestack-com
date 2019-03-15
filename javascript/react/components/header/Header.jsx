@@ -15,7 +15,6 @@ const MAX_SKEW_DEGREES  = 10;
 
 const SEARCH_ICON_BOTTOM_OFFSET  = 398;
 const CALCULATE_ICON_STYLES_INIT = 9;
-const BOTTOM_OFFSET_MULTIPLIER   = 4;
 
 
 export default class Header extends PureComponent {
@@ -152,7 +151,7 @@ export default class Header extends PureComponent {
             const opacityFloat =
                 (CALCULATE_ICON_STYLES_INIT - skewLayerDeg) / CALCULATE_ICON_STYLES_INIT;
             opacity = opacityFloat.toFixed(2);
-            bottom  = Math.trunc(skewLayerDeg) * BOTTOM_OFFSET_MULTIPLIER;
+            bottom = -1;
         } else {
             opacity = 1;
             bottom  = SEARCH_ICON_BOTTOM_OFFSET;
