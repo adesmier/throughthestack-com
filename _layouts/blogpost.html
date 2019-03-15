@@ -20,15 +20,15 @@ pagetype: blogpost
     <article id="post-section-wrapper-content">
 
         <!-- POST HEADER IMAGE SECTION AND HEADING TEXT -->
-        <div id="post-header-wrapper" class="grid-card full-width-card">
+        <div id="post-header-wrapper">
 
             {% if tutorial == true %}
-                <div id="post-image">
+                <!-- <div id="post-image">
                     <img src="{{ page.image }}" alt="post header image" />
-                </div>
+                </div> -->
             {% endif %}
 
-            <div id="post-meta">
+            <!-- <div id="post-meta">
                 <h1 id="post-title">{{ page.title }}</h1>
                 <div class="article-tags">
                     <i class="fa fa-tags" aria-hidden="true"></i>
@@ -39,19 +39,21 @@ pagetype: blogpost
 
                 </div>
 
-            </div>
+            </div> -->
 
             <div id="post-heading">
-                <ul>
+                <!-- <ul>
                     <li>{{ page.date | date: '%d %b %Y' }} &middot;</li>
                     <li> {{ page.time }} read &middot;</li>
                     <li id="list-post-category"> {{ page.category }}</li>
-                </ul>
-                <p>{{ page.heading | markdownify }}</p>
+                </ul> -->
+                <p><em>{{ page.heading }}</em></p>
+                <div id="post-heading-border"></div>
+                <i id="post-heading-icon" class="fa fa-windows"></i>
             </div>
 
             {% if devbyte == true %}
-                <div id="post__devbyte-code-links" class="dynamic-btn-wrapper post-demo-link">
+                <!-- <div id="post__devbyte-code-links" class="dynamic-btn-wrapper post-demo-link">
                     {% if page.demo %}
                         <a href="{{ page.demo }}" target="_blank" rel="noopener noreferrer">
                             <button class="fa fa-code"><span>Demo</span></button>
@@ -67,15 +69,15 @@ pagetype: blogpost
                             <button class="fa fa-codepen"><span>Pen</span></button>
                         </a>
                     {% endif %}
-                </div>
+                </div> -->
             {% endif %}
         </div>
 
-        <hr />
+        
 
         <!-- POST INTRO TEXT SECTION -->
         {% if tutorial == true %}
-            <div id="post-intro-wrapper" class="grid-card full-width-card">
+            <!-- <div id="post-intro-wrapper" class="grid-card full-width-card">
                 <div class="dynamic-btn-wrapper post-intro-links">
                     <a href="#Sections">
                         <button class="fa fa-arrow-down"><span>Skip Intro</span></button>
@@ -89,11 +91,27 @@ pagetype: blogpost
                 {% endfor %}
 
             </div>
-            <a class="link-anchor" name="Sections"></a>
+            <a class="link-anchor" name="Sections"></a> -->
         {% endif %}
 
         <!-- MAIN CONTENT OF THE POST -->
         <div id="post-content-wrapper" class="grid-card full-width-card">
+        
+            {% if tutorial == true %}
+                <div class="dynamic-btn-wrapper post-intro-links">
+                    <a href="#Sections">
+                        <button class="fa fa-arrow-down"><span>Skip Intro</span></button>
+                    </a>
+                </div>
+            
+                <a id="anchor-intro" class="link-anchor"></a>
+                {% for section in page.sections limit:1 %}
+                    <h2 class="post-section-heading" name="Intro">{{ section[0] }}</h2>
+                    <div id="post-intro-text">{{ section[1] | markdownify }}</div>
+                {% endfor %}
+
+                <a class="link-anchor" name="Sections"></a>
+            {% endif %}
 
             {% if tutorial == true %}
                 {% assign sectionOffset = 1 %}
@@ -202,6 +220,8 @@ pagetype: blogpost
 
             </div>
         </aside>
+    {% else %}
+        <aside id="post-section-wrapper-chapters"></aside>
     {% endif %}
 
 </section>
