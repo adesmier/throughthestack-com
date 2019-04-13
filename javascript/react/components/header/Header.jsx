@@ -192,14 +192,14 @@ export default class Header extends PureComponent {
                             }}
                         >
                             <FontAwesomeBtn
-                                faIcon={'fa-search'}
+                                icon={'fa-search'}
                                 customClass={'site-header__search-icon'}
                                 onClick={() => {console.log('click search')}}
                             />
                         </div>
                     </div>
                     <FontAwesomeBtn
-                        faIcon={'fa-user-circle-o'}
+                        icon={'fa-user-circle'}
                         customClass={'site-header__login-icon'}
                         onClick={() => {console.log('click')}}
                     />

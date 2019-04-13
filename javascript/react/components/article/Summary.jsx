@@ -13,9 +13,9 @@ const Summary = props => {
             <a href={url}>
                 <h3 className="article-title"><strong><em>{title}</em></strong></h3>
                 <div className="article-meta">
-                    <i className="fa fa-calendar-o" aria-hidden="true"></i>
+                    <i className="far fa-calendar" aria-hidden="true"></i>
                     <span className="article-meta-data" href="#">{date}</span>
-                    <i className="fa fa-clock-o" aria-hidden="true"></i>
+                    <i className="far fa-clock" aria-hidden="true"></i>
                     <span className="article-meta-data" href="#">{time} read</span>
                 </div>
                 {
