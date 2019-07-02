@@ -9,5 +9,6 @@
 
 ## proxying redirects for demos
 /demos/auth0-webtask-app/*    https://auth0-webtask-app.netlify.com/:splat  200
+/static/*                     https://auth0-webtask-app.netlify.com/static/:splat  200
 
 ## proxying redirects for projects
