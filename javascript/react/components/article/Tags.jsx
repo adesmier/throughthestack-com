@@ -21,7 +21,7 @@ const Tags = props => {
 
     return (
         <div className="article-tags">
-            <i className="fa fa-tags" aria-hidden="true"></i>
+            <i className="fas fa-tags" aria-hidden="true"></i>
             {renderedTags}
         </div>
     );
