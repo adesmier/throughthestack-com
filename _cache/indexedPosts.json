@@ -39,11 +39,11 @@
     "3": {
         "objectID": 3,
         "title": "My Windows Subsystem Development Setup",
-        "category": "buildtestconfig",
+        "category": "buildandtest",
         "type": "devbyte",
         "heading": "With the Windows Subsystem for Linux now becoming a full feature in Windows 10, you'll really be able to harness the power of having a full version of Linux running behind the scenes to provide compilation and tooling support for your development projects.",
-        "image": "/assets/images/posts/buildtestconfig/devbytes-wsl.jpg",
-        "thumbnail": "/assets/images/posts/buildtestconfig/devbytes-wsl-thumb.jpg",
+        "image": "/assets/images/posts/buildandtest/devbytes-wsl.jpg",
+        "thumbnail": "/assets/images/posts/buildandtest/devbytes-wsl-thumb.jpg",
         "unix_date": 1515715200,
         "friendly_date": "12 Jan 2018",
         "time": "5 min",
@@ -53,12 +53,12 @@
             "build",
             "tooling"
         ],
-        "url": "/blog/buildtestconfig/my-windows-subsystem-development-setup"
+        "url": "/blog/buildandtest/my-windows-subsystem-development-setup"
     },
     "5": {
         "objectID": 5,
         "title": "A purple pig and a green donkey flew a kite in the middle of the night and",
-        "category": "networkhardware",
+        "category": "devops",
         "type": "devbyte",
         "heading": "By default, Jekyll will organise your posts in date order when looping through them. However you may want, for example, your most popular posts to go first and then the rest organised by date order. In this DevByte we'll look at customising the loop order using liquid.",
         "image": "/assets/images/holding.jpg",
@@ -73,12 +73,12 @@
             "babel",
             "es6"
         ],
-        "url": "/blog/networkhardware/a-purple-pig-and-a-green-donkey-flew-a-kite-in-the-middle-of-the-night-and"
+        "url": "/blog/devops/a-purple-pig-and-a-green-donkey-flew-a-kite-in-the-middle-of-the-night-and"
     },
     "6": {
         "objectID": 6,
         "title": "The memory we used to share is no longer coherent",
-        "category": "networkhardware",
+        "category": "devops",
         "type": "devbyte",
         "heading": "By default, Jekyll will organise your posts in date order when looping through them. However you may want, for example, your most popular posts to go first and then the rest organised by date order. In this DevByte we'll look at customising the loop order using liquid.",
         "image": "/assets/images/holding.jpg",
@@ -91,7 +91,7 @@
             "html",
             "compression"
         ],
-        "url": "/blog/networkhardware/the-memory-we-used-to-share-is-no-longer-coherent"
+        "url": "/blog/devops/the-memory-we-used-to-share-is-no-longer-coherent"
     },
     "7": {
         "objectID": 7,
@@ -112,7 +112,7 @@
     "8": {
         "objectID": 8,
         "title": "The shooter says goodbye to his love",
-        "category": "clouddatabase",
+        "category": "mobile",
         "type": "devbyte",
         "heading": "By default, Jekyll will organise your posts in date order when looping through them. However you may want, for example, your most popular posts to go first and then the rest organised by date order. In this DevByte we'll look at customising the loop order using liquid.",
         "image": "/assets/images/holding.jpg",
@@ -127,12 +127,12 @@
             "vscode",
             "vscode"
         ],
-        "url": "/blog/clouddatabase/the-shooter-says-goodbye-to-his-love"
+        "url": "/blog/mobile/the-shooter-says-goodbye-to-his-love"
     },
     "9": {
         "objectID": 9,
-        "title": "If you like tuna and tomato sauce try combining the two Its really not as",
-        "category": "backend",
+        "title": "If you like tuna and mayo sauce try combining the two Its really not as",
+        "category": "mobile",
         "type": "devbyte",
         "heading": "By default, Jekyll will organise your posts in date order when looping through them. However you may want, for example, your most popular posts to go first and then the rest organised by date order. In this DevByte we'll look at customising the loop order using liquid.",
         "image": "/assets/images/holding.jpg",
@@ -148,7 +148,7 @@
             "frontend",
             "blog"
         ],
-        "url": "/blog/backend/if-you-like-tuna-and-tomato-sauce-try-combining-the-two-its-really-not-as"
+        "url": "/blog/mobile/if-you-like-tuna-and-tomato-sauce-try-combining-the-two-its-really-not-as"
     },
     "10": {
         "objectID": 10,
@@ -173,7 +173,7 @@
     "11": {
         "objectID": 11,
         "title": "Is it free",
-        "category": "clouddatabase",
+        "category": "mobile",
         "type": "devbyte",
         "heading": "By default, Jekyll will organise your posts in date order when looping through them. However you may want, for example, your most popular posts to go first and then the rest organised by date order. In this DevByte we'll look at customising the loop order using liquid.",
         "image": "/assets/images/holding.jpg",
@@ -189,7 +189,7 @@
             "server",
             "ubuntu"
         ],
-        "url": "/blog/clouddatabase/is-it-free"
+        "url": "/blog/mobile/is-it-free"
     },
     "12": {
         "objectID": 12,
@@ -213,7 +213,7 @@
     "13": {
         "objectID": 13,
         "title": "I am counting my calories yet I really want dessert",
-        "category": "networkhardware",
+        "category": "devops",
         "type": "devbyte",
         "heading": "By default, Jekyll will organise your posts in date order when looping through them. However you may want, for example, your most popular posts to go first and then the rest organised by date order. In this DevByte we'll look at customising the loop order using liquid.",
         "image": "/assets/images/holding.jpg",
@@ -225,12 +225,12 @@
             "virtualisation",
             "csharp"
         ],
-        "url": "/blog/networkhardware/i-am-counting-my-calories-yet-i-really-want-dessert"
+        "url": "/blog/devops/i-am-counting-my-calories-yet-i-really-want-dessert"
     },
     "14": {
         "objectID": 14,
         "title": "Mary plays the piano",
-        "category": "buildtestconfig",
+        "category": "buildandtest",
         "type": "devbyte",
         "heading": "By default, Jekyll will organise your posts in date order when looping through them. However you may want, for example, your most popular posts to go first and then the rest organised by date order. In this DevByte we'll look at customising the loop order using liquid.",
         "image": "/assets/images/holding.jpg",
@@ -245,12 +245,12 @@
             "redux",
             "compression"
         ],
-        "url": "/blog/buildtestconfig/mary-plays-the-piano"
+        "url": "/blog/buildandtest/mary-plays-the-piano"
     },
     "15": {
         "objectID": 15,
         "title": "A song can make or ruin a persons day if they let it get to them",
-        "category": "backend",
+        "category": "buildandtest",
         "type": "devbyte",
         "heading": "By default, Jekyll will organise your posts in date order when looping through them. However you may want, for example, your most popular posts to go first and then the rest organised by date order. In this DevByte we'll look at customising the loop order using liquid.",
         "image": "/assets/images/holding.jpg",
@@ -264,12 +264,12 @@
             "babel",
             "ubuntu"
         ],
-        "url": "/blog/backend/a-song-can-make-or-ruin-a-persons-day-if-they-let-it-get-to-them"
+        "url": "/blog/buildandtest/a-song-can-make-or-ruin-a-persons-day-if-they-let-it-get-to-them"
     },
     "16": {
         "objectID": 16,
         "title": "I was very proud of my nickname throughout high school but today I",
-        "category": "networkhardware",
+        "category": "devops",
         "type": "devbyte",
         "heading": "By default, Jekyll will organise your posts in date order when looping through them. However you may want, for example, your most popular posts to go first and then the rest organised by date order. In this DevByte we'll look at customising the loop order using liquid.",
         "image": "/assets/images/holding.jpg",
@@ -284,12 +284,12 @@
             "html",
             "hosting"
         ],
-        "url": "/blog/networkhardware/i-was-very-proud-of-my-nickname-throughout-high-school-but-today-i"
+        "url": "/blog/devops/i-was-very-proud-of-my-nickname-throughout-high-school-but-today-i"
     },
     "17": {
         "objectID": 17,
         "title": "My Mum tries to be cool by saying that she likes all the same things",
-        "category": "buildtestconfig",
+        "category": "buildandtest",
         "type": "devbyte",
         "heading": "By default, Jekyll will organise your posts in date order when looping through them. However you may want, for example, your most popular posts to go first and then the rest organised by date order. In this DevByte we'll look at customising the loop order using liquid.",
         "image": "/assets/images/holding.jpg",
@@ -305,7 +305,7 @@
             "ubuntu",
             "windows"
         ],
-        "url": "/blog/buildtestconfig/my-mum-tries-to-be-cool-by-saying-that-she-likes-all-the-same-things"
+        "url": "/blog/buildandtest/my-mum-tries-to-be-cool-by-saying-that-she-likes-all-the-same-things"
     },
     "18": {
         "objectID": 18,
@@ -330,7 +330,7 @@
     "19": {
         "objectID": 19,
         "title": "The clock within this blog and the clock on my laptop are 1 hour",
-        "category": "backend",
+        "category": "mobile",
         "type": "devbyte",
         "heading": "By default, Jekyll will organise your posts in date order when looping through them. However you may want, for example, your most popular posts to go first and then the rest organised by date order. In this DevByte we'll look at customising the loop order using liquid.",
         "image": "/assets/images/holding.jpg",
@@ -341,12 +341,12 @@
         "_tags": [
             "babel"
         ],
-        "url": "/blog/backend/the-clock-within-this-blog-and-the-clock-on-my-laptop-are-1-hour"
+        "url": "/blog/mobile/the-clock-within-this-blog-and-the-clock-on-my-laptop-are-1-hour"
     },
     "20": {
         "objectID": 20,
         "title": "I will never be this young again Ever Oh damn I just got older",
-        "category": "networkhardware",
+        "category": "devops",
         "type": "devbyte",
         "heading": "By default, Jekyll will organise your posts in date order when looping through them. However you may want, for example, your most popular posts to go first and then the rest organised by date order. In this DevByte we'll look at customising the loop order using liquid.",
         "image": "/assets/images/holding.jpg",
@@ -359,12 +359,12 @@
             "gulp",
             "ubuntu"
         ],
-        "url": "/blog/networkhardware/i-will-never-be-this-young-again-ever-oh-damn-i-just-got-older"
+        "url": "/blog/devops/i-will-never-be-this-young-again-ever-oh-damn-i-just-got-older"
     },
     "21": {
         "objectID": 21,
         "title": "I am never at home on Sundays",
-        "category": "networkhardware",
+        "category": "devops",
         "type": "devbyte",
         "heading": "By default, Jekyll will organise your posts in date order when looping through them. However you may want, for example, your most popular posts to go first and then the rest organised by date order. In this DevByte we'll look at customising the loop order using liquid.",
         "image": "/assets/images/holding.jpg",
@@ -379,12 +379,12 @@
             "server",
             "es6"
         ],
-        "url": "/blog/networkhardware/i-am-never-at-home-on-sundays"
+        "url": "/blog/devops/i-am-never-at-home-on-sundays"
     },
     "22": {
         "objectID": 22,
         "title": "Sometimes all you need to do is completely make an ass of yourself",
-        "category": "backend",
+        "category": "devops",
         "type": "devbyte",
         "heading": "By default, Jekyll will organise your posts in date order when looping through them. However you may want, for example, your most popular posts to go first and then the rest organised by date order. In this DevByte we'll look at customising the loop order using liquid.",
         "image": "/assets/images/holding.jpg",
@@ -400,12 +400,12 @@
             "compression",
             "server"
         ],
-        "url": "/blog/backend/sometimes-all-you-need-to-do-is-completely-make-an-ass-of-yourself"
+        "url": "/blog/devops/sometimes-all-you-need-to-do-is-completely-make-an-ass-of-yourself"
     },
     "23": {
         "objectID": 23,
         "title": "The mysterious diary records the voice",
-        "category": "clouddatabase",
+        "category": "mobile",
         "type": "devbyte",
         "heading": "By default, Jekyll will organise your posts in date order when looping through them. However you may want, for example, your most popular posts to go first and then the rest organised by date order. In this DevByte we'll look at customising the loop order using liquid.",
         "image": "/assets/images/holding.jpg",
@@ -416,12 +416,12 @@
         "_tags": [
             "hosting"
         ],
-        "url": "/blog/clouddatabase/the-mysterious-diary-records-the-voice"
+        "url": "/blog/mobile/the-mysterious-diary-records-the-voice"
     },
     "24": {
         "objectID": 24,
         "title": "She was too short to see over the fence",
-        "category": "backend",
+        "category": "devops",
         "type": "devbyte",
         "heading": "By default, Jekyll will organise your posts in date order when looping through them. However you may want, for example, your most popular posts to go first and then the rest organised by date order. In this DevByte we'll look at customising the loop order using liquid.",
         "image": "/assets/images/holding.jpg",
@@ -432,12 +432,12 @@
         "_tags": [
             "webpack"
         ],
-        "url": "/blog/backend/she-was-too-short-to-see-over-the-fence"
+        "url": "/blog/devops/she-was-too-short-to-see-over-the-fence"
     },
     "25": {
         "objectID": 25,
         "title": "The quick brown fox jumps over the lazy dog",
-        "category": "clouddatabase",
+        "category": "mobile",
         "type": "devbyte",
         "heading": "By default, Jekyll will organise your posts in date order when looping through them. However you may want, for example, your most popular posts to go first and then the rest organised by date order. In this DevByte we'll look at customising the loop order using liquid.",
         "image": "/assets/images/holding.jpg",
@@ -453,12 +453,12 @@
             "html",
             "html"
         ],
-        "url": "/blog/clouddatabase/the-quick-brown-fox-jumps-over-the-lazy-dog"
+        "url": "/blog/mobile/the-quick-brown-fox-jumps-over-the-lazy-dog"
     },
     "26": {
         "objectID": 26,
         "title": "They got there early and they got really good seats",
-        "category": "buildtestconfig",
+        "category": "buildandtest",
         "type": "devbyte",
         "heading": "By default, Jekyll will organise your posts in date order when looping through them. However you may want, for example, your most popular posts to go first and then the rest organised by date order. In this DevByte we'll look at customising the loop order using liquid.",
         "image": "/assets/images/holding.jpg",
@@ -469,12 +469,12 @@
         "_tags": [
             "vue"
         ],
-        "url": "/blog/buildtestconfig/they-got-there-early-and-they-got-really-good-seats"
+        "url": "/blog/buildandtest/they-got-there-early-and-they-got-really-good-seats"
     },
     "27": {
         "objectID": 27,
         "title": "Check back tomorrow I will see if the book has arrived",
-        "category": "clouddatabase",
+        "category": "mobile",
         "type": "devbyte",
         "heading": "By default, Jekyll will organise your posts in date order when looping through them. However you may want, for example, your most popular posts to go first and then the rest organised by date order. In this DevByte we'll look at customising the loop order using liquid.",
         "image": "/assets/images/holding.jpg",
@@ -490,12 +490,12 @@
             "vue",
             "gatsby"
         ],
-        "url": "/blog/clouddatabase/check-back-tomorrow-i-will-see-if-the-book-has-arrived"
+        "url": "/blog/mobile/check-back-tomorrow-i-will-see-if-the-book-has-arrived"
     },
     "28": {
         "objectID": 28,
         "title": "Let me help you with your baggage",
-        "category": "backend",
+        "category": "frontend",
         "type": "devbyte",
         "heading": "By default, Jekyll will organise your posts in date order when looping through them. However you may want, for example, your most popular posts to go first and then the rest organised by date order. In this DevByte we'll look at customising the loop order using liquid.",
         "image": "/assets/images/holding.jpg",
@@ -506,7 +506,7 @@
         "_tags": [
             "frontend"
         ],
-        "url": "/blog/backend/let-me-help-you-with-your-baggage"
+        "url": "/blog/frontend/let-me-help-you-with-your-baggage"
     },
     "29": {
         "objectID": 29,
@@ -529,7 +529,7 @@
     "30": {
         "objectID": 30,
         "title": "I checked to make sure that he was still alive",
-        "category": "backend",
+        "category": "buildandtest",
         "type": "devbyte",
         "heading": "By default, Jekyll will organise your posts in date order when looping through them. However you may want, for example, your most popular posts to go first and then the rest organised by date order. In this DevByte we'll look at customising the loop order using liquid.",
         "image": "/assets/images/holding.jpg",
@@ -542,12 +542,12 @@
             "blog",
             "liquid"
         ],
-        "url": "/blog/backend/i-checked-to-make-sure-that-he-was-still-alive"
+        "url": "/blog/buildandtest/i-checked-to-make-sure-that-he-was-still-alive"
     },
     "31": {
         "objectID": 31,
         "title": "Yeah I think its a good environment for learning English",
-        "category": "networkhardware",
+        "category": "devops",
         "type": "devbyte",
         "heading": "By default, Jekyll will organise your posts in date order when looping through them. However you may want, for example, your most popular posts to go first and then the rest organised by date order. In this DevByte we'll look at customising the loop order using liquid.",
         "image": "/assets/images/holding.jpg",
@@ -558,12 +558,12 @@
         "_tags": [
             "vue"
         ],
-        "url": "/blog/networkhardware/yeah-i-think-its-a-good-environment-for-learning-english"
+        "url": "/blog/devops/yeah-i-think-its-a-good-environment-for-learning-english"
     },
     "32": {
         "objectID": 32,
         "title": "Where do random thoughts come from",
-        "category": "buildtestconfig",
+        "category": "buildandtest",
         "type": "devbyte",
         "heading": "By default, Jekyll will organise your posts in date order when looping through them. However you may want, for example, your most popular posts to go first and then the rest organised by date order. In this DevByte we'll look at customising the loop order using liquid.",
         "image": "/assets/images/holding.jpg",
@@ -579,7 +579,7 @@
             "chrome",
             "compression"
         ],
-        "url": "/blog/buildtestconfig/where-do-random-thoughts-come-from"
+        "url": "/blog/buildandtest/where-do-random-thoughts-come-from"
     },
     "33": {
         "objectID": 33,
@@ -605,7 +605,7 @@
     "46": {
         "objectID": 46,
         "title": "Cats are good pets for they are clean and are not noisy",
-        "category": "backend",
+        "category": "frontend",
         "type": "devbyte",
         "heading": "By default, Jekyll will organise your posts in date order when looping through them. However you may want, for example, your most popular posts to go first and then the rest organised by date order. In this DevByte we'll look at customising the loop order using liquid.",
         "image": "/assets/images/holding.jpg",
@@ -619,6 +619,6 @@
             "blog",
             "react"
         ],
-        "url": "/blog/backend/cats-are-good-pets-for-they-are-clean-and-are-not-noisy"
+        "url": "/blog/frontend/cats-are-good-pets-for-they-are-clean-and-are-not-noisy"
     }
 }

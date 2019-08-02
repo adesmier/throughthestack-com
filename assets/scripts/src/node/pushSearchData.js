@@ -6,11 +6,10 @@ const AlgoliaSearchUtils = require('../../../../javascript/modules/AlgoliaSearch
 //tutorial dir
 const postsDir       = path.join(__dirname, '../../../../_posts');
 const postCategories = [
-    'backend',
-    'buildtestconfig',
-    'clouddatabase',
+    'buildandtest',
+    'devops',
     'frontend',
-    'networkhardware'
+    'mobile',
 ];
 let cacheNeedsUpdate = false;
 
@@ -18,7 +17,7 @@ const postActions = new PostIndexingUtils();
 let algoliaSearch;
 
 try {
-    algoliaSearch = new AlgoliaSearchUtils('test_posts');
+    algoliaSearch = new AlgoliaSearchUtils('new_test_posts');
 } catch(e) {
     console.error('algoliaSearch module errored with message:', e.message);
     process.exit(1);

@@ -2,7 +2,7 @@ import React from 'react';
 
 const AlgoliaSearchUtils = require('../../../modules/AlgoliaSearchUtils');
 //NOTE: algolia indice hardcoded for now
-const algoliaSearch = new AlgoliaSearchUtils('sort_by_date_', true);
+const algoliaSearch = new AlgoliaSearchUtils('new_sort_by_date', true);
 
 
 /**

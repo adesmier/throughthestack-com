@@ -1,38 +1,33 @@
-import React      from 'react';
-import PropTypes  from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-import CoverImage from './CoverImage';
-import Summary    from './Summary';
-import Tags       from './Tags';
-
+import Summary from "./Summary";
+import Tags from "./Tags";
 
 const Article = props => {
-    const { postData, isOnBlogPage } = props;
-    const { _tags } = postData;
+  const { postData, isOnBlogPage } = props;
+  const { _tags } = postData;
 
-    return (
+  return (
+    <div className="blog__blog-post-flexgrid-wrapper grid-card hover multi-width-card">
+      <article className={isOnBlogPage ? "" : "latest-post-preview"}>
         <div
-            className="blog__blog-post-flexgrid-wrapper grid-card hover multi-width-card"
+          className={
+            isOnBlogPage ? "blog-post-inner-wrapper" : "article-inner-wrapper"
+          }
         >
-            <article className={isOnBlogPage ? '' : 'latest-post-preview'}>
-                <div
-                    className={
-                        isOnBlogPage ? 'blog-post-inner-wrapper': 'article-inner-wrapper'
-                    }
-                >
-                    {/* <CoverImage {...props} /> */}
-                    <Summary {...props} />
-                </div>
-            </article>
-            <Tags tags={_tags} />
+          <Summary {...props} />
         </div>
-    );
-}
+      </article>
+      <Tags tags={_tags} />
+      <i className="fab fa-windows" />
+    </div>
+  );
+};
 
 Article.propTypes = {
-    postData:     PropTypes.object.isRequired,
-    isOnBlogPage: PropTypes.bool.isRequired
-}
-
+  postData: PropTypes.object.isRequired,
+  isOnBlogPage: PropTypes.bool.isRequired
+};
 
 export default Article;
